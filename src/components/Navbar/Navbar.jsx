@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { links } from "../../utils/constants";
 import logo from "../../assets/logo2.png";
+import CartButtons from "../Cart/CartButtons";
 
 const Navbar = () => {
 	return (
@@ -27,6 +28,9 @@ const Navbar = () => {
 						);
 					})}
 				</Links>
+				<BtnContainer>
+					<CartButtons />
+				</BtnContainer>
 			</Container>
 		</Wrapper>
 	);
@@ -38,6 +42,10 @@ const Container = styled.div`
 	width: 90vw;
 	max-width: var(--max-width);
 	margin: 0 auto;
+`;
+
+const BtnContainer = styled.div`
+	display: none;
 `;
 
 const Header = styled.div`
@@ -103,6 +111,11 @@ const Wrapper = styled.div`
 					color: var(--primary-3);
 				}
 			}
+		}
+
+		${BtnContainer} {
+			display: flex;
+			align-items: center;
 		}
 	}
 `;
