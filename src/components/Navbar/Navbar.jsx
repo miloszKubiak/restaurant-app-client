@@ -8,16 +8,16 @@ import logo from "../../assets/logo2.png";
 const Navbar = () => {
 	return (
 		<Wrapper>
-			<div className="container">
-				<div className="header">
-					<Link to="/">
+			<Container>
+				<Header>
+					<Link to="/" className="logo">
 						<img src={logo} alt="italian food" />
 					</Link>
-					<button className="toggle">
+					<Button>
 						<FaBars />
-					</button>
-				</div>
-				<ul className="links">
+					</Button>
+				</Header>
+				<Links>
 					{links.map((link) => {
 						const { id, text, url } = link;
 						return (
@@ -26,13 +26,40 @@ const Navbar = () => {
 							</li>
 						);
 					})}
-				</ul>
-			</div>
+				</Links>
+			</Container>
 		</Wrapper>
 	);
 };
 
 export default Navbar;
+
+const Container = styled.div`
+	width: 90vw;
+	max-width: var(--max-width);
+	margin: 0 auto;
+`;
+
+const Header = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+`;
+
+const Links = styled.ul`
+	display: none;
+`;
+
+const Button = styled.button`
+	background: transparent;
+	border: transparent;
+	color: var(--primary-2);
+	cursor: pointer;
+
+	svg {
+		font-size: 2.5rem;
+	}
+`;
 
 const Wrapper = styled.div`
 	height: 6rem;
@@ -41,45 +68,18 @@ const Wrapper = styled.div`
 	align-items: center;
 	background: var(--primary-1);
 
-	.container {
-		width: 90vw;
-		max-width: var(--max-width);
-		margin: 0 auto;
-	}
-
-	.header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	.toggle {
-		background: transparent;
-		border: transparent;
-		color: var(--primary-2);
-		cursor: pointer;
-
-		svg {
-			font-size: 2.5rem;
-		}
-	}
-
-	.links {
-		display: none;
-	}
-
 	@media (min-width: 992px) {
-		.toggle {
+		${Button} {
 			display: none;
 		}
 
-		.container {
+		${Container} {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 		}
 
-		.links {
+		${Links} {
 			flex: 1;
 			display: flex;
 			justify-content: center;
