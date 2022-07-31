@@ -8,6 +8,7 @@
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   --transition: all 0.3s linear;
+  --spacing: 1px;
   --fixed-width: 620px;
   --max-width: 1170px;
 }
