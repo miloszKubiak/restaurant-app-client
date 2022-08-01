@@ -5,8 +5,11 @@ import { links } from "../../utils/constants";
 import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
 import { CartButtons } from "../../components";
+import { useMealsContext } from "../../context/meals-context";
 
 const Sidedbar = () => {
+	const data = useMealsContext();
+	console.log(data);
 	const isOpen = true;
 
 	return (
