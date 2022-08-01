@@ -40,7 +40,15 @@ const Container = styled.section`
 	}
 
 	img {
-		max-width: 100%;
+		display: block;
+		width: 90vw;
+		max-width: 600px;
+	}
+
+	@media screen and (max-width: 992px) {
+		img {
+			width: 60%;
+		}
 	}
 `;
 
@@ -65,5 +73,5 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 5rem 0;
+	padding: 4rem 0;
 `;
