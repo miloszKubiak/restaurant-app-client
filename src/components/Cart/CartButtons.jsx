@@ -25,18 +25,20 @@ const AuthButton = styled.button`
 	display: flex;
 	margin-left: 1.5rem;
 	align-items: center;
-	color: var(--primary-1);
+	color: var(--primary-2);
 	text-transform: capitalize;
 	border: none;
+	border-bottom: transparent;
 	background: transparent;
 	font-weight: bold;
 	font-size: 1.5rem;
 	letter-spacing: var(--spacing);
 	transition: var(--transition);
+	font-family: inherit;
 	cursor: pointer;
 
 	&:hover {
-		color: var(--primary-2);
+		color: var(--primary-1);
 	}
 `;
 
@@ -46,14 +48,14 @@ const CartButton = styled(Link)`
 	display: flex;
 	align-items: center;
 	font-size: 1.5rem;
-	color: var(--primary-1);
+	color: var(--primary-2);
 	letter-spacing: var(--spacing);
-  transition: var(--transition);
+	transition: var(--transition);
 	font-weight: bold;
 	text-decoration: none;
 
 	&:hover {
-		color: var(--primary-2);
+		color: var(--primary-1);
 	}
 `;
 
@@ -66,7 +68,7 @@ const CartValue = styled.span`
 	right: -10px;
 	width: 1.4rem;
 	height: 1.4rem;
-	background: var(--primary-4);
+	background: var(--primary-6);
 	color: var(--primary-2);
 	font-size: 0.7rem;
 	/* font-weight: lighter; */

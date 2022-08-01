@@ -73,7 +73,7 @@ const Button = styled.button`
 `;
 
 const Wrapper = styled.div`
-	height: 6rem;
+	height: 5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -102,16 +102,17 @@ const Wrapper = styled.div`
 
 			a {
 				padding: 0.5rem;
-				color: var(--primary-1);
+				color: var(--primary-2);
 				text-transform: capitalize;
 				text-decoration: none;
+				border-bottom: transparent;
 				font-weight: bold;
 				font-size: 1.5rem;
 				letter-spacing: var(--spacing);
 				transition: var(--transition);
 
 				&:hover {
-					color: var(--primary-2);
+					color: var(--primary-1);
 				}
 			}
 		}

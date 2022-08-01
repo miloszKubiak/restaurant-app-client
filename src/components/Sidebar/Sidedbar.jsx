@@ -73,12 +73,12 @@ const CloseBtn = styled.button`
 	font-size: 2rem;
 	background: transparent;
 	border: none;
-	color: var(--primary-4);
+	color: var(--primary-2);
 	transition: var(--transition);
 	cursor: pointer;
 
 	&:hover {
-		transform: scale(1.3);
+		transform: scale(1.2);
 	}
 `;
 
@@ -90,7 +90,7 @@ const Links = styled.ul`
 		text-align: left;
 		font-size: 1.2rem;
 		padding: 1.2rem;
-		color: var(--primary-1);
+		color: var(--primary-2);
 		transition: var(--transition);
 		letter-spacing: var(--spacing);
 		font-weight: bold;
@@ -99,8 +99,7 @@ const Links = styled.ul`
 
 		&:hover {
 			background: var(--primary-1);
-			color: var(--primary-2);
-			padding: 1rem 1.5rem;
+			color: var(--primary-3);
 			padding-left: 2rem;
 		}
 	}
