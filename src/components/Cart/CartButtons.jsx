@@ -2,11 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { useMealsContext } from "../../context/meals-context";
 
 const CartButtons = () => {
+	const { closeSidebar } = useMealsContext();
+
 	return (
 		<Wrapper>
-			<CartButton to="/cart">
+			<CartButton to="/cart" onClick={closeSidebar}>
 				<FaShoppingCart style={{ fontSize: "2.5rem" }} />
 				<CartValue>10</CartValue>
 			</CartButton>

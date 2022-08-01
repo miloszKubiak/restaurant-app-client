@@ -5,8 +5,11 @@ import { FaBars } from "react-icons/fa";
 import { links } from "../../utils/constants";
 import logo from "../../assets/logo2.png";
 import CartButtons from "../Cart/CartButtons";
+import { useMealsContext } from "../../context/meals-context";
 
 const Navbar = () => {
+	const { openSidebar } = useMealsContext();
+
 	return (
 		<Wrapper>
 			<Container>
@@ -14,7 +17,7 @@ const Navbar = () => {
 					<Link to="/" className="logo">
 						<img src={logo} alt="italian food" />
 					</Link>
-					<Button>
+					<Button onClick={openSidebar}>
 						<FaBars />
 					</Button>
 				</Header>

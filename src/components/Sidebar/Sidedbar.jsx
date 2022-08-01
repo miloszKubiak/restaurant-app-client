@@ -8,16 +8,18 @@ import { CartButtons } from "../../components";
 import { useMealsContext } from "../../context/meals-context";
 
 const Sidedbar = () => {
-	const data = useMealsContext();
-	console.log(data);
-	const isOpen = true;
+	const { isSidebarOpen, closeSidebar } = useMealsContext();
 
 	return (
 		<Wrapper>
-			<aside className={`${isOpen ? "sidebar show-sidebar" : "sidebar"}`}>
+			<aside
+				className={`${
+					isSidebarOpen ? "sidebar show-sidebar" : "sidebar"
+				}`}
+			>
 				<Header>
 					<img src={logo} alt="italian food" />
-					<CloseBtn>
+					<CloseBtn onClick={closeSidebar}>
 						<FaTimes />
 					</CloseBtn>
 				</Header>
@@ -26,12 +28,16 @@ const Sidedbar = () => {
 						const { id, text, url } = link;
 						return (
 							<li key={id}>
-								<Link to={url}>{text}</Link>
+								<Link to={url} onClick={closeSidebar}>
+									{text}
+								</Link>
 							</li>
 						);
 					})}
 					<li>
-						<Link to="checkout">checkout</Link>
+						<Link to="checkout" onClick={closeSidebar}>
+							checkout
+						</Link>
 					</li>
 				</Links>
 				<ButtonsContainer>
@@ -94,6 +100,8 @@ const Links = styled.ul`
 		&:hover {
 			background: var(--primary-1);
 			color: var(--primary-2);
+			padding: 1rem 1.5rem;
+			padding-left: 2rem;
 		}
 	}
 `;
