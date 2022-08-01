@@ -74,7 +74,7 @@ const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: var(--primary-1);
+	background: var(--primary-3);
 
 	@media (min-width: 992px) {
 		${Button} {
@@ -99,7 +99,7 @@ const Wrapper = styled.div`
 
 			a {
 				padding: 0.5rem;
-				color: var(--primary-2);
+				color: var(--primary-1);
 				text-transform: capitalize;
 				text-decoration: none;
 				font-weight: bold;
@@ -108,7 +108,7 @@ const Wrapper = styled.div`
 				transition: var(--transition);
 
 				&:hover {
-					color: var(--primary-3);
+					color: var(--primary-2);
 				}
 			}
 		}

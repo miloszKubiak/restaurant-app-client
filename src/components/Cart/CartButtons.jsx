@@ -20,8 +20,9 @@ export default CartButtons;
 const AuthButton = styled.button`
 	flex: 1;
 	display: flex;
+	margin-left: 1.5rem;
 	align-items: center;
-	color: var(--primary-2);
+	color: var(--primary-1);
 	text-transform: capitalize;
 	border: none;
 	background: transparent;
@@ -32,7 +33,7 @@ const AuthButton = styled.button`
 	cursor: pointer;
 
 	&:hover {
-		color: var(--primary-3);
+		color: var(--primary-2);
 	}
 `;
 
@@ -42,14 +43,14 @@ const CartButton = styled(Link)`
 	display: flex;
 	align-items: center;
 	font-size: 1.5rem;
-	color: var(--primary-2);
+	color: var(--primary-1);
 	letter-spacing: var(--spacing);
   transition: var(--transition);
 	font-weight: bold;
 	text-decoration: none;
 
 	&:hover {
-		color: var(--primary-3);
+		color: var(--primary-2);
 	}
 `;
 
@@ -72,5 +73,5 @@ const CartValue = styled.span`
 const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
-	gap: 1.2rem;
+	gap: 5rem;
 `;
