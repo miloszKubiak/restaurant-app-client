@@ -78,12 +78,13 @@ const MainImg = styled.img`
 `;
 
 const SecondImg = styled.img`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 20rem;
-  transform: translate(-40%, 20%);
-  border-radius: .5rem;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 20rem;
+	transform: translate(-40%, 20%);
+	border-radius: 0.5rem;
+	object-fit: cover;
 `;
 
 const Wrapper = styled.section`
@@ -110,8 +111,8 @@ const Wrapper = styled.section`
 				background: var(--primary-1);
 				width: 80%;
 				height: 90%;
-				bottom: -8%;
-				left: -8%;
+				bottom: -6%;
+				left: -6%;
 			}
 		}
 
