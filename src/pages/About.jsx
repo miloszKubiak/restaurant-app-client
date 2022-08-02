@@ -17,7 +17,7 @@ const AboutPage = () => {
 						<Underline />
 					</Title>
 					<Description>
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore necessitatibus quidem voluptatem ea temporibus. Neque a molestiae impedit? Quidem debitis, eaque quo corporis ad magni non ex voluptate iusto quae. Nihil expedita at excepturi, architecto pariatur porro sint provident obcaecati voluptatem illum! Voluptatibus ea reiciendis ipsum repellat nobis blanditiis reprehenderit!
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae tempore labore error quis. Soluta inventore, corrupti expedita eos ipsam fugiat molestias voluptates quaerat cumque libero voluptatem assumenda sequi ab. Vel quae, odio aspernatur nihil saepe omnis porro pariatur molestiae commodi ullam accusamus non natus nulla! Architecto vitae quas possimus molestiae reprehenderit dolore perspiciatis quae expedita quibusdam voluptate dolorem vel repellendus in natus, odit non, aspernatur consequuntur aliquid repudiandae, enim cupiditate?
 					</Description>
 				</Article>
 			</Wrapper>
@@ -78,7 +78,7 @@ const Underline = styled.div`
 const Description = styled.p`
 	margin: 0 auto;
 	margin-top: 2rem;
-	line-height: 1.5;
+	line-height: 2;
 	letter-spacing: var(--spacing);
 	color: var(--grey-1);
 `;

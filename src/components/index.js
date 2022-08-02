@@ -3,5 +3,9 @@ import Sidebar from "./Sidebar/Sidedbar";
 import Footer from "./Footer/Footer";
 import CartButtons from "./Cart/CartButtons";
 import PageHero from "./Hero/PageHero";
+import FeaturedMeals from "./Meals/FeaturedMeals";
+import Hero from "./Hero/Hero";
+import Services from "./Services/Services";
+import Contact from "./Contact/Contact";
 
-export { Navbar, Sidebar, Footer, CartButtons, PageHero, };
+export { Navbar, Sidebar, Footer, CartButtons, PageHero, FeaturedMeals, Hero, Services, Contact, };

@@ -16,11 +16,12 @@ export default Footer;
 const Wrapper = styled.div`
 	height: 5rem;
 	display: flex;
-	flex-direction: column;
+	font-size: 1.2rem;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 	background: var(--primary-4);
+	letter-spacing: var(--spacing);
 
 	span {
 		margin: .2rem;
