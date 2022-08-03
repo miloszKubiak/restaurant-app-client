@@ -31,7 +31,10 @@ const FeaturedMeals = () => {
 
 export default FeaturedMeals;
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+  padding: 5rem 0;
+  background: #f9f9f9;
+`;
 
 const Header = styled.div``;
 
@@ -39,4 +42,10 @@ const Title = styled.h2``;
 
 const Underline = styled.div``;
 
-const List = styled.div``;
+const List = styled.div`
+  margin: 4rem auto;
+  width: 90vw;
+  max-width: var(--max-width);
+  display: flex;
+  gap: 3rem;
+`;
