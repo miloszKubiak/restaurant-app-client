@@ -38,3 +38,8 @@ export const services = [
 		text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab facere reiciendis debitis voluptatum odio sapiente non iusto beatae alias laudantium?",
 	},
 ];
+
+export const meals_url = `${process.env.REACT_APP_MEALS_URL}`;
+
+export const single_meal_url = `${process.env.REACT_APP_SINGLE_MEAL_URL}`;
+

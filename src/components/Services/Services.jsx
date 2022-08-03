@@ -45,14 +45,16 @@ const Title = styled.h3`
   margin-bottom: 2rem;
   text-transform: capitalize;
   font-size: 3rem;
+	letter-spacing: var(--spacing);
 `;
 
 const Description = styled.p`
-  flex: 1;
-  margin: 1.2rem 0;
-  line-height: 1.5;
-  text-align: left;
-  font-size: 1.2rem;
+	flex: 1;
+	margin: 1.2rem 0;
+	line-height: 1.5;
+	text-align: left;
+	font-size: 1.2rem;
+	letter-spacing: var(--spacing);
 `;
 
 const Content = styled.div`
@@ -68,6 +70,7 @@ const Service = styled.article`
 	border-radius: 0.5rem;
 	text-align: center;
 	color: var(--primary-2);
+	letter-spacing: var(--spacing);
 
 	span {
 		width: 4rem;
@@ -112,6 +115,12 @@ const Wrapper = styled.section`
 			display: flex;
 			flex-direction: column;
 			padding: 0 1rem;
+		}
+	}
+
+	@media screen and (min-width: 1280px) {
+		${Content} {
+			transform: translateY(8rem);
 		}
 	}
 `;

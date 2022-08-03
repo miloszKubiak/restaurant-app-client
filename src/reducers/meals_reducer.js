@@ -15,6 +15,20 @@ const meals_reducer = (state, action) => {
 			return { ...state, isSidebarOpen: true };
 		case SIDEBAR_CLOSE:
 			return { ...state, isSidebarOpen: false };
+		case GET_MEALS_BEGIN:
+			return { ...state, meals_loading: true };
+		case GET_MEALS_SUCCESS:
+			const featured_meals = action.payload.filter(
+				(meal) => meal.featured === true
+			);
+			return {
+				...state,
+				meals_loading: false,
+				meals: action.payload,
+				featured_meals,
+			};
+		case GET_MEALS_ERROR:
+			return { ...state, meals_loading: false, meals_error: true };
 		default:
 			throw new Error(`No matching "${action.type}" - action type`);
 	}

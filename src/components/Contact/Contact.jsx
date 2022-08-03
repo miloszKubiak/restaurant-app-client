@@ -16,7 +16,7 @@ const Contact = () => {
 					</Description>
 					<FormContainer>
 						<Form>
-							<Input type="email" />
+							<Input type="email" placeholder="Enter email..." />
 							<SubmitBtn>Subscribe</SubmitBtn>
 						</Form>
 					</FormContainer>
@@ -92,11 +92,16 @@ const SubmitBtn = styled.button`
 const Input = styled.input`
 	flex: 3;
 	border-right: none;
+	padding-left: 1rem;
 	height: 100%;
 	border-top-left-radius: 0.5rem;
 	border-bottom-left-radius: 0.5rem;
   border: .2rem solid var(--primary-3);
   outline: none;
+
+  &::placeholder {
+    letter-spacing: var(--spacing);
+  }
 `;
 
 const Wrapper = styled.section`
@@ -106,6 +111,12 @@ const Wrapper = styled.section`
 		${Content} {
 			flex-direction: column;
 			align-items: center;
+		}
+	}
+
+	@media screen and (min-width: 1280px) {
+		${Container} {
+			padding: 6rem;
 		}
 	}
 `;
