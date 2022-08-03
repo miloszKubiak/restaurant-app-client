@@ -8,6 +8,8 @@ import Hero from "./Hero/Hero";
 import Services from "./Services/Services";
 import Contact from "./Contact/Contact";
 import Loader from "./Loader/Loader";
+import Error from "./Error/Error";
+import Meal from "./Meals/Meal";
 
 export {
 	Navbar,
@@ -20,4 +22,6 @@ export {
 	Services,
 	Contact,
 	Loader,
+	Error,
+	Meal,
 };

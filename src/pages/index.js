@@ -1,7 +1,7 @@
 import About from "./About";
 import Cart from "./Cart";
 import Checkout from "./Checkout";
-import Error from "./Error";
+import ErrorPage from "./ErrorPage";
 import Home from "./Home";
 import Meals from "./Meals";
 import PrivateRoute from "./PrivateRoute";
@@ -12,7 +12,7 @@ export {
 	About,
 	Cart,
 	Checkout,
-	Error,
+	ErrorPage,
 	Home,
 	Meals,
 	SingleMeal,

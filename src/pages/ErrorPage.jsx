@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import errorImg from "../assets/error.svg";
 
-const Error = () => {
+const ErrorPage = () => {
 	return (
 		<Wrapper>
 			<Container>
@@ -16,7 +16,7 @@ const Error = () => {
 	);
 };
 
-export default Error;
+export default ErrorPage;
 
 const Container = styled.section`
 	display: flex;

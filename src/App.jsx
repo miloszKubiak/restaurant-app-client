@@ -6,7 +6,7 @@ import {
 	Meals,
 	Cart,
 	Checkout,
-	Error,
+	ErrorPage,
 	About,
 	PrivateRoute,
 } from "./pages";
@@ -31,7 +31,7 @@ const App = () => {
 						</PrivateRoute>
 					}
 				/>
-				<Route path="*" element={<Error />} />
+				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 			<Footer />
 		</>
