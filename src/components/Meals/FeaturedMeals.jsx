@@ -11,17 +11,16 @@ const FeaturedMeals = () => {
 		featured_meals: featured,
 	} = useMealsContext();
 
-	if (loading) return <Loader />;
-	if (error) return <Error />;
-
 	return (
 		<Wrapper>
 			<Header>
 				<Title>featured meals</Title>
 				<Underline />
+				{loading && <Loader />}
+				{error && <Error />}
 			</Header>
 			<List>
-				{featured.slice(0,4).map((meal) => {
+				{featured.slice(0, 4).map((meal) => {
 					return <Meal key={meal.id} {...meal} />;
 				})}
 			</List>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { formatPrice } from "../../utils/helpers";
 
 const Meal = ({ id, name, image, price }) => {
 	return (
@@ -12,7 +13,7 @@ const Meal = ({ id, name, image, price }) => {
 			</Container>
 			<Footer>
 				<Name>{name}</Name>
-				<Price>${price}</Price>
+				<Price>{formatPrice(price)}</Price>
 			</Footer>
 		</Wrapper>
 	);
@@ -52,6 +53,7 @@ const Footer = styled.footer`
 const Name = styled.h5`
 	margin-bottom: 0;
 	font-weight: 400;
+	text-transform: capitalize;
 	letter-spacing: var(--spacing);
 	color: var(--grey-1);
 `;

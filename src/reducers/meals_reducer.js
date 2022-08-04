@@ -29,6 +29,24 @@ const meals_reducer = (state, action) => {
 			};
 		case GET_MEALS_ERROR:
 			return { ...state, meals_loading: false, meals_error: true };
+		case GET_SINGLE_MEAL_BEGIN:
+			return {
+				...state,
+				single_meal_loading: true,
+				single_meal_error: false,
+			};
+		case GET_SINGLE_MEAL_SUCCESS:
+			return {
+				...state,
+				single_meal_loading: false,
+				single_meal: action.payload,
+			};
+		case GET_SINGLE_MEAL_ERROR:
+			return {
+				...state,
+				single_meal_loading: false,
+				single_meal_error: true,
+			};
 		default:
 			throw new Error(`No matching "${action.type}" - action type`);
 	}

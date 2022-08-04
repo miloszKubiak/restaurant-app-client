@@ -19,6 +19,9 @@ const initialState = {
 	meals_error: false,
 	meals: [],
 	featured_meals: [],
+	single_meal_loading: false,
+	single_meal_error: false,
+	single_meal: {},
 };
 
 const MealsContext = React.createContext();
@@ -46,12 +49,26 @@ export const MealsProvider = ({ children }) => {
 		}
 	};
 
+	const fetchSingleMeal = async (url) => {
+		dispatch({ type: GET_SINGLE_MEAL_BEGIN });
+
+		try {
+			const response = await axios(url);
+			const singleMeal = response.data;
+			dispatch({ type: GET_SINGLE_MEAL_SUCCESS, payload: singleMeal });
+		} catch (error) {
+			dispatch({ type: GET_SINGLE_MEAL_ERROR });
+		}
+	};
+
 	useEffect(() => {
 		fetchMeals(url);
 	}, []);
 
 	return (
-		<MealsContext.Provider value={{ ...state, openSidebar, closeSidebar }}>
+		<MealsContext.Provider
+			value={{ ...state, openSidebar, closeSidebar, fetchSingleMeal }}
+		>
 			{children}
 		</MealsContext.Provider>
 	);

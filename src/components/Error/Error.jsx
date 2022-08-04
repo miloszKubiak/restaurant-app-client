@@ -17,4 +17,9 @@ const Wrapper = styled.div`
 	margin: 0 auto;
 	max-width: var(--max-width);
 	text-align: center;
+
+	h2 {
+		text-transform: capitalize;
+		text-align: center;
+	}
 `;
