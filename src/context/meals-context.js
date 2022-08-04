@@ -11,7 +11,7 @@ import {
 	GET_MEALS_ERROR,
 } from "../actions";
 import reducer from "../reducers/meals_reducer";
-import { meals_url as url } from "../utils/constants";
+import { MEALS_URL } from "../utils/constants";
 
 const initialState = {
 	isSidebarOpen: false,
@@ -23,6 +23,7 @@ const initialState = {
 	single_meal_error: false,
 	single_meal: {},
 };
+
 
 const MealsContext = React.createContext();
 
@@ -62,7 +63,7 @@ export const MealsProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		fetchMeals(url);
+		fetchMeals(MEALS_URL);
 	}, []);
 
 	return (

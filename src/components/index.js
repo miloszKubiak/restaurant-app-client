@@ -10,6 +10,9 @@ import Contact from "./Contact/Contact";
 import Loader from "./Loader/Loader";
 import Error from "./Error/Error";
 import Meal from "./Meals/Meal";
+import AddToCart from "./Cart/AddToCart";
+import MealImages from "./Meals/MealImages";
+import Stars from "./Stars/Stars";
 
 export {
 	Navbar,
@@ -24,4 +27,7 @@ export {
 	Loader,
 	Error,
 	Meal,
+	AddToCart,
+	MealImages,
+	Stars,
 };

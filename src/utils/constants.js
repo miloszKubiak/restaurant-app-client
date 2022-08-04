@@ -39,7 +39,7 @@ export const services = [
 	},
 ];
 
-export const meals_url = `${process.env.REACT_APP_MEALS_URL}`;
+export const MEALS_URL = `${process.env.REACT_APP_MEALS_URL}`;
 
-export const single_meal_url = `${process.env.REACT_APP_SINGLE_MEAL_URL}`;
+export const SINGLE_MEAL_URL = `${process.env.REACT_APP_SINGLE_MEAL_URL}`;
 
