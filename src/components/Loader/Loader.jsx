@@ -12,6 +12,7 @@ const Loader = () => {
 export default Loader;
 
 const Container = styled.div`
+	/* min-height: calc(100vh - 10rem); */
 	display: flex;
 	justify-content: center;
 	align-items: center;

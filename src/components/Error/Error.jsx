@@ -12,6 +12,7 @@ const Error = () => {
 export default Error;
 
 const Wrapper = styled.div`
+	/* min-height: calc(100vh - 10rem); */
 	padding: 5rem 0;
 	width: 90vw;
 	margin: 0 auto;

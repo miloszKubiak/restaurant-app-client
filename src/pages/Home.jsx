@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { FeaturedMeals, Hero, Contact, Services } from "../components";
 
 const Home = () => {
-	return <Wrapper>
-		<Hero />
-		<FeaturedMeals />
-		<Services />
-		<Contact />
-	</Wrapper>;
+	return (
+		<Wrapper>
+			<Hero />
+			<FeaturedMeals />
+			<Services />
+			<Contact />
+		</Wrapper>
+	);
 };
 
 export default Home;

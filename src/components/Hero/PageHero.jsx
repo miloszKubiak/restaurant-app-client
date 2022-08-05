@@ -2,12 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const PageHero = ({ title }) => {
+const PageHero = ({ title, meal }) => {
 	return (
 		<Wrapper>
 			<Container>
 				<h3>
-					<Link to="/">home</Link>/ {title}
+					<Link to="/">home</Link>
+					{meal && <Link to="/meals">/ Meals</Link>}/ {title}
 				</h3>
 			</Container>
 		</Wrapper>
@@ -28,7 +29,6 @@ const Wrapper = styled.div`
 
 
 	a {
-		margin-left: 2rem;
 		padding: .5rem;
 		color: var(--primary-3);
 		text-decoration: none;
@@ -45,4 +45,8 @@ const Container = styled.div`
 	width: 90vw;
 	margin: 0 auto;
 	max-width: var(--max-width);
+
+	@media screen and (max-width: 576px) {
+		font-size: 1.2rem;
+	}
 `;
