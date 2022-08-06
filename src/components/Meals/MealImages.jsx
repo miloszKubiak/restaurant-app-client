@@ -38,7 +38,6 @@ const Image = styled.img`
 const Gallery = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	flex: 1;
 	gap: 0.5rem;
 
@@ -68,7 +67,7 @@ const Wrapper = styled.section`
 			}
 		}
     ${Image} {
-      max-height: 10rem;
+      max-height: 12rem;
     }
 	}
 `;

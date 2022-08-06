@@ -64,7 +64,7 @@ const SingleMeal = () => {
 					</ImagesContainer>
 					<Content>
 						<Title>{name}</Title>
-						<Stars />
+						<Stars reviews={reviews} stars={stars} />
 						<Price>{formatPrice(price)}</Price>
 						<Description>{description}</Description>
 						<Info>
@@ -137,10 +137,12 @@ const Content = styled.section`
 	flex-direction: column;
 	/* justify-content: space-between; */
 	gap: 1rem;
+	margin-top: 1rem;
 `;
 
 const Title = styled.h2`
 	text-transform: capitalize;
+	font-size: 2.5rem;
 `;
 
 const Price = styled.h5`
@@ -149,6 +151,7 @@ const Price = styled.h5`
 
 const Description = styled.p`
 	max-width: 40em;
+	letter-spacing: var(--spacing);
 `;
 
 const Info = styled.p`
