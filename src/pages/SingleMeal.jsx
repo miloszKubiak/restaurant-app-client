@@ -59,7 +59,9 @@ const SingleMeal = () => {
 			<Wrapper>
 				<ButtonBack to="/meals">back to meals</ButtonBack>
 				<Container>
-					<MealImages />
+					<ImagesContainer>
+						<MealImages images={images} />
+					</ImagesContainer>
 					<Content>
 						<Title>{name}</Title>
 						<Stars />
@@ -84,7 +86,7 @@ const SingleMeal = () => {
 			</Wrapper>
 		</>
 	);
-};;
+};
 
 export default SingleMeal;
 
@@ -97,7 +99,19 @@ const Wrapper = styled.main`
 	margin: 0 auto;
 `;
 
-const Container = styled.div``;
+const Container = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	@media screen and (min-width: 992px) {
+		flex-direction: row;
+	}
+`;
+
+const ImagesContainer = styled.div`
+	flex: 1;
+`;
 
 const ButtonBack = styled(Link)`
 	display: inline-block;
@@ -118,15 +132,15 @@ const ButtonBack = styled(Link)`
 `;
 
 const Content = styled.section`
+	flex: 1;
 	display: flex;
 	flex-direction: column;
-	gap: 4rem;
-	margin-top: 2rem;
+	/* justify-content: space-between; */
+	gap: 1rem;
 `;
 
 const Title = styled.h2`
 	text-transform: capitalize;
-
 `;
 
 const Price = styled.h5`
