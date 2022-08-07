@@ -1,12 +1,34 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { mealSizes } from "../../utils/constants";
-import { FaCheck } from "react-icons/fa";
+import AmountButtons from "./AmountButtons";
+import { Link } from "react-router-dom";
 
 const AddToCart = ({ meal }) => {
-	const { stock, size } = meal;
+	const { stock } = meal;
 
 	const [mealSize, setMealSize] = useState(mealSizes[0]);
+	const [amount, setAmount] = useState(1);
+
+	const increase = () => {
+		setAmount((prevAmount) => {
+			let tempAmount = prevAmount + 1;
+			if (tempAmount > stock) {
+				tempAmount = stock;
+			}
+			return tempAmount;
+		});
+	};
+
+	const decrease = () => {
+		setAmount((prevAmount) => {
+			let tempAmount = prevAmount - 1;
+			if (tempAmount < 1) {
+				tempAmount = 1;
+			}
+			return tempAmount;
+		});
+	};
 
 	return (
 		<Wrapper>
@@ -30,6 +52,14 @@ const AddToCart = ({ meal }) => {
 					})}
 				</Sizes>
 			</Container>
+			<BtnContainer>
+				<AmountButtons
+					increase={increase}
+					decrease={decrease}
+					amount={amount}
+				/>
+				<BtnAddToCart to="/cart">add to cart</BtnAddToCart>
+			</BtnContainer>
 		</Wrapper>
 	);
 };
@@ -74,4 +104,31 @@ const Sizes = styled.div`
 		background: var(--primary-3);
 		color: var(--primary-2);
 	}
+`;
+
+const BtnAddToCart = styled(Link)`
+	display: inline-block;
+	padding: 0.8rem 1rem;
+	margin: 1.5rem 0;
+	background: var(--primary-3);
+	color: var(--primary-2);
+	text-decoration: none;
+	text-transform: capitalize;
+	border-radius: 0.4rem;
+	letter-spacing: var(--spacing);
+	transition: var(--transition);
+	font-weight: bold;
+	width: 8rem;
+	text-align: center;
+
+	&:hover {
+		color: var(--primary-3);
+		background: var(--primary-1);
+	}
+`;
+
+const BtnContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;

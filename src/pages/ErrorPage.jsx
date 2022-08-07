@@ -61,6 +61,7 @@ const Button = styled(Link)`
 	border-radius: 0.4rem;
 	letter-spacing: var(--spacing);
 	transition: var(--transition);
+	font-weight: bold;
 
 	&:hover {
 		color: var(--primary-3);

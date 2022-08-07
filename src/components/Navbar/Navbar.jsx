@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { links } from "../../utils/constants";
 import logo from "../../assets/logo2.png";
-import CartButtons from "../Cart/CartButtons";
+import ActionButtons from "../Buttons/ActionButtons";
 import { useMealsContext } from "../../context/meals-context";
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
 					})}
 				</Links>
 				<BtnContainer>
-					<CartButtons />
+					<ActionButtons />
 				</BtnContainer>
 			</Container>
 		</Wrapper>

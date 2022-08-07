@@ -43,7 +43,6 @@ const SingleMeal = () => {
 		stock,
 		stars,
 		reviews,
-		size,
 		preparationTime,
 		category,
 		images,
@@ -124,6 +123,7 @@ const ButtonBack = styled(Link)`
 	border-radius: 0.4rem;
 	letter-spacing: var(--spacing);
 	transition: var(--transition);
+	font-weight: bold;
 
 	&:hover {
 		color: var(--primary-3);
