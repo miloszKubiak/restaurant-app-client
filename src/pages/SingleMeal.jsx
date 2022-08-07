@@ -80,7 +80,7 @@ const SingleMeal = () => {
 							{category}
 						</Info>
 						<hr />
-						{stock > 0 && <AddToCart />}
+						{stock > 0 && <AddToCart meal={meal} />}
 					</Content>
 				</Container>
 			</Wrapper>
@@ -138,6 +138,12 @@ const Content = styled.section`
 	/* justify-content: space-between; */
 	gap: 1rem;
 	margin-top: 1rem;
+
+	hr {
+		padding: 0.2rem;
+		background: var(--primary-3);
+		border: none;
+	}
 `;
 
 const Title = styled.h2`
@@ -159,6 +165,7 @@ const Info = styled.p`
 	width: 20rem;
 	display: flex;
 	gap: 4rem;
+	letter-spacing: var(--spacing);
 	span {
 		font-weight: 700;
 	}

@@ -34,7 +34,9 @@ const Wrapper = styled.div`
 	align-items: center;
 `;
 
-const Container = styled.div``;
+const Container = styled.div`
+	color: var(--primary-3);
+`;
 
 const Reviews = styled.p`
 	margin-left: 0.5rem;
