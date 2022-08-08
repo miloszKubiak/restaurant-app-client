@@ -22,9 +22,7 @@ const MealsPage = () => {
 export default MealsPage;
 
 const Wrapper = styled.div`
-	max-width: var(--max-width)
-	width: 90vw;
-	margin: 0 auto;
+	min-height: calc(100vh - (20vh + 10rem));
 `;
 
 const Center = styled.div`
@@ -33,9 +31,12 @@ const Center = styled.div`
 	margin: 4rem auto; */
 	display: flex;
 	gap: 2rem;
+	max-width: var(--max-width);
+	width: 90vw;
+	margin: 3rem auto;
 
 	@media (max-width: 768px) {
-		flex-direction: column;;
+		flex-direction: column;
 	}
 `;
 
