@@ -29,8 +29,18 @@ export const FilterProvider = ({ children }) => {
 		dispatch({ type: LOAD_MEALS, payload: meals });
 	}, [meals]);
 
+	const setListView = () => {
+		dispatch({ type: SET_LISTVIEW })
+	}
+
+	const setGridView = () => {
+		dispatch({ type: SET_GRIDVIEW });
+	};
+
 	return (
-		<FilterContext.Provider value={{ ...state }}>{children}</FilterContext.Provider>
+		<FilterContext.Provider value={{ ...state, setListView, setGridView }}>
+			{children}
+		</FilterContext.Provider>
 	);
 };
 

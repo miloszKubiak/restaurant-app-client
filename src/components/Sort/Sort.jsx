@@ -4,29 +4,35 @@ import { IoList, IoGrid } from "react-icons/io5";
 import { useFilterContext } from "../../context/filter-context";
 
 const Sort = () => {
-	const { filtered_meals: meals, grid_view } = useFilterContext();
+	const { filtered_meals: meals, grid_view, setListView, setGridView } = useFilterContext();
 
 	return (
 		<Wrapper>
 			<BtnContainer>
-				<Button className={`${grid_view ? "active" : null}`}>
+				<Button
+					className={`${grid_view ? "active" : null}`}
+					onClick={setGridView}
+				>
 					<IoGrid />
 				</Button>
-				<Button className={`${!grid_view ? "active" : null}`}>
+				<Button
+					className={`${!grid_view ? "active" : null}`}
+					onClick={setListView}
+				>
 					<IoList />
 				</Button>
-      </BtnContainer>
-      <Info>{meals.length} meals found</Info>
-      <hr />
-      <Form>
-        <Label htmlFor="sort">sort by</Label>
-        <Select name="sort" id="sort">
-          <option value="Name-A">Name (A-Z)</option>
-          <option value="Name-Z">Name (Z-A)</option>
-          <option value="price-lowest">Price (Lowest)</option>
-          <option value="price-highest">Price (Highest)</option>
-        </Select>
-      </Form>
+			</BtnContainer>
+			<Info>{meals.length} meals found</Info>
+			<hr />
+			<Form>
+				<Label htmlFor="sort">sort by</Label>
+				<Select name="sort" id="sort">
+					<option value="Name-A">Name (A-Z)</option>
+					<option value="Name-Z">Name (Z-A)</option>
+					<option value="price-lowest">Price (Lowest)</option>
+					<option value="price-highest">Price (Highest)</option>
+				</Select>
+			</Form>
 		</Wrapper>
 	);
 };
@@ -45,7 +51,6 @@ const BtnContainer = styled.div`
 `;
 
 const Button = styled.button`
-	flex: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -56,27 +61,33 @@ const Button = styled.button`
 	cursor: pointer;
 	color: var(--primary-3);
 	border: 0.2rem solid var(--primary-3);
+  transition: var(--transition);
 
 	svg {
 		font-size: 2rem;
 	}
+
+  &:hover {
+    background: var(--primary-1)
+  }
 `;
 
 const Info = styled.p`
-	flex: 1;
 	text-transform: capitalize;
 	letter-spacing: var(--spacing);
+  margin-right: 2rem;
 `;
 
 const Form = styled.form`
-  flex: 2;
+  flex: 1;
 `;
 
 const Label = styled.label`
 	text-transform: capitalize;
 	display: inline-block;
-	margin-right: 0.5rem;
+	margin-right: 1rem;
   letter-spacing: var(--spacing);
+  font-weight: bold;
 `;
 
 const Select = styled.select`
@@ -93,7 +104,7 @@ const Wrapper = styled.section`
 	margin-bottom: 2rem;
 
 	hr {
-		flex: 2;
+		flex: 4;
 		border: none;
 		background: var(--primary-3);
 		padding: 0.1rem;

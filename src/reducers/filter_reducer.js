@@ -17,6 +17,10 @@ const filter_reducer = (state, action) => {
 				all_meals: [...action.payload], //spread operator because we copy values, dont referencing to the same place in the memory
 				filtered_meals: [...action.payload],
 			};
+		case SET_LISTVIEW:
+			return { ...state, grid_view: false };
+		case SET_GRIDVIEW:
+			return { ...state, grid_view: true };
 		default:
 			throw new Error(`No Matching "${action.type}" - action type`);
 	}
