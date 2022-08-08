@@ -15,6 +15,7 @@ import { useMealsContext } from "./meals-context";
 const initialState = {
 	all_meals: [],
 	filtered_meals: [],
+	grid_view: false,
 };
 
 const FilterContext = React.createContext();
