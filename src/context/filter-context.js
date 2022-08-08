@@ -16,6 +16,7 @@ const initialState = {
 	all_meals: [],
 	filtered_meals: [],
 	grid_view: true,
+	sort: "name-a",
 };
 
 const FilterContext = React.createContext();
@@ -30,15 +31,23 @@ export const FilterProvider = ({ children }) => {
 	}, [meals]);
 
 	const setListView = () => {
-		dispatch({ type: SET_LISTVIEW })
-	}
+		dispatch({ type: SET_LISTVIEW });
+	};
 
 	const setGridView = () => {
 		dispatch({ type: SET_GRIDVIEW });
 	};
 
+	const updateSort = (e) => {
+		// const name = e.target.name; // only for example
+		const value = e.target.value;
+		dispatch({ type: UPDATE_SORT, payload: value});
+	};
+
 	return (
-		<FilterContext.Provider value={{ ...state, setListView, setGridView }}>
+		<FilterContext.Provider
+			value={{ ...state, setListView, setGridView, updateSort }}
+		>
 			{children}
 		</FilterContext.Provider>
 	);

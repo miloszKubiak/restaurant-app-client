@@ -4,7 +4,7 @@ import { IoList, IoGrid } from "react-icons/io5";
 import { useFilterContext } from "../../context/filter-context";
 
 const Sort = () => {
-	const { filtered_meals: meals, grid_view, setListView, setGridView } = useFilterContext();
+	const { filtered_meals: meals, grid_view, setListView, setGridView, updateSort, sort } = useFilterContext();
 
 	return (
 		<Wrapper>
@@ -26,9 +26,9 @@ const Sort = () => {
 			<hr />
 			<Form>
 				<Label htmlFor="sort">sort by</Label>
-				<Select name="sort" id="sort">
-					<option value="Name-A">Name (A-Z)</option>
-					<option value="Name-Z">Name (Z-A)</option>
+				<Select name="sort" id="sort" value={sort} onChange={updateSort}>
+					<option value="name-a">Name (A-Z)</option>
+					<option value="name-z">Name (Z-A)</option>
 					<option value="price-lowest">Price (Lowest)</option>
 					<option value="price-highest">Price (Highest)</option>
 				</Select>
