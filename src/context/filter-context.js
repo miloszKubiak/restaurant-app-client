@@ -29,7 +29,7 @@ export const FilterProvider = ({ children }) => {
 	}, [meals]);
 
 	return (
-		<FilterContext.Provider value="test">{children}</FilterContext.Provider>
+		<FilterContext.Provider value={{ ...state }}>{children}</FilterContext.Provider>
 	);
 };
 

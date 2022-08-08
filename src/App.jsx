@@ -3,7 +3,7 @@ import { Sidebar, Navbar, Footer } from "./components";
 import {
 	Home,
 	SingleMeal,
-	Meals,
+	MealsPage,
 	Cart,
 	Checkout,
 	ErrorPage,
@@ -21,7 +21,7 @@ const App = () => {
 				<Route path="/" element={<Home />} />
 				<Route path="about" element={<About />} />
 				<Route path="cart" element={<Cart />} />
-				<Route path="meals" element={<Meals />} />
+				<Route path="meals" element={<MealsPage />} />
 				<Route path="meals/:id" element={<SingleMeal />} />
 				<Route
 					path="checkout"
