@@ -5,14 +5,17 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { MealsProvider } from "./context/meals-context";
+import { FilterProvider } from "./context/filter-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
 		<MealsProvider>
-			<BrowserRouter>
-				<App />
-			</BrowserRouter>
+			<FilterProvider>
+				<BrowserRouter>
+					<App />
+				</BrowserRouter>
+			</FilterProvider>
 		</MealsProvider>
 	</React.StrictMode>
 );

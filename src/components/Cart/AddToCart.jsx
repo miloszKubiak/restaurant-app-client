@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { mealSizes } from "../../utils/constants";
+import { MEALS_SIZES } from "../../utils/constants";
 import AmountButtons from "./AmountButtons";
 import { Link } from "react-router-dom";
 
 const AddToCart = ({ meal }) => {
 	const { stock } = meal;
 
-	const [mealSize, setMealSize] = useState(mealSizes[0]);
+	const [mealSize, setMealSize] = useState(MEALS_SIZES[0]);
 	const [amount, setAmount] = useState(1);
 
 	const increase = () => {
@@ -35,7 +35,7 @@ const AddToCart = ({ meal }) => {
 			<Container>
 				<span> size : </span>
 				<Sizes>
-					{mealSizes.map((size, index) => {
+					{MEALS_SIZES.map((size, index) => {
 						return (
 							<button
 								key={index}

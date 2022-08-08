@@ -137,7 +137,6 @@ const Content = styled.section`
 	flex-direction: column;
 	/* justify-content: space-between; */
 	gap: 1rem;
-	margin-top: 1rem;
 
 	hr {
 		padding: 0.2rem;
