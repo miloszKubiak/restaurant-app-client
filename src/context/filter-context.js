@@ -51,13 +51,22 @@ export const FilterProvider = ({ children }) => {
 		dispatch({ type: SET_GRIDVIEW });
 	};
 
-	const clearFilters = () => {};
+	const clearFilters = () => {
+		dispatch({ type: CLEAR_FILTERS })
+	};
 
 	const updateFilters = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
+
 		if (name === "category") {
 			value = e.target.textContent;
+		}
+		if (name === "price") {
+			value = Number(value);
+		}
+		if (name === "delivery") {
+			value = e.target.checked;
 		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 	};

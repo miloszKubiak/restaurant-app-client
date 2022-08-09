@@ -4,7 +4,14 @@ import { IoList, IoGrid } from "react-icons/io5";
 import { useFilterContext } from "../../context/filter-context";
 
 const Sort = () => {
-	const { filtered_meals: meals, grid_view, setListView, setGridView, updateSort, sort } = useFilterContext();
+	const {
+		filtered_meals: meals,
+		grid_view,
+		setListView,
+		setGridView,
+		updateSort,
+		sort,
+	} = useFilterContext();
 
 	return (
 		<Wrapper>
@@ -26,7 +33,12 @@ const Sort = () => {
 			<hr />
 			<Form>
 				<Label htmlFor="sort">sort by</Label>
-				<Select name="sort" id="sort" value={sort} onChange={updateSort}>
+				<Select
+					name="sort"
+					id="sort"
+					value={sort}
+					onChange={updateSort}
+				>
 					<option value="name-a">Name (A-Z)</option>
 					<option value="name-z">Name (Z-A)</option>
 					<option value="price-lowest">Price (Lowest)</option>
@@ -61,41 +73,41 @@ const Button = styled.button`
 	cursor: pointer;
 	color: var(--primary-3);
 	border: 0.2rem solid var(--primary-3);
-  transition: var(--transition);
+	transition: var(--transition);
 
 	svg {
 		font-size: 2rem;
 	}
 
-  &:hover {
-    background: var(--primary-1)
-  }
+	&:hover {
+		background: var(--primary-1);
+	}
 `;
 
 const Info = styled.p`
 	text-transform: capitalize;
 	letter-spacing: var(--spacing);
-  margin-right: 2rem;
+	margin-right: 2rem;
 `;
 
 const Form = styled.form`
-  flex: 2;
+	flex: 2;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 `;
 
 const Label = styled.label`
-flex: 1;
+	flex: 1;
 	text-transform: capitalize;
 	display: inline-block;
-	margin-right: .5rem;
-  letter-spacing: var(--spacing);
-  font-weight: bold;
+	margin-right: 0.5rem;
+	letter-spacing: var(--spacing);
+	font-weight: bold;
 `;
 
 const Select = styled.select`
-flex: 2;
+	flex: 2;
 	border: 0.2rem solid var(--primary-3);
 	border-radius: 0.2rem;
 	outline: var(--primary-1);
@@ -129,7 +141,4 @@ const Wrapper = styled.section`
 			text-transform: capitalize;
 		}
 	}
-
-
 `;
-

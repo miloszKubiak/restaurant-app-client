@@ -76,6 +76,18 @@ const filter_reducer = (state, action) => {
 			console.log("filtering meals");
 			return { ...state };
 
+		case CLEAR_FILTERS:
+			return {
+				...state,
+				filters: {
+					...state.filters,
+					text: "",
+					category: "all",
+					price: state.filters.max_price,
+					delivery: false,
+				},
+			};
+
 		default:
 			throw new Error(`No Matching "${action.type}" - action type`);
 	}
