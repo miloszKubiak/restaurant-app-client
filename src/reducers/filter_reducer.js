@@ -25,12 +25,16 @@ const filter_reducer = (state, action) => {
 					price: maxPrice,
 				},
 			};
+
 		case SET_LISTVIEW:
 			return { ...state, grid_view: false };
+
 		case SET_GRIDVIEW:
 			return { ...state, grid_view: true };
+
 		case UPDATE_SORT:
 			return { ...state, sort: action.payload };
+
 		case SORT_MEALS:
 			const { filtered_meals, sort } = state;
 			let tempMeals = [...filtered_meals];
@@ -62,12 +66,16 @@ const filter_reducer = (state, action) => {
 				// });
 			}
 			return { ...state, filtered_meals: tempMeals };
+
 		case UPDATE_FILTERS:
 			const { name, value } = action.payload;
-			return { ...state, filters: { ...state.filters, [name]: value } };
+
+			return { ...state, filters: { ...state.filters, [name]: value } }; //[name]-dynamic property
+
 		case FILTER_MEALS:
 			console.log("filtering meals");
-			return {...state}
+			return { ...state };
+
 		default:
 			throw new Error(`No Matching "${action.type}" - action type`);
 	}

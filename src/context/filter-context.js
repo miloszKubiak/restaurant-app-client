@@ -39,7 +39,7 @@ export const FilterProvider = ({ children }) => {
 	}, [meals]);
 
 	useEffect(() => {
-		dispatch({ type: FILTER_MEALS })
+		dispatch({ type: FILTER_MEALS });
 		dispatch({ type: SORT_MEALS });
 	}, [meals, state.sort, state.filters]);
 
@@ -56,6 +56,9 @@ export const FilterProvider = ({ children }) => {
 	const updateFilters = (e) => {
 		let name = e.target.name;
 		let value = e.target.value;
+		if (name === "category") {
+			value = e.target.textContent;
+		}
 		dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
 	};
 
