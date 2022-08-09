@@ -62,6 +62,12 @@ const filter_reducer = (state, action) => {
 				// });
 			}
 			return { ...state, filtered_meals: tempMeals };
+		case UPDATE_FILTERS:
+			const { name, value } = action.payload;
+			return { ...state, filters: { ...state.filters, [name]: value } };
+		case FILTER_MEALS:
+			console.log("filtering meals");
+			return {...state}
 		default:
 			throw new Error(`No Matching "${action.type}" - action type`);
 	}
