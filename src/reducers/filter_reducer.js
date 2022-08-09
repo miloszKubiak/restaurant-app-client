@@ -12,10 +12,18 @@ import {
 const filter_reducer = (state, action) => {
 	switch (action.type) {
 		case LOAD_MEALS:
+			let maxPrice = action.payload.map((meal) => meal.price);
+			maxPrice = Math.max(...maxPrice);
+
 			return {
 				...state,
 				all_meals: [...action.payload], //spread operator because we copy values, dont referencing to the same place in the memory
 				filtered_meals: [...action.payload],
+				filters: {
+					...state.filters,
+					max_price: maxPrice,
+					price: maxPrice,
+				},
 			};
 		case SET_LISTVIEW:
 			return { ...state, grid_view: false };
@@ -42,6 +50,16 @@ const filter_reducer = (state, action) => {
 			}
 			if (sort === "price-highest") {
 				tempMeals = tempMeals.sort((a, b) => b.price - a.price);
+				//long example
+				// tempMeals = tempMeals.sort((a, b) => {
+				// 	if (a.price < b.price) {
+				// 		return -1;
+				// 	}
+				// 	if (a.price > b.price) {
+				// 		return 1;
+				// 	}
+				// 	return 0;
+				// });
 			}
 			return { ...state, filtered_meals: tempMeals };
 		default:

@@ -80,17 +80,22 @@ const Info = styled.p`
 
 const Form = styled.form`
   flex: 2;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 `;
 
 const Label = styled.label`
+flex: 1;
 	text-transform: capitalize;
 	display: inline-block;
-	margin-right: 1rem;
+	margin-right: .5rem;
   letter-spacing: var(--spacing);
   font-weight: bold;
 `;
 
 const Select = styled.select`
+flex: 2;
 	border: 0.2rem solid var(--primary-3);
 	border-radius: 0.2rem;
 	outline: var(--primary-1);
@@ -99,7 +104,7 @@ const Select = styled.select`
 const Wrapper = styled.section`
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 	gap: 3rem;
 	margin-bottom: 2rem;
 

@@ -17,6 +17,14 @@ const initialState = {
 	filtered_meals: [],
 	grid_view: true,
 	sort: "name-a",
+	filters: {
+		text: "",
+		category: "all",
+		price: 0,
+		min_price: 0,
+		max_price: 0,
+		delivery: false,
+	},
 };
 
 const FilterContext = React.createContext();
