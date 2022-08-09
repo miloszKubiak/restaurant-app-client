@@ -14,7 +14,6 @@ const filter_reducer = (state, action) => {
 		case LOAD_MEALS:
 			let maxPrice = action.payload.map((meal) => meal.price);
 			maxPrice = Math.max(...maxPrice);
-
 			return {
 				...state,
 				all_meals: [...action.payload], //spread operator because we copy values, dont referencing to the same place in the memory
@@ -69,12 +68,33 @@ const filter_reducer = (state, action) => {
 
 		case UPDATE_FILTERS:
 			const { name, value } = action.payload;
-
 			return { ...state, filters: { ...state.filters, [name]: value } }; //[name]-dynamic property
 
 		case FILTER_MEALS:
-			console.log("filtering meals");
-			return { ...state };
+			const { all_meals } = state;
+			const { text, category, price, delivery } = state.filters;
+			let tempData = [...all_meals];
+			//filtering
+			//text
+			if (text) {
+				tempData = tempData.filter((meal) => {
+					return meal.name.toLowerCase().startsWith(text);
+				});
+			}
+			//category
+			if (category !== "all") {
+				tempData = tempData.filter(
+					(meal) => meal.category === category
+				);
+			}
+			//price
+			tempData = tempData.filter((meal) => meal.price <= price);
+			//delivery
+			if (delivery) {
+				tempData = tempData.filter((meal) => meal.delivery === true);
+			}
+
+			return { ...state, filtered_meals: tempData };
 
 		case CLEAR_FILTERS:
 			return {
