@@ -30,6 +30,10 @@ export const FilterProvider = ({ children }) => {
 		dispatch({ type: LOAD_MEALS, payload: meals });
 	}, [meals]);
 
+	useEffect(() => {
+		dispatch({ type: SORT_MEALS });
+	}, [meals, state.sort]);
+
 	const setListView = () => {
 		dispatch({ type: SET_LISTVIEW });
 	};
@@ -41,7 +45,7 @@ export const FilterProvider = ({ children }) => {
 	const updateSort = (e) => {
 		// const name = e.target.name; // only for example
 		const value = e.target.value;
-		dispatch({ type: UPDATE_SORT, payload: value});
+		dispatch({ type: UPDATE_SORT, payload: value });
 	};
 
 	return (

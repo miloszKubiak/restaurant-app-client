@@ -23,6 +23,27 @@ const filter_reducer = (state, action) => {
 			return { ...state, grid_view: true };
 		case UPDATE_SORT:
 			return { ...state, sort: action.payload };
+		case SORT_MEALS:
+			const { filtered_meals, sort } = state;
+			let tempMeals = [...filtered_meals];
+
+			if (sort === "name-a") {
+				tempMeals = tempMeals.sort((a, b) => {
+					return a.name.localeCompare(b.name);
+				});
+			}
+			if (sort === "name-z") {
+				tempMeals = tempMeals.sort((a, b) => {
+					return b.name.localeCompare(a.name);
+				});
+			}
+			if (sort === "price-lowest") {
+				tempMeals = tempMeals.sort((a, b) => a.price - b.price);
+			}
+			if (sort === "price-highest") {
+				tempMeals = tempMeals.sort((a, b) => b.price - a.price);
+			}
+			return { ...state, filtered_meals: tempMeals };
 		default:
 			throw new Error(`No Matching "${action.type}" - action type`);
 	}

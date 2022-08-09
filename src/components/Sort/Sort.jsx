@@ -79,7 +79,7 @@ const Info = styled.p`
 `;
 
 const Form = styled.form`
-  flex: 1;
+  flex: 2;
 `;
 
 const Label = styled.label`
