@@ -19,6 +19,7 @@ import Sort from "./Sort/Sort";
 import MealList from "./Meals/MealList";
 import GridView from "./GridView/GridView";
 import ListView from "./ListView/ListView";
+import CartContent from "./Cart/CartContent";
 
 export {
 	Navbar,
@@ -42,4 +43,5 @@ export {
 	MealList,
 	GridView,
 	ListView,
+	CartContent,
 };

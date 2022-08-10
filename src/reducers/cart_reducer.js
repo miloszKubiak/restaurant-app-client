@@ -10,7 +10,7 @@ const cart_reducer = (state, action) => {
 	switch (action.type) {
 		case ADD_TO_CART:
 			const { id, size, amount, meal } = action.payload;
-      const tempItem = state.cart.find((item) => item.id === id + size);
+			const tempItem = state.cart.find((item) => item.id === id + size);
 
       if (tempItem) {
         const tempCart = state.cart.map(cartItem => {

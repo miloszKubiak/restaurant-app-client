@@ -1,5 +1,5 @@
 import About from "./About";
-import Cart from "./Cart";
+import CartPage from "./CartPage";
 import Checkout from "./Checkout";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
@@ -10,7 +10,7 @@ import SingleMeal from "./SingleMeal";
 
 export {
 	About,
-	Cart,
+	CartPage,
 	Checkout,
 	ErrorPage,
 	Home,

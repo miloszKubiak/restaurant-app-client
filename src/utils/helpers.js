@@ -9,3 +9,13 @@ export const getUniqueValues = (data, type) => {
 	let uniqueValue = data.map((item) => item[type]);
 	return ["all", ...new Set(uniqueValue)];
 };
+
+export const getLocalStorage = () => {
+	const cart = localStorage.getItem("cart");
+	
+	if (cart) {
+		return JSON.stringify(localStorage.getItem("cart"));
+	} else {
+		return [];
+	}
+};

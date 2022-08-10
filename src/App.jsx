@@ -4,7 +4,7 @@ import {
 	Home,
 	SingleMeal,
 	MealsPage,
-	Cart,
+	CartPage,
 	Checkout,
 	ErrorPage,
 	About,
@@ -20,7 +20,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="about" element={<About />} />
-				<Route path="cart" element={<Cart />} />
+				<Route path="cart" element={<CartPage />} />
 				<Route path="meals" element={<MealsPage />} />
 				<Route path="meals/:id" element={<SingleMeal />} />
 				<Route
