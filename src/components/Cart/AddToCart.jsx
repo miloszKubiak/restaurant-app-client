@@ -69,6 +69,10 @@ export default AddToCart;
 const Wrapper = styled.section``;
 
 const Container = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
 	span {
 		font-weight: bold;
 		text-transform: capitalize;
@@ -87,13 +91,13 @@ const Sizes = styled.div`
 		justify-content: center;
 		align-items: center;
 		height: 2rem;
+		width: 4rem;
 		opacity: 0.5;
 		border-radius: 0.4rem;
 		background: var(--primary-1);
 		cursor: pointer;
 		color: var(--grey-1);
 		font-weight: bold;
-		letter-spacing: var(--spacing);
 		border: none;
 		font-size: 1rem;
 		outline: var(--primary-1);
