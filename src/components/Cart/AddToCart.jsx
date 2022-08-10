@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { MEALS_SIZES } from "../../utils/constants";
 import AmountButtons from "./AmountButtons";
 import { Link } from "react-router-dom";
+import { useCartContext } from "../../context/cart-context";
 
 const AddToCart = ({ meal }) => {
-	const { stock } = meal;
+	const { addToCart } = useCartContext();
+	const { id, stock } = meal;
 
 	const [mealSize, setMealSize] = useState(MEALS_SIZES[0]);
 	const [amount, setAmount] = useState(1);
@@ -58,7 +60,12 @@ const AddToCart = ({ meal }) => {
 					decrease={decrease}
 					amount={amount}
 				/>
-				<BtnAddToCart to="/cart">add to cart</BtnAddToCart>
+				<BtnAddToCart
+					to="/cart"
+					onClick={() => addToCart(id, mealSize, amount, meal)}
+				>
+					add to cart
+				</BtnAddToCart>
 			</BtnContainer>
 		</Wrapper>
 	);
