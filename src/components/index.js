@@ -20,6 +20,9 @@ import MealList from "./Meals/MealList";
 import GridView from "./GridView/GridView";
 import ListView from "./ListView/ListView";
 import CartContent from "./Cart/CartContent";
+import CartColumns from "./Cart/CartColumns";
+import CartItem from "./Cart/CartItem";
+import CartTotals from "./Cart/CartTotals";
 
 export {
 	Navbar,
@@ -44,4 +47,7 @@ export {
 	GridView,
 	ListView,
 	CartContent,
+	CartColumns,
+	CartItem,
+	CartTotals,
 };

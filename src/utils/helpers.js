@@ -14,7 +14,7 @@ export const getLocalStorage = () => {
 	const cart = localStorage.getItem("cart");
 	
 	if (cart) {
-		return JSON.stringify(localStorage.getItem("cart"));
+		return JSON.parse(localStorage.getItem("cart"));
 	} else {
 		return [];
 	}
