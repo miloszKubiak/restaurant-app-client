@@ -37,6 +37,7 @@ const Wrapper = styled.section`
 		border: none;
 		background: var(--primary-3);
 		padding: 0.1rem;
+		margin: 2rem 0;
 	}
 `;
 
