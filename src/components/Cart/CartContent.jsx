@@ -18,7 +18,7 @@ const CartContent = () => {
 			<hr />
 			<Container>
 				<LinkButton to="/meals">continue ordering</LinkButton>
-				<ClearButton>clear cart</ClearButton>
+				<ClearButton onClick={clearCart}>clear cart</ClearButton>
 			</Container>
 			<CartTotals />
 		</Wrapper>

@@ -9,7 +9,6 @@ import {
 import reducer from "../reducers/cart_reducer";
 import { getLocalStorage } from "../utils/helpers";
 
-
 const initialState = {
 	cart: getLocalStorage(),
 	total_items: 0,
@@ -26,15 +25,19 @@ export const CartProvider = ({ children }) => {
 		dispatch({ type: ADD_TO_CART, payload: { id, size, amount, meal } });
 	};
 
-	const removeItem = (id) => {};
+	const removeItem = (id) => {
+		dispatch({ type: REMOVE_CART_ITEM, payload: id });
+	};
 
 	const toggleAmount = (id, value) => {};
 
-	const clearCart = () => { };
-	
+	const clearCart = () => {
+		dispatch({ type: CLEAR_CART });
+	};
+
 	useEffect(() => {
-		localStorage.setItem("cart", JSON.stringify(state.cart))
-	}, [state.cart])
+		localStorage.setItem("cart", JSON.stringify(state.cart));
+	}, [state.cart]);
 
 	return (
 		<CartContext.Provider

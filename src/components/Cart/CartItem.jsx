@@ -31,7 +31,7 @@ const CartItem = ({ id, name, image, size, price, amount }) => {
 				/>
 			</ButtonsContainer>
 			<Subtotal>{formatPrice(price * amount)}</Subtotal>
-			<RemoveBtn type="button" onClick={removeItem}>
+			<RemoveBtn onClick={() => removeItem(id)}>
 				<FaTrash />
 			</RemoveBtn>
 		</Wrapper>
