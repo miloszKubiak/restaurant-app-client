@@ -21,16 +21,16 @@ const AmountButtons = ({ increase, decrease, amount }) => {
 export default AmountButtons;
 
 const Wrapper = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `;
 
 const Container = styled.div`
 	display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: .5rem;
+	justify-content: center;
+	align-items: center;
+	padding: .5rem;
 `;
 
 const Button = styled.button`
@@ -50,8 +50,8 @@ const Button = styled.button`
 `;
 
 const Amount = styled.h2`
-  flex: 1;
-  padding: 0 .8rem;
-  text-align: center;
-  color: #222;
+	flex: 1;
+	padding: 0 0.8rem;
+	text-align: center;
+	color: #222;
 `;

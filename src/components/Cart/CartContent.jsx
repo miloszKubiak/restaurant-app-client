@@ -11,15 +11,15 @@ const CartContent = () => {
 
 	return (
 		<Wrapper>
-      <CartColumns />
-      {cart.map(item => {
-        return <CartItem key={item.id} {...item} />
-      })}
+			<CartColumns />
+			{cart.map((item) => {
+				return <CartItem key={item.id} {...item} />;
+			})}
 			<hr />
-      <Container>
-        <LinkButton to="/meals">continue ordering</LinkButton>
-        <ClearButton>clear cart</ClearButton>
-      </Container>
+			<Container>
+				<LinkButton to="/meals">continue ordering</LinkButton>
+				<ClearButton>clear cart</ClearButton>
+			</Container>
 			<CartTotals />
 		</Wrapper>
 	);
@@ -73,13 +73,13 @@ const ClearButton = styled.button`
 	border-radius: 0.4rem;
 	letter-spacing: var(--spacing);
 	transition: var(--transition);
-  font-weight: bold;
-  font-size: 1rem;
-  font-family: inherit;
+	font-weight: bold;
+	font-size: 1rem;
+	font-family: inherit;
 	width: 8rem;
-  border: none;
+	border: none;
 	text-align: center;
-  cursor: pointer;
+	cursor: pointer;
 
 	&:hover {
 		background: #c73b3b;
@@ -87,7 +87,7 @@ const ClearButton = styled.button`
 `;
 
 const Container = styled.div`
-  margin-top: 2rem;
-  display: flex;
-  justify-content: space-evenly;
+	margin-top: 2rem;
+	display: flex;
+	justify-content: space-evenly;
 `;
