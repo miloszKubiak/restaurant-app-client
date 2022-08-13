@@ -3,15 +3,17 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useMealsContext } from "../../context/meals-context";
+import { useCartContext } from "../../context/cart-context";
 
 const CartButtons = () => {
 	const { closeSidebar } = useMealsContext();
+	const { total_items } = useCartContext();
 
 	return (
 		<Wrapper>
 			<CartButton to="/cart" onClick={closeSidebar}>
 				<FaShoppingCart style={{ fontSize: "2.5rem" }} />
-				<CartValue>10</CartValue>
+				<CartValue>{total_items}</CartValue>
 			</CartButton>
 			<AuthButton>Login</AuthButton>
 		</Wrapper>
@@ -70,7 +72,7 @@ const CartValue = styled.span`
 	height: 1.4rem;
 	background: var(--primary-6);
 	color: var(--primary-2);
-	font-size: 0.7rem;
+	font-size: 0.8rem;
 	/* font-weight: lighter; */
 	border-radius: 50%;
 `;
