@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/cart-context";
-import { useUserContext } from "../../context/user-context";
+import { useUserContext } from "../../context/auth-context";
 import { formatPrice } from "../../utils/helpers";
 
 const CartTotals = () => {

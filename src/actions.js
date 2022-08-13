@@ -22,5 +22,7 @@ export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";
 export const CLEAR_CART = "CLEAR_CART";
 export const TOGGLE_CART_ITEM_AMOUNT = "TOGGLE_CART_ITEM_AMOUNT";
 export const COUNT_CART_TOTALS = "COUNT_CART_TOTALS";
+//auth context actions
+
 
 

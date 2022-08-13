@@ -7,19 +7,22 @@ import { BrowserRouter } from "react-router-dom";
 import { MealsProvider } from "./context/meals-context";
 import { FilterProvider } from "./context/filter-context";
 import { CartProvider } from "./context/cart-context";
+import { AuthProvider } from "./context/auth-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<MealsProvider>
-			<FilterProvider>
-				<CartProvider>
-					<BrowserRouter>
-						<App />
-					</BrowserRouter>
-				</CartProvider>
-			</FilterProvider>
-		</MealsProvider>
+		<AuthProvider>
+			<MealsProvider>
+				<FilterProvider>
+					<CartProvider>
+						<BrowserRouter>
+							<App />
+						</BrowserRouter>
+					</CartProvider>
+				</FilterProvider>
+			</MealsProvider>
+		</AuthProvider>
 	</React.StrictMode>
 );
 

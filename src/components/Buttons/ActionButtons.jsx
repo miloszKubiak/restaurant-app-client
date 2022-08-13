@@ -12,8 +12,8 @@ const CartButtons = () => {
 	return (
 		<Wrapper>
 			<CartButton to="/cart" onClick={closeSidebar}>
-				<FaShoppingCart style={{ fontSize: "2.5rem" }} />
-				<CartValue>{total_items}</CartValue>
+				<FaShoppingCart style={{ fontSize: "2rem" }} />
+				{total_items > 0 && <CartValue>{total_items}</CartValue>}
 			</CartButton>
 			<AuthButton>Login</AuthButton>
 		</Wrapper>

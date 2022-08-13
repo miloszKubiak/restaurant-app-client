@@ -4,6 +4,7 @@ import { PageHero, Filters, Sort, MealList } from "../components";
 
 const MealsPage = () => {
 	return (
+
 		<>
 			<PageHero title="All Meals" />
 			<Wrapper>
