@@ -1,31 +1,37 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { PageHero, CartContent } from "../components";
+import { PageHero, CartContent, Navbar, Sidebar } from "../components";
 import { useCartContext } from "../context/cart-context";
 
 const CartPage = () => {
   const { cart } = useCartContext();
 
   if (cart.length < 1) {
-    return (
-      <WrapperEmpty>
-        <Empty>
-          <Info>Your cart is empty</Info>
-          <Button to="/meals">back to meals</Button>
-        </Empty>
-      </WrapperEmpty>
+		return (
+			<>
+				<Navbar />
+				<Sidebar />
+				<WrapperEmpty>
+					<Empty>
+						<Info>Your cart is empty</Info>
+						<Button to="/meals">back to meals</Button>
+					</Empty>
+				</WrapperEmpty>
+			</>
     )
   }
 
   return (
 		<>
+			<Navbar />
+			<Sidebar />
 			<PageHero title="cart" />
 			<Wrapper>
 				<CartContent />
 			</Wrapper>
 		</>
-	);
+  );
 };
 
 export default CartPage;

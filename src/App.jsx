@@ -9,14 +9,13 @@ import {
 	ErrorPage,
 	About,
 	PrivateRoute,
+	Register,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
 const App = () => {
 	return (
 		<>
-			<Navbar />
-			<Sidebar />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="about" element={<About />} />
@@ -31,6 +30,7 @@ const App = () => {
 						</PrivateRoute>
 					}
 				/>
+				<Route path="/register" element={<Register />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 			<Footer />

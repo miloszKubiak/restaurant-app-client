@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { PageHero, Filters, Sort, MealList } from "../components";
+import { PageHero, Filters, Sort, MealList, Navbar, Sidebar } from "../components";
 
 const MealsPage = () => {
 	return (
-
 		<>
+			<Navbar />
+			<Sidebar />
 			<PageHero title="All Meals" />
 			<Wrapper>
 				<Center>

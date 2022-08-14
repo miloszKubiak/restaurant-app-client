@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import aboutImg from "../assets/hero-bg2.jpg";
-import { PageHero } from "../components";
+import { Sidebar, Navbar, PageHero } from "../components";
 
 const AboutPage = () => {
 	return (
 		<>
+			<Navbar />
+			<Sidebar />
 			<PageHero title="About" />
 			<Wrapper>
 				<ImgContainer>
@@ -17,7 +19,16 @@ const AboutPage = () => {
 						<Underline />
 					</Title>
 					<Description>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae tempore labore error quis. Soluta inventore, corrupti expedita eos ipsam fugiat molestias voluptates quaerat cumque libero voluptatem assumenda sequi ab. Vel quae, odio aspernatur nihil saepe omnis porro pariatur molestiae commodi ullam accusamus non natus nulla! Architecto vitae quas possimus molestiae reprehenderit dolore perspiciatis quae expedita quibusdam voluptate dolorem vel repellendus in natus, odit non, aspernatur consequuntur aliquid repudiandae, enim cupiditate?
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Vitae tempore labore error quis. Soluta inventore,
+						corrupti expedita eos ipsam fugiat molestias voluptates
+						quaerat cumque libero voluptatem assumenda sequi ab. Vel
+						quae, odio aspernatur nihil saepe omnis porro pariatur
+						molestiae commodi ullam accusamus non natus nulla!
+						Architecto vitae quas possimus molestiae reprehenderit
+						dolore perspiciatis quae expedita quibusdam voluptate
+						dolorem vel repellendus in natus, odit non, aspernatur
+						consequuntur aliquid repudiandae, enim cupiditate?
 					</Description>
 				</Article>
 			</Wrapper>

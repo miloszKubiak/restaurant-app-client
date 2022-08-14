@@ -1,15 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { FeaturedMeals, Hero, Contact, Services } from "../components";
+import { FeaturedMeals, Hero, Contact, Services, Navbar, Sidebar } from "../components";
 
 const Home = () => {
 	return (
-		<Wrapper>
-			<Hero />
-			<FeaturedMeals />
-			<Services />
-			<Contact />
-		</Wrapper>
+		<>
+			<Navbar />
+			<Sidebar />
+			<Wrapper>
+				<Hero />
+				<FeaturedMeals />
+				<Services />
+				<Contact />
+			</Wrapper>
+		</>
 	);
 };
 

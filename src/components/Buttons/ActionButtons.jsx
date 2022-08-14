@@ -15,28 +15,28 @@ const CartButtons = () => {
 				<FaShoppingCart style={{ fontSize: "2rem" }} />
 				{total_items > 0 && <CartValue>{total_items}</CartValue>}
 			</CartButton>
-			<AuthButton>Login</AuthButton>
+			<AuthButton to="/register" onClick={closeSidebar}>
+				Login
+			</AuthButton>
+			{/* <AuthButton>Logout</AuthButton> */}
 		</Wrapper>
 	);
 };
 
 export default CartButtons;
 
-const AuthButton = styled.button`
+const AuthButton = styled(Link)`
 	flex: 1;
 	display: flex;
 	margin-left: 1.5rem;
 	align-items: center;
 	color: var(--primary-2);
-	text-transform: capitalize;
-	border: none;
-	border-bottom: transparent;
-	background: transparent;
+	text-transform: capitalize;	
+	text-decoration: none;
 	font-weight: bold;
 	font-size: 1.5rem;
 	letter-spacing: var(--spacing);
 	transition: var(--transition);
-	font-family: inherit;
 	cursor: pointer;
 
 	&:hover {

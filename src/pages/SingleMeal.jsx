@@ -11,6 +11,8 @@ import {
 	Stars,
 	AddToCart,
 	MealImages,
+	Navbar,
+	Sidebar,
 } from "../components";
 
 const SingleMeal = () => {
@@ -54,6 +56,8 @@ const SingleMeal = () => {
 
 	return (
 		<>
+			<Navbar />
+			<Sidebar />
 			<PageHero title={name} meal />
 			<Wrapper>
 				<ButtonBack to="/meals">back to meals</ButtonBack>
