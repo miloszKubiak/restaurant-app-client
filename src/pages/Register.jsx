@@ -13,6 +13,7 @@ const initialState = {
 
 const Register = () => {
 	const [values, setValues] = useState(initialState);
+	const navigate = useNavigate();
 
 	const handleChange = (e) => {
 		setValues({ ...values, [e.target.name]: e.target.value });
@@ -25,7 +26,7 @@ const Register = () => {
 	return (
 		<Wrapper>
 			<Form>
-				<Logo src={logo} alt="logo" />
+				<Logo src={logo} alt="logo"/>
 				<Title>{values.isMember ? "Login" : "Register"}</Title>
 				<FormRow
 					type="text"
@@ -45,7 +46,9 @@ const Register = () => {
 					value={values.password}
 					handleChange={handleChange}
 				/>
-				<Button type="submit">Submit</Button>
+				<ButtonSubmit type="submit" disabled>
+					Submit
+				</ButtonSubmit>
 				<Info>
 					{values.isMember
 						? "Not a member yet?"
@@ -62,40 +65,85 @@ const Register = () => {
 export default Register;
 
 const Wrapper = styled.section`
-	min-height: 100vh;
-	display: grid;
+	min-height: calc(100vh - 5rem);
+	display: flex;
+	justify-content: center;
 	align-items: center;
-
-	p {
-		margin: 0;
-		margin-top: 1rem;
-		text-align: center;
-	}
-	.btn {
-		margin-top: 1rem;
-	}
-	.member-btn {
-		background: transparent;
-		border: transparent;
-		color: var(--primary-500);
-		cursor: pointer;
-		letter-spacing: var(--letterSpacing);
-	}
 `;
 
 const Form = styled.form`
-	max-width: 400px;
-	border-top: 0.2rem solid var(--grey-1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	max-width: 25rem;
+	width: 90vw;
+	border-top: 0.4rem solid var(--primary-3);
+	border-radius: 0.3rem;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	padding: 2.5rem;
+	margin: 3rem auto;
+	transition: var(--transition);
+	background: var(--primary-1);
+
+	&:hover {
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+			0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	}
 `;
 
-const Logo = styled.img``;
+const Logo = styled.img`
+`;
 
 const Title = styled.section`
 	text-align: center;
+	font-weight: bold;
+	font-size: 1.5rem;
+	margin-top: .5rem;
 `;
 
-const Button = styled.button``;
+const ButtonSubmit = styled.button`
+	display: inline-block;
+	margin-top: 1rem;
+	color: var(--primary-2);
+	background: var(--primary-3);
+	border: transparent;
+	border-radius: 0.3rem;
+	letter-spacing: var(--spacing);
+	padding: 0.4rem 0.8rem;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+		0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	transition: var(--transition);
+	text-transform: capitalize;
+	width: 100%;
+	font-weight: bold;
+	font-size: 1.2rem;
+	font-family: inherit;
+	cursor: pointer;
 
-const ButtonMember = styled.button``;
+	&:hover {
+		background: var(--primary-7);
+		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+			0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	}
+`;
 
-const Info = styled.p``;
+const ButtonMember = styled.button`
+	background: transparent;
+	border: transparent;
+	color: var(--primary-7);
+	letter-spacing: var(--spacing);
+	margin-left: 1rem;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: inherit;
+	cursor: pointer;
+`;
+
+const Info = styled.p`
+	margin: 0;
+	margin-top: 1rem;
+	text-align: center;
+	letter-spacing: var(--spacing)
+`;
