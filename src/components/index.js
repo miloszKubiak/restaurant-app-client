@@ -24,6 +24,7 @@ import CartColumns from "./Cart/CartColumns";
 import CartItem from "./Cart/CartItem";
 import CartTotals from "./Cart/CartTotals";
 import FormRow from "./Form/FormRow";
+import Alert from "./Alert/Alert";
 
 export {
 	Navbar,
@@ -52,4 +53,5 @@ export {
 	CartItem,
 	CartTotals,
 	FormRow,
+	Alert,
 };

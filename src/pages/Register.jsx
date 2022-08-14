@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FormRow } from "../components";
+import { FormRow, Alert } from "../components";
 import logo from "../assets/logo2.png";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,7 @@ const initialState = {
 	email: "",
 	password: "",
 	isMember: true,
+	showAlert: true,
 };
 
 const Register = () => {
@@ -16,7 +17,13 @@ const Register = () => {
 	const navigate = useNavigate();
 
 	const handleChange = (e) => {
+		console.log(e.target);
 		setValues({ ...values, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(e.target);
 	};
 
 	const toggleMember = () => {
@@ -25,15 +32,18 @@ const Register = () => {
 
 	return (
 		<Wrapper>
-			<Form>
-				<Logo src={logo} alt="logo"/>
+			<Form onSubmit={handleSubmit}>
+				<Logo src={logo} alt="logo" />
 				<Title>{values.isMember ? "Login" : "Register"}</Title>
-				<FormRow
-					type="text"
-					name="name"
-					value={values.name}
-					handleChange={handleChange}
-				/>
+				{values.showAlert && <Alert />}
+				{values.isMember && (
+					<FormRow
+						type="text"
+						name="name"
+						value={values.name}
+						handleChange={handleChange}
+					/>
+				)}
 				<FormRow
 					type="email"
 					name="email"
@@ -46,7 +56,7 @@ const Register = () => {
 					value={values.password}
 					handleChange={handleChange}
 				/>
-				<ButtonSubmit type="submit" disabled>
+				<ButtonSubmit type="submit">
 					Submit
 				</ButtonSubmit>
 				<Info>
@@ -93,14 +103,13 @@ const Form = styled.form`
 	}
 `;
 
-const Logo = styled.img`
-`;
+const Logo = styled.img``;
 
 const Title = styled.section`
 	text-align: center;
 	font-weight: bold;
 	font-size: 1.5rem;
-	margin-top: .5rem;
+	margin-top: 0.5rem;
 `;
 
 const ButtonSubmit = styled.button`
@@ -145,5 +154,5 @@ const Info = styled.p`
 	margin: 0;
 	margin-top: 1rem;
 	text-align: center;
-	letter-spacing: var(--spacing)
+	font-weight: bold;
 `;

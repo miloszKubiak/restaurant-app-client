@@ -4,7 +4,7 @@ import styled from "styled-components";
 const FormRow = ({ name, value, type, handleChange, labelText }) => {
 	return (
 		<Container>
-			<Label>{labelText || name}</Label>
+			<Label htmlFor={name}>{labelText || name}</Label>
 			<Input
 				type={type}
 				name={name}
