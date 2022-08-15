@@ -1,23 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import { useAuthContext } from "../../context/auth-context";
 
 const Alert = () => {
-  return (
-    <AlertContainer>alert goes here..</AlertContainer>
-  )
-}
+	const { alertType, alertText } = useAuthContext();
 
-export default Alert
+	return <div className={`alert alert-${alertType}`}>{alertText}</div>;
+};
 
-const AlertContainer = styled.div`
-  width: 100%;
-	padding: 0.4rem 0.8rem;
-	margin: 1rem auto;
-	border-color: transparent;
-	border-radius: .3rem;
-	text-align: center;
-	letter-spacing: var(--spacing);
-	color: var(--primary-6);
-	background: var(--primary-4);
-  font-weight: bold;
-`;
+export default Alert;

@@ -23,6 +23,5 @@ export const CLEAR_CART = "CLEAR_CART";
 export const TOGGLE_CART_ITEM_AMOUNT = "TOGGLE_CART_ITEM_AMOUNT";
 export const COUNT_CART_TOTALS = "COUNT_CART_TOTALS";
 //auth context actions
-
-
-
+export const DISPLAY_ALERT = "DISPLAY_ALERT";
+export const CLEAR_ALERT = "CLEAR_ALERT";

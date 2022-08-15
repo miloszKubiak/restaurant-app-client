@@ -3,27 +3,32 @@ import styled from "styled-components";
 import { FormRow, Alert } from "../components";
 import logo from "../assets/logo2.png";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/auth-context";
 
 const initialState = {
 	name: "",
 	email: "",
 	password: "",
 	isMember: true,
-	showAlert: true,
 };
 
 const Register = () => {
 	const [values, setValues] = useState(initialState);
 	const navigate = useNavigate();
+	const { isLoading, showAlert, displayAlert } = useAuthContext();
 
 	const handleChange = (e) => {
-		console.log(e.target);
 		setValues({ ...values, [e.target.name]: e.target.value });
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(e.target);
+		const { name, email, password, isMember } = values;
+		if (!email || !password || (!isMember && !name)) {
+			displayAlert()
+			return
+		}
+		console.log(values);
 	};
 
 	const toggleMember = () => {
@@ -35,8 +40,8 @@ const Register = () => {
 			<Form onSubmit={handleSubmit}>
 				<Logo src={logo} alt="logo" />
 				<Title>{values.isMember ? "Login" : "Register"}</Title>
-				{values.showAlert && <Alert />}
-				{values.isMember && (
+				{showAlert && <Alert />}
+				{!values.isMember && (
 					<FormRow
 						type="text"
 						name="name"

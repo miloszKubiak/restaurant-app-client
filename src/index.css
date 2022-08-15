@@ -1,33 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cabin&family=Roboto+Condensed:wght@400;700&display=swap");
 
 :root {
-  --primary-1: #b9e6d3;
-  --primary-2: #feffea;
-  --primary-3: #00BFA6;
-  --primary-4: #ff939e;
-  --primary-5: #f2f2f2;
-  --primary-6: #b8091b;
-  --primary-7: #089481;
-  --grey-1: #333;
-  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  --transition: all 0.3s linear;
-  --spacing: 1px;
-  --fixed-width: 620px;
-  --max-width: 1170px;
+	--primary-1: #b9e6d3;
+	--primary-2: #feffea;
+	--primary-3: #00bfa6;
+	--primary-4: #ff939e;
+	--primary-5: #f2f2f2;
+	--primary-6: #cf192c;
+	--primary-7: #089481;
+	--grey-1: #333;
+	--light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	--dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+	--transition: all 0.3s linear;
+	--spacing: 1px;
+	--fixed-width: 620px;
+	--max-width: 1170px;
 }
 
 *,
 ::after,
 ::before {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Roboto Condensed', Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: var(--primary-5);
-  color: var(--grey-1);
+	font-family: -apple-system, BlinkMacSystemFont, "Roboto Condensed", Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	background: var(--primary-5);
+	color: var(--grey-1);
+}
+
+/* alert */
+.alert {
+	width: 100%;
+	padding: 0.4rem 0.8rem;
+	margin: 1rem auto;
+	border-color: transparent;
+	border-radius: 0.3rem;
+	text-align: center;
+	letter-spacing: var(--spacing);
+	font-weight: bold;
+}
+
+.alert-danger {
+	color: var(--primary-6);
+	background: var(--primary-4);
 }
