@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import { FeaturedMeals, Hero, Contact, Services, Navbar, Sidebar } from "../components";
+import {
+	FeaturedMeals,
+	Hero,
+	Contact,
+	Services,
+	Navbar,
+	Sidebar,
+} from "../components";
 
 const Home = () => {
+
 	return (
 		<>
 			<Navbar />

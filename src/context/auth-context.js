@@ -7,6 +7,9 @@ const initialState = {
 	showAlert: false,
 	alertText: "",
 	alertType: "",
+	user: null,
+	token: null,
+	userLocation: "",
 };
 
 const AuthContext = React.createContext();
@@ -25,8 +28,12 @@ export const AuthProvider = ({ children }) => {
 		}, 3000);
 	};
 
+	const registerUser = async (currentUser) => {
+		console.log(currentUser);
+	};
+
 	return (
-		<AuthContext.Provider value={{ ...state, displayAlert }}>
+		<AuthContext.Provider value={{ ...state, displayAlert, registerUser }}>
 			{children}
 		</AuthContext.Provider>
 	);

@@ -15,7 +15,12 @@ const initialState = {
 const Register = () => {
 	const [values, setValues] = useState(initialState);
 	const navigate = useNavigate();
-	const { isLoading, showAlert, displayAlert } = useAuthContext();
+	const { isLoading, showAlert, displayAlert, registerUser } =
+		useAuthContext();
+
+	const toggleMember = () => {
+		setValues({ ...values, isMember: !values.isMember });
+	};
 
 	const handleChange = (e) => {
 		setValues({ ...values, [e.target.name]: e.target.value });
@@ -25,14 +30,15 @@ const Register = () => {
 		e.preventDefault();
 		const { name, email, password, isMember } = values;
 		if (!email || !password || (!isMember && !name)) {
-			displayAlert()
-			return
+			displayAlert();
+			return;
 		}
-		console.log(values);
-	};
-
-	const toggleMember = () => {
-		setValues({ ...values, isMember: !values.isMember });
+		const currentUser = { name, password, email };
+		if (isMember) {
+			console.log("already a member");
+		} else {
+			registerUser(currentUser);
+		}
 	};
 
 	return (
@@ -61,14 +67,14 @@ const Register = () => {
 					value={values.password}
 					handleChange={handleChange}
 				/>
-				<ButtonSubmit type="submit">
+				<ButtonSubmit type="submit" disabled={isLoading}>
 					Submit
 				</ButtonSubmit>
 				<Info>
 					{values.isMember
 						? "Not a member yet?"
 						: "Already a member?"}
-					<ButtonMember onClick={toggleMember}>
+					<ButtonMember type="button" onClick={toggleMember}>
 						{values.isMember ? "Register" : "Login"}
 					</ButtonMember>
 				</Info>
@@ -140,6 +146,10 @@ const ButtonSubmit = styled.button`
 		background: var(--primary-7);
 		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
 			0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	}
+
+	&:disabled {
+		background: var(--grey-1);
 	}
 `;
 
