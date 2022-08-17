@@ -8,15 +8,23 @@ import {
 } from "../actions";
 import reducer from "../reducers/auth_reducer";
 import axios from "axios";
+import {
+	addUserToLocalStorage,
+	removeUserFromLocalStorage,
+} from "../utils/helpers";
+
+const token = localStorage.getItem("token");
+const user = localStorage.getItem("user");
+const userLocation = localStorage.getItem("location");
 
 const initialState = {
 	isLoading: false,
 	showAlert: false,
 	alertText: "",
 	alertType: "",
-	user: null,
-	token: null,
-	userLocation: "",
+	user: user ? JSON.parse(user) : null,
+	token: token,
+	userLocation: userLocation || "",
 };
 
 const AuthContext = React.createContext();
@@ -42,14 +50,13 @@ export const AuthProvider = ({ children }) => {
 				"/api/v1/auth/register",
 				currentUser
 			);
-			console.log(response);
 			const { user, token, location } = response.data;
 			dispatch({
 				type: REGISTER_USER_SUCCESS,
 				payload: { user, token, location },
 			});
+			addUserToLocalStorage({ user, token, location });
 		} catch (error) {
-			console.log(error.response);
 			dispatch({
 				type: REGISTER_USER_ERROR,
 				payload: { msg: error.response.data.msg },

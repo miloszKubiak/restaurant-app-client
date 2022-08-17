@@ -14,9 +14,9 @@ const initialState = {
 
 const Register = () => {
 	const [values, setValues] = useState(initialState);
-	const navigate = useNavigate();
-	const { isLoading, showAlert, displayAlert, registerUser } =
+	const { isLoading, showAlert, displayAlert, registerUser, user } =
 		useAuthContext();
+	const navigate = useNavigate();
 
 	const toggleMember = () => {
 		setValues({ ...values, isMember: !values.isMember });
@@ -40,6 +40,14 @@ const Register = () => {
 			registerUser(currentUser);
 		}
 	};
+
+	useEffect(() => {
+		if (user) {
+			setTimeout(() => {
+				navigate("/");
+			}, 3000);
+		}
+	}, [user, navigate]);
 
 	return (
 		<Wrapper>
