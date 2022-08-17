@@ -17,6 +17,30 @@ const auth_reducer = (state, action) => {
 			};
 		case CLEAR_ALERT:
 			return { ...state, showAlert: false, alertType: "", alertText: "" };
+		case REGISTER_USER_BEGIN:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case REGISTER_USER_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				user: action.payload.user,
+				token: action.payload.token,
+				userLocation: action.payload.location,
+				showAlert: true,
+				alertType: "success",
+				alertText: "User Created! Redirecting...",
+			};
+		case REGISTER_USER_ERROR:
+			return {
+				...state,
+				isLoading: false,
+				showAlert: true,
+				alertType: "danger",
+				alertText: action.payload.msg,
+			};
 
 		default:
 			throw new Error(`No Matching "${action.type}" - action type`);

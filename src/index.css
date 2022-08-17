@@ -48,3 +48,8 @@ body {
 	color: var(--primary-6);
 	background: var(--primary-4);
 }
+
+.alert-success {
+	color: var(--primary-7);
+	background: var(--primary-3);
+}
