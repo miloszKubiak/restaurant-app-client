@@ -7,6 +7,7 @@ import MealsPage from "./MealsPage";
 import PrivateRoute from "./PrivateRoute";
 import Register from "./Register";
 import SingleMeal from "./SingleMeal";
+import UserPage from "./UserPage";
 
 export {
 	About,
@@ -18,4 +19,5 @@ export {
 	SingleMeal,
 	Register,
 	PrivateRoute,
+	UserPage,
 };

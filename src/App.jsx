@@ -10,6 +10,7 @@ import {
 	About,
 	PrivateRoute,
 	Register,
+	UserPage,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
@@ -30,6 +31,7 @@ const App = () => {
 						</PrivateRoute>
 					}
 				/>
+				<Route path="users/:id" element={<UserPage /> } />
 				<Route path="/register" element={<Register />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
