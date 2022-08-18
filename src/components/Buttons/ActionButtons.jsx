@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaShoppingCart, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import { useMealsContext } from "../../context/meals-context";
 import { useCartContext } from "../../context/cart-context";
@@ -8,9 +8,16 @@ import { useAuthContext } from "../../context/auth-context";
 
 const ActionButtons = () => {
 	const { closeSidebar } = useMealsContext();
-	const { total_items } = useCartContext();
-	const { user } = useAuthContext();
+	const { total_items, clearCart } = useCartContext();
+	const { user, logoutUser } = useAuthContext();
 	const [showDropdown, setShowDropdown] = useState(false);
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		logoutUser();
+		clearCart();
+		navigate("/");
+	};
 
 	return (
 		<Wrapper>
@@ -43,10 +50,7 @@ const ActionButtons = () => {
 						>
 							Settings
 						</ButtonSettings>
-						<ButtonLogout
-							type="button"
-							onClick={() => console.log("logout")}
-						>
+						<ButtonLogout type="button" onClick={handleLogout}>
 							logout
 						</ButtonLogout>
 					</div>

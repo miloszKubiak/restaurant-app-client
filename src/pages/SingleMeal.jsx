@@ -26,7 +26,6 @@ const SingleMeal = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		console.log(meal);
 		fetchSingleMeal(`${SINGLE_MEAL_URL}${id}`);
 	}, [id]);
 

@@ -12,7 +12,7 @@ export const getUniqueValues = (data, type) => {
 
 export const getLocalStorage = () => {
 	const cart = localStorage.getItem("cart");
-	
+
 	if (cart) {
 		return JSON.parse(localStorage.getItem("cart"));
 	} else {
@@ -20,14 +20,14 @@ export const getLocalStorage = () => {
 	}
 };
 
-export	const addUserToLocalStorage = ({ user, token, location }) => {
-		localStorage.setItem("user", JSON.stringify(user));
-		localStorage.setItem("token", token);
-		localStorage.setItem("location", location);
-	};
+export const addUserToLocalStorage = ({ user, token, location }) => {
+	localStorage.setItem("user", JSON.stringify(user));
+	localStorage.setItem("token", token);
+	localStorage.setItem("location", location);
+};
 
-export	const removeUserFromLocalStorage = () => {
-		localStorage.removeItem("token");
-		localStorage.removeItem("user");
-		localStorage.removeItem("location");
-	};
+export const removeUserFromLocalStorage = () => {
+	localStorage.removeItem("token");
+	localStorage.removeItem("user");
+	localStorage.removeItem("location");
+};

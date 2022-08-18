@@ -7,6 +7,7 @@ import {
 	LOGIN_USER_BEGIN,
 	LOGIN_USER_SUCCESS,
 	LOGIN_USER_ERROR,
+	LOGOUT_USER,
 } from "../actions";
 
 const auth_reducer = (state, action) => {
@@ -68,6 +69,8 @@ const auth_reducer = (state, action) => {
 				alertType: "danger",
 				alertText: action.payload.msg,
 			};
+		case LOGOUT_USER:
+			return { ...state, user: null, token: null, userLocation: "" };
 		default:
 			throw new Error(`No Matching "${action.type}" - action type`);
 	}

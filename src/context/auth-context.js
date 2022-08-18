@@ -8,6 +8,7 @@ import {
 	LOGIN_USER_BEGIN,
 	LOGIN_USER_SUCCESS,
 	LOGIN_USER_ERROR,
+	LOGOUT_USER,
 } from "../actions";
 import reducer from "../reducers/auth_reducer";
 import axios from "axios";
@@ -90,9 +91,20 @@ export const AuthProvider = ({ children }) => {
 		clearAlert();
 	};
 
+	const logoutUser = () => {
+		dispatch({ type: LOGOUT_USER });
+		removeUserFromLocalStorage();
+	};
+
 	return (
 		<AuthContext.Provider
-			value={{ ...state, displayAlert, registerUser, loginUser }}
+			value={{
+				...state,
+				displayAlert,
+				registerUser,
+				loginUser,
+				logoutUser,
+			}}
 		>
 			{children}
 		</AuthContext.Provider>
