@@ -1,5 +1,5 @@
 import React from "react";
-import { Sidebar, Navbar, Footer } from "./components";
+import { Footer } from "./components";
 import {
 	Home,
 	SingleMeal,
@@ -8,9 +8,11 @@ import {
 	Checkout,
 	ErrorPage,
 	About,
-	PrivateRoute,
+	ProtectedRoute,
 	Register,
-	UserPage,
+	ProfilePage,
+	AdminRoute,
+	AdminPanel,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
@@ -26,12 +28,27 @@ const App = () => {
 				<Route
 					path="checkout"
 					element={
-						<PrivateRoute>
+						<ProtectedRoute>
 							<Checkout />
-						</PrivateRoute>
+						</ProtectedRoute>
 					}
 				/>
-				<Route path="users/:id" element={<UserPage /> } />
+				<Route
+					path="users/:id"
+					element={
+						<ProtectedRoute>
+							<ProfilePage />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path="adminPanel"
+					element={
+						<AdminRoute>
+							<AdminPanel />
+						</AdminRoute>
+					}
+				/>
 				<Route path="/register" element={<Register />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>

@@ -4,10 +4,12 @@ import Checkout from "./Checkout";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
 import MealsPage from "./MealsPage";
-import PrivateRoute from "./PrivateRoute";
+import ProtectedRoute from "./ProtectedRoute";
 import Register from "./Register";
 import SingleMeal from "./SingleMeal";
-import UserPage from "./UserPage";
+import ProfilePage from "./ProfilePage";
+import AdminPanel from "./AdminPanel";
+import AdminRoute from "./AdminRoute";
 
 export {
 	About,
@@ -18,6 +20,8 @@ export {
 	MealsPage,
 	SingleMeal,
 	Register,
-	PrivateRoute,
-	UserPage,
+	ProtectedRoute,
+	ProfilePage,
+	AdminPanel,
+	AdminRoute,
 };

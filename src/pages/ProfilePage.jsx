@@ -2,7 +2,7 @@ import React from 'react'
 import { Navbar, Sidebar } from "../components";
 
 
-const UserPage = () => {
+const ProfilePage = () => {
   return (
 		<div>
 			<Navbar />
@@ -11,4 +11,4 @@ const UserPage = () => {
   );
 }
 
-export default UserPage
+export default ProfilePage

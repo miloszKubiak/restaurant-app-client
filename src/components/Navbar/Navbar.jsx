@@ -6,9 +6,11 @@ import { links } from "../../utils/constants";
 import logo from "../../assets/logo2.png";
 import ActionButtons from "../Buttons/ActionButtons";
 import { useMealsContext } from "../../context/meals-context";
+import { useAuthContext } from "../../context/auth-context";
 
 const Navbar = () => {
 	const { openSidebar } = useMealsContext();
+	const { user } = useAuthContext();
 
 	return (
 		<Wrapper>
@@ -30,6 +32,16 @@ const Navbar = () => {
 							</li>
 						);
 					})}
+					{user && (
+						<li>
+							<Link to="/checkout">checkout</Link>
+						</li>
+					)}
+					{user?.role === "admin" && (
+						<li>
+							<Link to="/adminPanel">Admin Panel</Link>
+						</li>
+					)}
 				</Links>
 				<BtnContainer>
 					<ActionButtons />

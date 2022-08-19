@@ -6,9 +6,11 @@ import logo from "../../assets/logo2.png";
 import { Link } from "react-router-dom";
 import { ActionButtons } from "../../components";
 import { useMealsContext } from "../../context/meals-context";
+import { useAuthContext } from "../../context/auth-context";
 
 const Sidedbar = () => {
 	const { isSidebarOpen, closeSidebar } = useMealsContext();
+	const { user } = useAuthContext();
 
 	return (
 		<Wrapper>
@@ -34,11 +36,16 @@ const Sidedbar = () => {
 							</li>
 						);
 					})}
-					<li>
-						<Link to="checkout" onClick={closeSidebar}>
-							checkout
-						</Link>
-					</li>
+					{user && (
+						<li>
+							<Link to="/checkout" onClick={closeSidebar}>checkout</Link>
+						</li>
+					)}
+					{user?.role === "admin" && (
+						<li>
+							<Link to="/adminPanel" onClick={closeSidebar}>Admin Panel</Link>
+						</li>
+					)}
 				</Links>
 				<ButtonsContainer>
 					<ActionButtons />

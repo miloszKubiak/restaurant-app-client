@@ -2,11 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/cart-context";
-import { useUserContext } from "../../context/auth-context";
+import { useAuthContext, useUserContext } from "../../context/auth-context";
 import { formatPrice } from "../../utils/helpers";
 
 const CartTotals = () => {
 	const { total_amount, delivery_fee } = useCartContext();
+	const { user } = useAuthContext();
 
 	return (
 		<Wrapper>
@@ -17,16 +18,22 @@ const CartTotals = () => {
 					</Subtotal>
 					<Delivery>
 						delivery fee : <span>{formatPrice(delivery_fee)}</span>
-          </Delivery>
-          <hr />
+					</Delivery>
+					<hr />
 					<Total>
 						Order total :{" "}
 						<span>{formatPrice(total_amount + delivery_fee)}</span>
 					</Total>
 				</Container>
-				<ButtonCheckout to="/checkout">
-					proceed to checkout
-				</ButtonCheckout>
+				{user ? (
+					<ButtonAction to="/checkout">
+						proceed to checkout
+					</ButtonAction>
+				) : (
+					<ButtonAction to="/register">
+						login
+					</ButtonAction>
+				)}
 			</div>
 		</Wrapper>
 	);
@@ -69,7 +76,7 @@ const Total = styled.h4`
   font-size: 1.6rem;
 `;
 
-const ButtonCheckout = styled(Link)`
+const ButtonAction = styled(Link)`
 	display: inline-block;
 	padding: 0.8rem 1rem;
 	margin: 1.5rem 0;
