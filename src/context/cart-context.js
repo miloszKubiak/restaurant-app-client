@@ -7,10 +7,10 @@ import {
 	COUNT_CART_TOTALS,
 } from "../actions";
 import reducer from "../reducers/cart_reducer";
-import { getLocalStorage } from "../utils/helpers";
+import { getCartItemsFromLocalStorage } from "../utils/helpers";
 
 const initialState = {
-	cart: getLocalStorage(),
+	cart: getCartItemsFromLocalStorage(),
 	total_items: 0,
 	total_amount: 0,
 	delivery_fee: 20,

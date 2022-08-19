@@ -118,7 +118,6 @@ const ButtonContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 50%;
 
 	.dropdown {
 		display: flex;
@@ -142,19 +141,18 @@ const ButtonUser = styled.button`
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	width: 100%;
 	background: transparent;
 	border: transparent;
 	color: var(--primary-2);
 	font-weight: bold;
+	text-transform: capitalize;
 	cursor: pointer;
+	font-size: 1.2rem;
 
 	svg {
 		font-size: 1.2rem;
 	}
 `;
-
-const Dropdown = styled.div``;
 
 const ButtonLogout = styled.button`
 	margin-top: 0.5rem;
@@ -179,6 +177,6 @@ const ButtonSettings = styled(Link)`
 const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
-	gap: 4rem;
+	gap: 2rem;
 	position: relative;
 `;

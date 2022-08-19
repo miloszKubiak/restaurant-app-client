@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
 import { links } from "../../utils/constants";
@@ -38,12 +38,16 @@ const Sidedbar = () => {
 					})}
 					{user && (
 						<li>
-							<Link to="/checkout" onClick={closeSidebar}>checkout</Link>
+							<Link to="/checkout" onClick={closeSidebar}>
+								checkout
+							</Link>
 						</li>
 					)}
 					{user?.role === "admin" && (
 						<li>
-							<Link to="/adminPanel" onClick={closeSidebar}>Admin Panel</Link>
+							<Link to="/adminPanel" onClick={closeSidebar}>
+								Admin Panel
+							</Link>
 						</li>
 					)}
 				</Links>

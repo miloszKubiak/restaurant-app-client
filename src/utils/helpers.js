@@ -10,7 +10,7 @@ export const getUniqueValues = (data, type) => {
 	return ["all", ...new Set(uniqueValue)];
 };
 
-export const getLocalStorage = () => {
+export const getCartItemsFromLocalStorage = () => {
 	const cart = localStorage.getItem("cart");
 
 	if (cart) {
