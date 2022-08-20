@@ -96,12 +96,17 @@ export const AuthProvider = ({ children }) => {
 		removeUserFromLocalStorage();
 	};
 
+	const updateUser = async (currentUser) => {
+		console.log(currentUser);
+	};
+
 	return (
 		<AuthContext.Provider
 			value={{
 				...state,
 				displayAlert,
 				registerUser,
+				updateUser,
 				loginUser,
 				logoutUser,
 			}}
