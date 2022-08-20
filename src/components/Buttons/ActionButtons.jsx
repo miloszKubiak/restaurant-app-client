@@ -45,7 +45,7 @@ const ActionButtons = () => {
 						}
 					>
 						<ButtonSettings
-							to={`users/${user._id}`}
+							to="/profile"
 							onClick={closeSidebar}
 						>
 							Settings

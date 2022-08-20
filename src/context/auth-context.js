@@ -36,6 +36,13 @@ const AuthContext = React.createContext();
 export const AuthProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
+	const authFetch = axios.create({
+		baseURL: "/api/v1",
+		headers: {
+			Authorization: `Bearer ${state.token}`,
+		},
+	});
+
 	const displayAlert = () => {
 		dispatch({ type: DISPLAY_ALERT });
 		clearAlert();
@@ -97,7 +104,15 @@ export const AuthProvider = ({ children }) => {
 	};
 
 	const updateUser = async (currentUser) => {
-		console.log(currentUser);
+		try {
+			const { data } = await authFetch.patch(
+				"/auth/updateUser",
+				currentUser
+			);
+			console.log(data);
+		} catch (error) {
+			console.log(error.response);
+		}
 	};
 
 	return (
