@@ -145,7 +145,6 @@ const ButtonUser = styled.button`
 	border: transparent;
 	color: var(--primary-2);
 	font-weight: bold;
-	text-transform: capitalize;
 	cursor: pointer;
 	font-size: 1.2rem;
 
