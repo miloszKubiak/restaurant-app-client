@@ -7,15 +7,15 @@ const ListView = ({ meals }) => {
 	return (
 		<Wrapper>
 			{meals.map((meal) => {
-				const { id, name, price, image, description } = meal;
+				const { _id, name, price, image, description } = meal;
 				return (
-					<MealContainer key={id}>
+					<MealContainer key={_id}>
 						<Image src={image} alt={name} />
 						<Content>
 							<Title>{name}</Title>
 							<Price className="price">{formatPrice(price)}</Price>
 							<Description>{description.substring(0, 140)}...</Description>
-							<Details to={`/meals/${id}`} >
+							<Details to={`/meals/${_id}`} >
 								Details
 							</Details>
 						</Content>

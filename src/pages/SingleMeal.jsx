@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { SINGLE_MEAL_URL } from "../utils/constants";
 import styled from "styled-components";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { formatPrice } from "../utils/helpers";
@@ -10,7 +9,7 @@ import {
 	PageHero,
 	Stars,
 	AddToCart,
-	MealImages,
+	MealImage,
 	Navbar,
 	Sidebar,
 } from "../components";
@@ -21,12 +20,12 @@ const SingleMeal = () => {
 		single_meal_loading: loading,
 		single_meal_error: error,
 		single_meal: meal,
-		fetchSingleMeal,
+		getSingleMeal,
 	} = useMealsContext();
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		fetchSingleMeal(`${SINGLE_MEAL_URL}${id}`);
+		getSingleMeal(`/meals/${id}`);
 	}, [id]);
 
 	useEffect(() => {
@@ -42,12 +41,13 @@ const SingleMeal = () => {
 		description,
 		price,
 		stock,
-		stars,
-		reviews,
+		averageRating,
+		numberOfReviews,
 		preparationTime,
 		category,
-		images,
+		image,
 	} = meal;
+
 
 	if (loading) return <Loader />;
 	if (error) return <Error />;
@@ -59,15 +59,18 @@ const SingleMeal = () => {
 			<Sidebar />
 			<PageHero title={name} meal />
 			<Wrapper>
-				<ButtonBack to="/meals">back to meals</ButtonBack>
 				<Container>
 					<ImagesContainer>
-						<MealImages images={images} />
+						<ButtonBack to="/meals">back to meals</ButtonBack>
+						<MealImage image={image} />
 					</ImagesContainer>
 					<Content>
 						<Title>{name}</Title>
-						<Stars reviews={reviews} stars={stars} />
-						<Price>{formatPrice(price)}</Price>
+						<Stars
+							reviews={numberOfReviews}
+							stars={averageRating}
+						/>
+						<Price>{price} €</Price>
 						<Description>{description}</Description>
 						<Info>
 							<span>Available : </span>
@@ -142,7 +145,7 @@ const Content = styled.section`
 	gap: 1rem;
 
 	hr {
-		padding: 0.2rem;
+		padding: 0.1rem;
 		background: var(--primary-3);
 		border: none;
 	}

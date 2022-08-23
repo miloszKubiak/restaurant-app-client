@@ -19,6 +19,7 @@ import {
 	addUserToLocalStorage,
 	removeUserFromLocalStorage,
 } from "../utils/helpers";
+import { authFetch } from "../utils/axios";
 
 const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
@@ -38,11 +39,6 @@ const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
-
-	///axios custom instance
-	const authFetch = axios.create({
-		baseURL: "/api/v1",
-	});
 
 	//request interceptor
 	authFetch.interceptors.request.use(

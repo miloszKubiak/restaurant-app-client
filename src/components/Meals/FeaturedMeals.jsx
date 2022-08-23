@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { Loader, Error, Meal } from "../../components";
 import { useMealsContext } from "../../context/meals-context";
 
@@ -21,7 +20,7 @@ const FeaturedMeals = () => {
 			</Header>
 			<List>
 				{featured.slice(0, 4).map((meal) => {
-					return <Meal key={meal.id} {...meal} />;
+					return <Meal key={meal._id} {...meal} />;
 				})}
 			</List>
 		</Wrapper>

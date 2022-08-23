@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
 
-const Meal = ({ id, name, image, price }) => {
+const Meal = ({ _id, name, image, price }) => {
 	return (
 		<Wrapper>
 			<Container>
-				<Link to={`/meals/${id}`}>
+				<Link to={`/meals/${_id}`}>
 					<Image src={image} alt={name} />
 				</Link>
 			</Container>

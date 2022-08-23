@@ -18,13 +18,13 @@ const meals_reducer = (state, action) => {
 		case GET_MEALS_BEGIN:
 			return { ...state, meals_loading: true };
 		case GET_MEALS_SUCCESS:
-			const featured_meals = action.payload.filter(
+			const featured_meals = action.payload.meals.filter(
 				(meal) => meal.featured === true
 			);
 			return {
 				...state,
 				meals_loading: false,
-				meals: action.payload,
+				meals: action.payload.meals,
 				featured_meals,
 			};
 		case GET_MEALS_ERROR:

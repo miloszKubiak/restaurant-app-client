@@ -7,7 +7,7 @@ const GridView = ({ meals }) => {
 		<Wrapper>
 			<Container>
 				{meals.map((meal) => {
-					return <Meal key={meal.id} {...meal} />;
+					return <Meal key={meal._id} {...meal} />;
 				})}
 			</Container>
 		</Wrapper>

@@ -2,16 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { IoList, IoGrid } from "react-icons/io5";
 import { useFilterContext } from "../../context/filter-context";
+import { useMealsContext } from "../../context/meals-context";
 
 const Sort = () => {
 	const {
-		filtered_meals: meals,
 		grid_view,
 		setListView,
 		setGridView,
 		updateSort,
 		sort,
 	} = useFilterContext();
+	const { meals } = useMealsContext();
 
 	return (
 		<Wrapper>

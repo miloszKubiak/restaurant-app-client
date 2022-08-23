@@ -11,7 +11,7 @@ import Loader from "./Loader/Loader";
 import Error from "./Error/Error";
 import Meal from "./Meals/Meal";
 import AddToCart from "./Cart/AddToCart";
-import MealImages from "./Meals/MealImages";
+import MealImage from "./Meals/MealImage";
 import Stars from "./Stars/Stars";
 import AmountButtons from "./Cart/AmountButtons";
 import Filters from "./Filters/Filters";
@@ -40,7 +40,7 @@ export {
 	Error,
 	Meal,
 	AddToCart,
-	MealImages,
+	MealImage,
 	Stars,
 	AmountButtons,
 	Filters,

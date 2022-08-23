@@ -11,7 +11,7 @@ import {
 	GET_MEALS_ERROR,
 } from "../actions";
 import reducer from "../reducers/meals_reducer";
-import { MEALS_URL } from "../utils/constants";
+import { authFetch } from "../utils/axios";
 
 const initialState = {
 	isSidebarOpen: false,
@@ -23,7 +23,6 @@ const initialState = {
 	single_meal_error: false,
 	single_meal: {},
 };
-
 
 const MealsContext = React.createContext();
 
@@ -38,37 +37,62 @@ export const MealsProvider = ({ children }) => {
 		dispatch({ type: SIDEBAR_CLOSE });
 	};
 
-	const fetchMeals = async (url) => {
-		dispatch({ type: GET_MEALS_BEGIN });
+	// const fetchMeals = async (url) => {
+	// 	dispatch({ type: GET_MEALS_BEGIN });
 
+	// 	try {
+	// 		const response = await axios(url);
+	// 		const meals = response.data;
+	// 		dispatch({ type: GET_MEALS_SUCCESS, payload: meals });
+	// 	} catch (error) {
+	// 		dispatch({ type: GET_MEALS_ERROR });
+	// 	}
+	// };
+
+	const getMeals = async () => {
+		let url = `/meals`;
+
+		dispatch({ type: GET_MEALS_BEGIN });
 		try {
-			const response = await axios(url);
-			const meals = response.data;
-			dispatch({ type: GET_MEALS_SUCCESS, payload: meals });
+			const { data } = await authFetch(url);
+			const { meals } = data;
+			console.log(data);
+			dispatch({
+				type: GET_MEALS_SUCCESS,
+				payload: {
+					meals,
+				},
+			});
 		} catch (error) {
 			dispatch({ type: GET_MEALS_ERROR });
 		}
 	};
 
-	const fetchSingleMeal = async (url) => {
+	const getSingleMeal = async (url) => {
 		dispatch({ type: GET_SINGLE_MEAL_BEGIN });
 
 		try {
-			const response = await axios(url);
-			const singleMeal = response.data;
-			dispatch({ type: GET_SINGLE_MEAL_SUCCESS, payload: singleMeal });
+			const { data } = await authFetch(url);
+			const { meal } = data;
+			dispatch({ type: GET_SINGLE_MEAL_SUCCESS, payload: meal });
 		} catch (error) {
 			dispatch({ type: GET_SINGLE_MEAL_ERROR });
 		}
 	};
 
 	useEffect(() => {
-		fetchMeals(MEALS_URL);
+		// fetchMeals(MEALS_URL);
+		getMeals();
 	}, []);
 
 	return (
 		<MealsContext.Provider
-			value={{ ...state, openSidebar, closeSidebar, fetchSingleMeal }}
+			value={{
+				...state,
+				openSidebar,
+				closeSidebar,
+				getSingleMeal,
+			}}
 		>
 			{children}
 		</MealsContext.Provider>
