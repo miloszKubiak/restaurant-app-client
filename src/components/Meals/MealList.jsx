@@ -21,7 +21,7 @@ const MealList = () => {
 		return <ListView meals={meals} />;
 	}
 
-	return <GridView meals={meals}>MealsList</GridView>;
+	return <GridView meals={meals} />;
 };
 
 export default MealList;

@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { IoList, IoGrid } from "react-icons/io5";
 import { useMealsContext } from "../../context/meals-context";
 
-const Sort = () => {
-	const { meals, grid_view, setListView, setGridView } = useMealsContext();
+const ChangeViewBar = () => {
+	const { meals, totalMeals, grid_view, setListView, setGridView } =
+		useMealsContext();
 
 	return (
 		<Wrapper>
@@ -22,13 +23,13 @@ const Sort = () => {
 					<IoList />
 				</Button>
 			</BtnContainer>
-			<Info>{meals.length} meals found</Info>
+			<Info>{totalMeals} meal{meals.length > 1 && "s"} found</Info>
 			<hr />
 		</Wrapper>
 	);
 };
 
-export default Sort;
+export default ChangeViewBar;
 
 const BtnContainer = styled.div`
 	display: flex;

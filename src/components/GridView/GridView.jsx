@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import { useMealsContext } from "../../context/meals-context";
 import Meal from "../Meals/Meal";
+import Pagination from "../Pagination/Pagination";
 
 const GridView = ({ meals }) => {
+	const { numOfPages } = useMealsContext();
+
 	return (
 		<Wrapper>
 			<Container>
@@ -10,6 +14,7 @@ const GridView = ({ meals }) => {
 					return <Meal key={meal._id} {...meal} />;
 				})}
 			</Container>
+			{numOfPages > 1 && <Pagination />}
 		</Wrapper>
 	);
 };

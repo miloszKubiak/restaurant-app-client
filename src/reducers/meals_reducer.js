@@ -34,6 +34,8 @@ const meals_reducer = (state, action) => {
 				meals_loading: false,
 				meals: action.payload.meals,
 				featured_meals,
+				totalMeals: action.payload.totalMeals,
+				numOfPages: action.payload.numOfPages,
 			};
 		case GET_MEALS_ERROR:
 			return { ...state, meals_loading: false, meals_error: true };

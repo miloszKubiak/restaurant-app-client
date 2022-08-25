@@ -1,6 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { PageHero, Filters, Sort, MealList, Navbar, Sidebar, SearchContainer } from "../components";
+import {
+	PageHero,
+	ChangeViewBar,
+	MealList,
+	Navbar,
+	Sidebar,
+	SearchContainer,
+} from "../components";
 
 const MealsPage = () => {
 	return (
@@ -13,7 +20,7 @@ const MealsPage = () => {
 					{/* <Filters /> */}
 					<Container>
 						<SearchContainer />
-						<Sort />
+						<ChangeViewBar />
 						<MealList />
 					</Container>
 				</Center>

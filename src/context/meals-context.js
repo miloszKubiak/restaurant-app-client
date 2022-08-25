@@ -66,11 +66,13 @@ export const MealsProvider = ({ children }) => {
 		dispatch({ type: GET_MEALS_BEGIN });
 		try {
 			const { data } = await authFetch(url);
-			const { meals } = data;
+			const { meals, totalMeals, numOfPages } = data;
 			dispatch({
 				type: GET_MEALS_SUCCESS,
 				payload: {
 					meals,
+					totalMeals,
+					numOfPages,
 				},
 			});
 		} catch (error) {

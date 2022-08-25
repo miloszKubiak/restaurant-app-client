@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { formatPrice } from "../../utils/helpers";
+import Pagination from "../Pagination/Pagination";
+import { useMealsContext } from "../../context/meals-context";
 
 const ListView = ({ meals }) => {
+	const { numOfPages } = useMealsContext();
+
 	return (
 		<Wrapper>
 			{meals.map((meal) => {
@@ -13,15 +17,18 @@ const ListView = ({ meals }) => {
 						<Image src={image} alt={name} />
 						<Content>
 							<Title>{name}</Title>
-							<Price className="price">{formatPrice(price)}</Price>
-							<Description>{description.substring(0, 140)}...</Description>
-							<Details to={`/meals/${_id}`} >
-								Details
-							</Details>
+							<Price className="price">
+								{formatPrice(price)}
+							</Price>
+							<Description>
+								{description.substring(0, 140)}...
+							</Description>
+							<Details to={`/meals/${_id}`}>Details</Details>
 						</Content>
 					</MealContainer>
 				);
 			})}
+			{numOfPages > 1 && <Pagination />}
 		</Wrapper>
 	);
 };
