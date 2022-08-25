@@ -48,7 +48,6 @@ const SingleMeal = () => {
 		image,
 	} = meal;
 
-
 	if (loading) return <Loader />;
 	if (error) return <Error />;
 	///uzyć ternary operator!!
@@ -70,7 +69,7 @@ const SingleMeal = () => {
 							reviews={numberOfReviews}
 							stars={averageRating}
 						/>
-						<Price>{price} €</Price>
+						<Price>{formatPrice(price)}</Price>
 						<Description>{description}</Description>
 						<Info>
 							<span>Available : </span>

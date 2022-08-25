@@ -1,20 +1,24 @@
-import axios from "axios";
 import React, { useContext, useEffect, useReducer } from "react";
 import {
 	SIDEBAR_OPEN,
 	SIDEBAR_CLOSE,
+	SET_LISTVIEW,
+	SET_GRIDVIEW,
 	GET_SINGLE_MEAL_BEGIN,
 	GET_SINGLE_MEAL_SUCCESS,
 	GET_SINGLE_MEAL_ERROR,
 	GET_MEALS_BEGIN,
 	GET_MEALS_SUCCESS,
 	GET_MEALS_ERROR,
+	HANDLE_CHANGE,
+	CLEAR_FILTERS,
 } from "../actions";
 import reducer from "../reducers/meals_reducer";
 import { authFetch } from "../utils/axios";
 
 const initialState = {
 	isSidebarOpen: false,
+	grid_view: true,
 	meals_loading: false,
 	meals_error: false,
 	meals: [],
@@ -22,6 +26,12 @@ const initialState = {
 	single_meal_loading: false,
 	single_meal_error: false,
 	single_meal: {},
+
+	categoryOptions: ["pizza", "pasta", "soup", "salad", "dessert"],
+	search: "",
+	searchType: "all",
+	sort: "a-z",
+	sortOptions: ["a-z", "z-a", "price-lowest", "price-highest"],
 };
 
 const MealsContext = React.createContext();
@@ -37,26 +47,26 @@ export const MealsProvider = ({ children }) => {
 		dispatch({ type: SIDEBAR_CLOSE });
 	};
 
-	// const fetchMeals = async (url) => {
-	// 	dispatch({ type: GET_MEALS_BEGIN });
+		const setListView = () => {
+			dispatch({ type: SET_LISTVIEW });
+		};
 
-	// 	try {
-	// 		const response = await axios(url);
-	// 		const meals = response.data;
-	// 		dispatch({ type: GET_MEALS_SUCCESS, payload: meals });
-	// 	} catch (error) {
-	// 		dispatch({ type: GET_MEALS_ERROR });
-	// 	}
-	// };
+		const setGridView = () => {
+			dispatch({ type: SET_GRIDVIEW });
+		};
 
 	const getMeals = async () => {
-		let url = `/meals`;
+		const { search, searchType, sort } = state;
+
+		let url = `/meals?category=${searchType}&sort=${sort}`;
+		if (search) {
+			url = url + `&search=${search}`;
+		}
 
 		dispatch({ type: GET_MEALS_BEGIN });
 		try {
 			const { data } = await authFetch(url);
 			const { meals } = data;
-			console.log(data);
 			dispatch({
 				type: GET_MEALS_SUCCESS,
 				payload: {
@@ -79,9 +89,17 @@ export const MealsProvider = ({ children }) => {
 			dispatch({ type: GET_SINGLE_MEAL_ERROR });
 		}
 	};
+	///////
+	//////
+	const handleChange = ({ name, value }) => {
+		dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
+	};
+
+	const clearFilters = () => {
+		dispatch({ type: CLEAR_FILTERS });
+	};
 
 	useEffect(() => {
-		// fetchMeals(MEALS_URL);
 		getMeals();
 	}, []);
 
@@ -91,7 +109,12 @@ export const MealsProvider = ({ children }) => {
 				...state,
 				openSidebar,
 				closeSidebar,
+				setListView,
+				setGridView,
 				getSingleMeal,
+				clearFilters,
+				handleChange,
+				getMeals,
 			}}
 		>
 			{children}

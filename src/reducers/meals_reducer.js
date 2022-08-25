@@ -1,12 +1,16 @@
 import {
 	SIDEBAR_OPEN,
 	SIDEBAR_CLOSE,
+	SET_LISTVIEW,
+	SET_GRIDVIEW,
 	GET_SINGLE_MEAL_BEGIN,
 	GET_SINGLE_MEAL_SUCCESS,
 	GET_SINGLE_MEAL_ERROR,
 	GET_MEALS_BEGIN,
 	GET_MEALS_SUCCESS,
 	GET_MEALS_ERROR,
+	HANDLE_CHANGE,
+	CLEAR_FILTERS,
 } from "../actions";
 
 const meals_reducer = (state, action) => {
@@ -15,6 +19,10 @@ const meals_reducer = (state, action) => {
 			return { ...state, isSidebarOpen: true };
 		case SIDEBAR_CLOSE:
 			return { ...state, isSidebarOpen: false };
+		case SET_LISTVIEW:
+			return { ...state, grid_view: false };
+		case SET_GRIDVIEW:
+			return { ...state, grid_view: true };
 		case GET_MEALS_BEGIN:
 			return { ...state, meals_loading: true };
 		case GET_MEALS_SUCCESS:
@@ -46,6 +54,20 @@ const meals_reducer = (state, action) => {
 				...state,
 				single_meal_loading: false,
 				single_meal_error: true,
+			};
+		////////
+		case HANDLE_CHANGE:
+			return {
+				...state,
+				page: 1,
+				[action.payload.name]: action.payload.value,
+			};
+		case CLEAR_FILTERS:
+			return {
+				...state,
+				search: "",
+				searchType: "all",
+				sort: "a-z",
 			};
 		default:
 			throw new Error(`No matching "${action.type}" - action type`);

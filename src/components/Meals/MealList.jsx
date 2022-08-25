@@ -1,12 +1,17 @@
 import React from "react";
 import ListView from "../ListView/ListView";
 import GridView from "../GridView/GridView";
-import { useFilterContext } from "../../context/filter-context";
 import { useMealsContext } from "../../context/meals-context";
+import { useEffect } from "react";
 
 const MealList = () => {
-	const { grid_view } = useFilterContext();
-	const { meals } = useMealsContext()
+	const { grid_view, meals, getMeals, search, searchType, sort } =
+		useMealsContext();
+
+	useEffect(() => {
+		getMeals()
+	}, [search, searchType, sort])
+
 
 	if (meals.length < 1) {
 		return <h5>Sorry, no meals matched your search...</h5>;

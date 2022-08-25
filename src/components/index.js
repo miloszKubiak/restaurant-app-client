@@ -14,7 +14,6 @@ import AddToCart from "./Cart/AddToCart";
 import MealImage from "./Meals/MealImage";
 import Stars from "./Stars/Stars";
 import AmountButtons from "./Cart/AmountButtons";
-import Filters from "./Filters/Filters";
 import Sort from "./Sort/Sort";
 import MealList from "./Meals/MealList";
 import GridView from "./GridView/GridView";
@@ -25,6 +24,8 @@ import CartItem from "./Cart/CartItem";
 import CartTotals from "./Cart/CartTotals";
 import FormRow from "./Form/FormRow";
 import Alert from "./Alert/Alert";
+import SearchContainer from "./Filters/SearchContainer";
+import FormRowSelect from "./Form/FormRowSelect";
 
 export {
 	Navbar,
@@ -43,7 +44,6 @@ export {
 	MealImage,
 	Stars,
 	AmountButtons,
-	Filters,
 	Sort,
 	MealList,
 	GridView,
@@ -54,4 +54,6 @@ export {
 	CartTotals,
 	FormRow,
 	Alert,
+	SearchContainer,
+	FormRowSelect,
 };

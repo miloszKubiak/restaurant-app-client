@@ -1,18 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { IoList, IoGrid } from "react-icons/io5";
-import { useFilterContext } from "../../context/filter-context";
 import { useMealsContext } from "../../context/meals-context";
 
 const Sort = () => {
-	const {
-		grid_view,
-		setListView,
-		setGridView,
-		updateSort,
-		sort,
-	} = useFilterContext();
-	const { meals } = useMealsContext();
+	const { meals, grid_view, setListView, setGridView } = useMealsContext();
 
 	return (
 		<Wrapper>
@@ -32,20 +24,6 @@ const Sort = () => {
 			</BtnContainer>
 			<Info>{meals.length} meals found</Info>
 			<hr />
-			<Form>
-				<Label htmlFor="sort">sort by</Label>
-				<Select
-					name="sort"
-					id="sort"
-					value={sort}
-					onChange={updateSort}
-				>
-					<option value="name-a">Name (A-Z)</option>
-					<option value="name-z">Name (Z-A)</option>
-					<option value="price-lowest">Price (Lowest)</option>
-					<option value="price-highest">Price (Highest)</option>
-				</Select>
-			</Form>
 		</Wrapper>
 	);
 };

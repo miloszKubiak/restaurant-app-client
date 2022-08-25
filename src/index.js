@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { MealsProvider } from "./context/meals-context";
-import { FilterProvider } from "./context/filter-context";
 import { CartProvider } from "./context/cart-context";
 import { AuthProvider } from "./context/auth-context";
 
@@ -14,13 +13,11 @@ root.render(
 	<React.StrictMode>
 		<AuthProvider>
 			<MealsProvider>
-				<FilterProvider>
-					<CartProvider>
-						<BrowserRouter>
-							<App />
-						</BrowserRouter>
-					</CartProvider>
-				</FilterProvider>
+				<CartProvider>
+					<BrowserRouter>
+						<App />
+					</BrowserRouter>
+				</CartProvider>
 			</MealsProvider>
 		</AuthProvider>
 	</React.StrictMode>
