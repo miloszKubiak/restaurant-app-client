@@ -5,12 +5,12 @@ import { useMealsContext } from "../../context/meals-context";
 import { useEffect } from "react";
 
 const MealList = () => {
-	const { grid_view, meals, getMeals, search, searchType, sort } =
+	const { grid_view, meals, getMeals, search, searchType, sort, page } =
 		useMealsContext();
 
 	useEffect(() => {
-		getMeals()
-	}, [search, searchType, sort])
+		getMeals();
+	}, [search, searchType, sort, page]);
 
 
 	if (meals.length < 1) {

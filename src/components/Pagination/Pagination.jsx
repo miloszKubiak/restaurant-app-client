@@ -9,22 +9,33 @@ const Pagination = () => {
 	const pages = Array.from({ length: numOfPages }, (_, index) => {
 		return index + 1;
 	});
-	console.log(pages);
 
 	const prevPage = () => {
-		console.log("prev");
+		let newPage = page - 1;
+		if (newPage < 1) {
+			newPage = 1;
+			//newPage = numOfPages
+		}
+		changePage(newPage);
 	};
 
 	const nextPage = () => {
-		console.log("next");
+		let newPage = page + 1;
+		if (newPage > numOfPages) {
+			newPage = numOfPages;
+			//newPage = 1
+		}
+		changePage(newPage);
 	};
 
 	return (
 		<Wrapper>
-			<Button onClick={prevPage}>
-				<FaAngleDoubleLeft />
-				prev
-			</Button>
+			{page > 1 && (
+				<ButtonNav onClick={prevPage}>
+					<FaAngleDoubleLeft />
+					prev
+				</ButtonNav>
+			)}
 			<ButtonsContainer>
 				{pages.map((pageNumber) => {
 					return (
@@ -43,10 +54,12 @@ const Pagination = () => {
 					);
 				})}
 			</ButtonsContainer>
-			<Button onClick={nextPage}>
-				next
-				<FaAngleDoubleRight />
-			</Button>
+			{page < numOfPages && (
+				<ButtonNav onClick={nextPage}>
+					next
+					<FaAngleDoubleRight />
+				</ButtonNav>
+			)}
 		</Wrapper>
 	);
 };
@@ -74,8 +87,9 @@ const ButtonsContainer = styled.div`
 		height: 2.5rem;
 		font-weight: bold;
 		font-size: 1rem;
-		color: var(--primary-2);
-		border-radius: .2rem;
+		color: var(--primary-3);
+		border-radius: 0.2rem;
+		font-family: inherit;
 		cursor: pointer;
 		transition: var(--transition);
 	}
@@ -86,7 +100,7 @@ const ButtonsContainer = styled.div`
 	}
 `;
 
-const Button = styled.button`
+const ButtonNav = styled.button`
 	width: 6rem;
 	height: 2.5rem;
 	display: flex;

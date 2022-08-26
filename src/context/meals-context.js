@@ -59,9 +59,9 @@ export const MealsProvider = ({ children }) => {
 	};
 
 	const getMeals = async () => {
-		const { search, searchType, sort } = state;
+		const { search, searchType, sort, page } = state;
 
-		let url = `/meals?category=${searchType}&sort=${sort}`;
+		let url = `/meals?page=${page}&category=${searchType}&sort=${sort}`;
 		if (search) {
 			url = url + `&search=${search}`;
 		}
