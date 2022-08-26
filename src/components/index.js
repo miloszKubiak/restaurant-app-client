@@ -27,6 +27,7 @@ import Alert from "./Alert/Alert";
 import SearchContainer from "./Filters/SearchContainer";
 import FormRowSelect from "./Form/FormRowSelect";
 import Pagination from "./Pagination/Pagination";
+import StripeCheckout from "./Stripe/StripeCheckout";
 
 export {
 	Navbar,
@@ -58,4 +59,5 @@ export {
 	SearchContainer,
 	FormRowSelect,
 	Pagination,
+	StripeCheckout,
 };

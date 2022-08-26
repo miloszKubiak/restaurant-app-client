@@ -5,7 +5,7 @@ import {
 	SingleMeal,
 	MealsPage,
 	CartPage,
-	Checkout,
+	CheckoutPage,
 	ErrorPage,
 	About,
 	ProtectedRoute,
@@ -29,7 +29,7 @@ const App = () => {
 					path="checkout"
 					element={
 						<ProtectedRoute>
-							<Checkout />
+							<CheckoutPage />
 						</ProtectedRoute>
 					}
 				/>

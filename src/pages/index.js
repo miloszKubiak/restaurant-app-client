@@ -1,6 +1,6 @@
 import About from "./About";
 import CartPage from "./CartPage";
-import Checkout from "./Checkout";
+import CheckoutPage from "./CheckoutPage";
 import ErrorPage from "./ErrorPage";
 import Home from "./Home";
 import MealsPage from "./MealsPage";
@@ -14,7 +14,7 @@ import AdminRoute from "./AdminRoute";
 export {
 	About,
 	CartPage,
-	Checkout,
+	CheckoutPage,
 	ErrorPage,
 	Home,
 	MealsPage,
