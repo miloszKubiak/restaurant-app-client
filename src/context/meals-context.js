@@ -12,6 +12,7 @@ import {
 	GET_MEALS_ERROR,
 	HANDLE_CHANGE,
 	CLEAR_FILTERS,
+	CHANGE_PAGE,
 } from "../actions";
 import reducer from "../reducers/meals_reducer";
 import { authFetch } from "../utils/axios";
@@ -32,6 +33,8 @@ const initialState = {
 	searchType: "all",
 	sort: "a-z",
 	sortOptions: ["a-z", "z-a", "price-lowest", "price-highest"],
+	numOfPages: 1,
+	page: 1,
 };
 
 const MealsContext = React.createContext();
@@ -53,7 +56,7 @@ export const MealsProvider = ({ children }) => {
 
 		const setGridView = () => {
 			dispatch({ type: SET_GRIDVIEW });
-		};
+	};
 
 	const getMeals = async () => {
 		const { search, searchType, sort } = state;
@@ -101,6 +104,10 @@ export const MealsProvider = ({ children }) => {
 		dispatch({ type: CLEAR_FILTERS });
 	};
 
+	const changePage = (page) => {
+		dispatch({ type: CHANGE_PAGE, payload: { page } })
+	}
+
 	useEffect(() => {
 		getMeals();
 	}, []);
@@ -117,6 +124,7 @@ export const MealsProvider = ({ children }) => {
 				clearFilters,
 				handleChange,
 				getMeals,
+				changePage,
 			}}
 		>
 			{children}

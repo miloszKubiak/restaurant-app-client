@@ -11,6 +11,7 @@ import {
 	GET_MEALS_ERROR,
 	HANDLE_CHANGE,
 	CLEAR_FILTERS,
+	CHANGE_PAGE,
 } from "../actions";
 
 const meals_reducer = (state, action) => {
@@ -57,7 +58,6 @@ const meals_reducer = (state, action) => {
 				single_meal_loading: false,
 				single_meal_error: true,
 			};
-		////////
 		case HANDLE_CHANGE:
 			return {
 				...state,
@@ -71,6 +71,10 @@ const meals_reducer = (state, action) => {
 				searchType: "all",
 				sort: "a-z",
 			};
+		case CHANGE_PAGE:
+			return {
+				...state, page: action.payload.page
+			}
 		default:
 			throw new Error(`No matching "${action.type}" - action type`);
 	}

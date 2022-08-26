@@ -7,15 +7,11 @@ export const GET_SINGLE_MEAL_ERROR = "GET_SINGLE_MEAL_ERROR";
 export const GET_MEALS_BEGIN = "GET_MEALS_BEGIN";
 export const GET_MEALS_SUCCESS = "GET_MEALS_SUCCESS";
 export const GET_MEALS_ERROR = "GET_MEALS_ERROR";
-//filter context actions
-export const LOAD_MEALS = "LOAD_MEALS";
-export const FILTER_MEALS = "FILTER_PRODUCTS";
-export const UPDATE_FILTERS = "UPDATE_FILTERS";
+export const HANDLE_CHANGE = "HANDLE_CHANGE";
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
-export const SORT_MEALS = "SORT_MEALS";
-export const UPDATE_SORT = "UPDATE_SORT";
 export const SET_LISTVIEW = "SET_LISTVIEW";
 export const SET_GRIDVIEW = "SET_GRIDVIEW";
+export const CHANGE_PAGE = "CHANGE_PAGE";
 //cart context actions
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";
@@ -35,6 +31,3 @@ export const LOGOUT_USER = "LOGOUT_USER";
 export const UPDATE_USER_BEGIN = "UPDATE_USER_BEGIN";
 export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
 export const UPDATE_USER_ERROR = "UPDATE_USER_ERROR";
-
-
-export const HANDLE_CHANGE = "HANDLE_CHANGE";
