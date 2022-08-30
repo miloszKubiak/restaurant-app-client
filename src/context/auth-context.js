@@ -57,7 +57,6 @@ export const AuthProvider = ({ children }) => {
 			return response;
 		},
 		(error) => {
-			console.log(error.response);
 			if (error.response.status === 401) {
 				console.log("AUTH ERROR");
 			}
@@ -129,11 +128,10 @@ export const AuthProvider = ({ children }) => {
 		dispatch({ type: UPDATE_USER_BEGIN });
 		try {
 			const { data } = await authFetch.patch(
-				"/auth/updateUser",
+				"/users/updateUser",
 				currentUser
 			);
 			const { user, location, token } = data;
-
 			dispatch({
 				type: UPDATE_USER_SUCCESS,
 				payload: { user, location, token },
