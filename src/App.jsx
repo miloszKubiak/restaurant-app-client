@@ -5,7 +5,7 @@ import {
 	SingleMeal,
 	MealsPage,
 	CartPage,
-	CheckoutPage,
+	PaymentPage,
 	ErrorPage,
 	About,
 	ProtectedRoute,
@@ -26,10 +26,10 @@ const App = () => {
 				<Route path="meals" element={<MealsPage />} />
 				<Route path="meals/:id" element={<SingleMeal />} />
 				<Route
-					path="checkout"
+					path="payment"
 					element={
 						<ProtectedRoute>
-							<CheckoutPage />
+							<PaymentPage />
 						</ProtectedRoute>
 					}
 				/>

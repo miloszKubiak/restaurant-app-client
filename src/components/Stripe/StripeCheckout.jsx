@@ -45,9 +45,19 @@ const CheckoutForm = () => {
 			},
 		},
 	};
+	console.log(cart, total_amount, delivery_fee);
 
 	const createPaymentIntent = async () => {
-		console.log("bazinga");
+		try {
+			const { data } = await axios.post(
+				"/api/v1/create-payment-intent",
+				JSON.stringify({ cart, delivery_fee, total_amount })
+			);
+			console.log(data.clientSecret);
+			setClientSecret(data.clientSecret);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	useEffect(() => {
@@ -55,13 +65,50 @@ const CheckoutForm = () => {
 		// eslint-disable-next-line
 	}, []);
 
-	const handleChange = (event) => {};
+	const handleChange = (event) => {
+		setDisabled(event.empty);
+		setError(event.error ? event.error.message : "");
+	};
 
-	const handleSubmit = (e) => {};
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		setProcessing(true);
+		const payload = await stripe.confirmCardPayment(clientSecret, {
+			payment_method: {
+				card: elements.getElement(CardElement),
+			},
+		});
+		if (payload.error) {
+			setError(`Payment failed ${payload.error.message}`);
+			setProcessing(false);
+		} else {
+			setError(null);
+			setProcessing(false);
+			setSucceeded(true);
+			setTimeout(() => {
+				clearCart();
+				navigate("/");
+			}, 5000);
+		}
+	};
 
 	//all styles are from stripe docs
 	return (
 		<div>
+			{succeeded ? (
+				<article>
+					<h4>Your payment was successful!</h4>
+					<h4>Redirecting to home page shortly</h4>
+				</article>
+			) : (
+				<article>
+					<h4>Hello, {user.name}</h4>
+					<p>
+						Your total is {formatPrice(delivery_fee + total_amount)}
+					</p>
+					<p>Test Card Number : 4242 4242 4242 4242</p>
+				</article>
+			)}
 			<form id="payment-form" onSubmit={handleSubmit}>
 				<CardElement
 					id="card-element"
@@ -80,6 +127,12 @@ const CheckoutForm = () => {
 						)}
 					</span>
 				</button>
+				{/* Show any error that happens when processing the payment */}
+				{error && (
+					<div className="card-error" role="alert">
+						{error}
+					</div>
+				)}
 				{/* Show  a success message upon completion */}
 				<p
 					className={

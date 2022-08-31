@@ -26,8 +26,8 @@ const CartTotals = () => {
 					</Total>
 				</Container>
 				{user ? (
-					<ButtonAction to="/checkout">
-						proceed to checkout
+					<ButtonAction to="/payment">
+						proceed to payment
 					</ButtonAction>
 				) : (
 					<ButtonAction to="/register">login</ButtonAction>

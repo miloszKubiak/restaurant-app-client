@@ -4,7 +4,7 @@ import { PageHero, Navbar, Sidebar, StripeCheckout } from "../components";
 import { useCartContext } from "../context/cart-context";
 import { Link } from "react-router-dom";
 
-const CheckoutPage = () => {
+const PaymentPage = () => {
 	const { cart } = useCartContext();
 
 	return (
@@ -26,7 +26,7 @@ const CheckoutPage = () => {
 	);
 };
 
-export default CheckoutPage;
+export default PaymentPage;
 
 const Wrapper = styled.div`
 	min-height: calc(100vh - (20vh + 10rem));

@@ -34,7 +34,7 @@ const Navbar = () => {
 					})}
 					{user && (
 						<li>
-							<Link to="/checkout">checkout</Link>
+							<Link to="/payment">payment</Link>
 						</li>
 					)}
 					{user?.role === "admin" && (
