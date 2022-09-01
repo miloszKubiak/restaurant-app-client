@@ -28,11 +28,9 @@ const SearchContainer = () => {
 
 	return (
 		<Wrapper>
-			<form className="form">
-				<h4>search form</h4>
-				<div className="form-center">
+			<Form>
+				<FormCenter>
 					{/* search position */}
-
 					<FormRow
 						type="text"
 						name="search"
@@ -54,58 +52,71 @@ const SearchContainer = () => {
 						handleChange={handleSearch}
 						list={sortOptions}
 					/>
-					<button
-						className="btn btn-block btn-danger"
+					<ClearButton
 						disabled={loading}
 						onClick={handleSubmit}
 					>
 						clear filters
-					</button>
-				</div>
-			</form>
+					</ClearButton>
+				</FormCenter>
+			</Form>
 		</Wrapper>
 	);
 };
 
 export default SearchContainer;
 
+const Form = styled.form`
+	width: 100%;
+	max-width: 100%;
+`;
+
+const FormCenter = styled.div`
+	/* display: grid;
+	grid-template-columns: 1fr;
+	column-gap: 2rem;
+	row-gap: 0.5rem; */
+	display: flex;
+	justify-content: space-around;
+	gap: 1rem;
+	align-items: center;
+	margin-bottom: 1rem;
+	padding: .5rem;
+`;
+
+const ClearButton = styled.button`
+	flex: 1;
+	display: inline-block;
+	padding: 0.4rem 0.8rem;
+	background: var(--primary-4);
+	color: var(--primary-2);
+	text-decoration: none;
+	text-transform: capitalize;
+	border-radius: 0.3rem;
+	letter-spacing: var(--spacing);
+	transition: var(--transition);
+	font-weight: bold;
+	font-size: 1rem;
+	font-family: inherit;
+	border: none;
+	margin-top: .6rem;
+	text-align: center;
+	cursor: pointer;
+
+	&:hover {
+		background: #c73b3b;
+	}
+`;
+
 const Wrapper = styled.section`
-	.form {
-		width: 100%;
-		max-width: 100%;
-	}
-	.form-input,
-	.form-select,
-	.btn-block {
-		height: 35px;
-	}
-	.form-row {
-		margin-bottom: 0;
-	}
-	.form-center {
-		display: grid;
-		grid-template-columns: 1fr;
-		column-gap: 2rem;
-		row-gap: 0.5rem;
-	}
-	h5 {
-		font-weight: 700;
-	}
-	.btn-block {
-		align-self: end;
-		margin-top: 1rem;
-	}
 	@media (min-width: 768px) {
-		.form-center {
-			grid-template-columns: 1fr 1fr;
+		${FormCenter} {
+			
 		}
 	}
 	@media (min-width: 992px) {
-		.form-center {
-			grid-template-columns: 1fr 1fr 1fr;
-		}
-		.btn-block {
-			margin-top: 0;
+		${FormCenter} {
+			
 		}
 	}
 `;

@@ -34,7 +34,7 @@ export default ChangeViewBar;
 const BtnContainer = styled.div`
 	display: flex;
 	flex: 1;
-	gap: 0.5rem;
+	gap: 1rem;
 
 	.active {
 		background: var(--primary-1);
@@ -70,13 +70,6 @@ const Info = styled.p`
 	margin-right: 2rem;
 `;
 
-const Form = styled.form`
-	flex: 2;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-`;
-
 const Label = styled.label`
 	flex: 1;
 	text-transform: capitalize;
@@ -86,19 +79,13 @@ const Label = styled.label`
 	font-weight: bold;
 `;
 
-const Select = styled.select`
-	flex: 2;
-	border: 0.2rem solid var(--primary-3);
-	border-radius: 0.2rem;
-	outline: var(--primary-1);
-`;
-
 const Wrapper = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	gap: 3rem;
+	gap: 1rem;
 	margin-bottom: 2rem;
+	padding: .5rem;
 
 	hr {
 		flex: 4;

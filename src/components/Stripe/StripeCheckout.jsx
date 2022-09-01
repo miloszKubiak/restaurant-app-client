@@ -49,10 +49,11 @@ const CheckoutForm = () => {
 
 	const createPaymentIntent = async () => {
 		try {
-			const { data } = await axios.post(
-				"/api/v1/create-payment-intent",
-				JSON.stringify({ cart, delivery_fee, total_amount })
-			);
+			const { data } = await axios.post("/api/v1/create-payment-intent", {
+				cart,
+				delivery_fee,
+				total_amount,
+			});
 			console.log(data.clientSecret);
 			setClientSecret(data.clientSecret);
 		} catch (error) {
