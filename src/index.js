@@ -10,7 +10,6 @@ import { AuthProvider } from "./context/auth-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<React.StrictMode>
 		<AuthProvider>
 			<MealsProvider>
 				<CartProvider>
@@ -20,7 +19,6 @@ root.render(
 				</CartProvider>
 			</MealsProvider>
 		</AuthProvider>
-	</React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

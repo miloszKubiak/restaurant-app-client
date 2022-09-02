@@ -12,6 +12,7 @@ import { useAuthContext } from "../../context/auth-context";
 import { formatPrice } from "../../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { authFetch } from "../../utils/axios";
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -19,6 +20,7 @@ const CheckoutForm = () => {
 	const { cart, total_amount, delivery_fee, clearCart } = useCartContext();
 	const { user } = useAuthContext();
 	const navigate = useNavigate();
+	// const [address, setAddress] = useState("");
 	//stripe stuff
 	const [succeeded, setSucceeded] = useState(false);
 	const [error, setError] = useState(null);
@@ -45,7 +47,6 @@ const CheckoutForm = () => {
 			},
 		},
 	};
-	console.log(cart, total_amount, delivery_fee);
 
 	const createPaymentIntent = async () => {
 		try {
@@ -54,13 +55,49 @@ const CheckoutForm = () => {
 				delivery_fee,
 				total_amount,
 			});
-			console.log(data.clientSecret);
 			setClientSecret(data.clientSecret);
 		} catch (error) {
 			console.log(error);
 		}
 	};
+	////////////////////////////////////////////// to refactor !!!
+	//request interceptor
+	authFetch.interceptors.request.use(
+		(config) => {
+			config.headers.common["Authorization"] = `Bearer ${user.token}`;
+			return config;
+		},
+		(error) => {
+			return Promise.reject(error);
+		}
+	);
 
+	//response interceptor
+	authFetch.interceptors.response.use(
+		(response) => {
+			return response;
+		},
+		(error) => {
+			if (error.response.status === 401) {
+				console.log("AUTH ERROR");
+			}
+			return Promise.reject(error);
+		}
+	);
+	/////////////////////////////////////////////////
+	const createOrder = async () => {
+		try {
+			await authFetch.post("/orders", {
+				deliveryAddress: user.location,
+				tax: 100,
+				deliveryFee: delivery_fee,
+				items: cart,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	///////////////////////////////////////////////////
 	useEffect(() => {
 		createPaymentIntent();
 		// eslint-disable-next-line
@@ -87,6 +124,7 @@ const CheckoutForm = () => {
 			setProcessing(false);
 			setSucceeded(true);
 			setTimeout(() => {
+				createOrder();
 				clearCart();
 				navigate("/");
 			}, 5000);
