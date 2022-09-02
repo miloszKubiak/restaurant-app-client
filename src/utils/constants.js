@@ -41,7 +41,4 @@ export const services = [
 
 export const MEALS_SIZES = ["Small", "Normal", "Large"];
 
-export const MEALS_URL = `${process.env.REACT_APP_MEALS_URL}`;
-
-export const SINGLE_MEAL_URL = `${process.env.REACT_APP_SINGLE_MEAL_URL}`;
 
