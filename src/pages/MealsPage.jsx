@@ -36,17 +36,15 @@ const Wrapper = styled.div`
 `;
 
 const Center = styled.div`
-	/* display: grid;
-	gap: 3rem 1.5rem;
-	margin: 4rem auto; */
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	gap: 2rem;
 	max-width: var(--max-width);
 	width: 90vw;
 	margin: 3rem auto;
 
 	@media (max-width: 768px) {
-		flex-direction: column;
 	}
 `;
 

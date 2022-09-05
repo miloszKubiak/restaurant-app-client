@@ -20,7 +20,6 @@ const CheckoutForm = () => {
 	const { cart, total_amount, delivery_fee, clearCart } = useCartContext();
 	const { user } = useAuthContext();
 	const navigate = useNavigate();
-	// const [address, setAddress] = useState("");
 	//stripe stuff
 	const [succeeded, setSucceeded] = useState(false);
 	const [error, setError] = useState(null);
@@ -51,7 +50,9 @@ const CheckoutForm = () => {
 	const createPaymentIntent = async () => {
 		try {
 			const { data } = await axios.post("/api/v1/create-payment-intent", {
-				cart,
+				cart: {
+					
+				},
 				delivery_fee,
 				total_amount,
 			});

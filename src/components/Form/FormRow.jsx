@@ -17,16 +17,6 @@ const FormRow = ({ name, value, type, handleChange, labelText }) => {
 
 export default FormRow;
 
-const Container = styled.div`
-	flex: 1;
-	margin-bottom: 1rem;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
 const Label = styled.label`
 	display: block;
 	font-size: .9rem;
@@ -43,4 +33,20 @@ const Input = styled.input`
 	border-radius: .3rem;
 	background: var(--primary-2);
 	border: .1rem solid var(--primary-3);
+`;
+
+const Container = styled.div`
+	flex: 1;
+	margin-bottom: 1rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: 768px) {
+		${Input} {
+			width: 60%;
+		}
+	}
 `;

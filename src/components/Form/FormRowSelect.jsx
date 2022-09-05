@@ -24,16 +24,6 @@ const FormRowSelect = ({ name, value, list, handleChange, labelText }) => {
 
 export default FormRowSelect;
 
-const Container = styled.div`
-	flex: 1;
-	margin-bottom: 1rem;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-
 const Label = styled.label`
 	display: block;
 	font-size: 0.9rem;
@@ -56,4 +46,20 @@ const Select = styled.select`
 `;
 const Option = styled.option`
 	font-weight: bold;
+`;
+
+const Container = styled.div`
+	flex: 1;
+	margin-bottom: 1rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	@media (max-width: 768px) {
+		${Select} {
+			width: 60%;
+		}
+	}
 `;

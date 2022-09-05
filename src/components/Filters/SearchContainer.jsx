@@ -109,9 +109,9 @@ const ClearButton = styled.button`
 `;
 
 const Wrapper = styled.section`
-	@media (min-width: 768px) {
+	@media (max-width: 768px) {
 		${FormCenter} {
-			
+			flex-direction: column;
 		}
 	}
 	@media (min-width: 992px) {
