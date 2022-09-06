@@ -5,7 +5,7 @@ import { formatPrice } from "../../utils/helpers";
 import AmountButtons from "../Cart/AmountButtons";
 import { useCartContext } from "../../context/cart-context";
 
-const CartItem = ({ id, name, image, size, price, amount }) => {
+const CartItem = ({ id, name, image, price, amount }) => {
 	const { toggleAmount, removeItem } = useCartContext();
 	const increase = () => {
 		toggleAmount(id, "increase")
@@ -22,7 +22,6 @@ const CartItem = ({ id, name, image, size, price, amount }) => {
 				</ImageContainer>
 				<InfoContainer>
 					<Name>{name}</Name>
-					<Size>{size}</Size>
 					<PriceSmall>{formatPrice(price)}</PriceSmall>
 				</InfoContainer>
 			</TitleContainer>
@@ -51,7 +50,6 @@ const TitleContainer = styled.div`
 `;
 
 const ImageContainer = styled.div`
-	flex: 4;
 `;
 
 const Image = styled.img`
@@ -76,8 +74,6 @@ const Name = styled.h5`
 	font-size: 1rem;
   margin-bottom: .5rem;
 `;
-
-const Size = styled.p``;
 
 const PriceSmall = styled.h5`
   margin-top: .5rem;
@@ -106,7 +102,7 @@ const RemoveBtn = styled.button`
 const Wrapper = styled.article`
 	display: flex;
 	align-items: center;
-	height: 12rem;
+	height: 8rem;
 
 	@media screen and (min-width: 768px) {
 		${Subtotal}, ${Price} {
@@ -120,6 +116,11 @@ const Wrapper = styled.article`
 		}
 		${ButtonsContainer}, ${TitleContainer} {
 			flex: 2;
+		}
+		${InfoContainer} {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 `;

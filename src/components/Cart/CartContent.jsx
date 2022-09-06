@@ -13,7 +13,7 @@ const CartContent = () => {
 		<Wrapper>
 			<CartColumns />
 			{cart.map((item) => {
-				return <CartItem key={item.id} {...item} />;
+				return <CartItem key={item.name} {...item} />;
 			})}
 			<hr />
 			<Container>

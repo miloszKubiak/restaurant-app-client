@@ -9,12 +9,11 @@ import {
 const cart_reducer = (state, action) => {
 	switch (action.type) {
 		case ADD_TO_CART:
-			//checking size options
-			const { id, amount, meal, size } = action.payload;
-			const tempItem = state.cart.find((item) => item._id);
+			const { id, amount, meal } = action.payload;
+			const tempItem = state.cart.find((item) => item.id === meal._id);
 			if (tempItem) {
 				const tempCart = state.cart.map((cartItem) => {
-					if (cartItem._id === id) {
+					if (cartItem.id === meal._id) {
 						let newAmount = cartItem.amount + amount;
 						if (newAmount > cartItem.max) {
 							newAmount = cartItem.max;
@@ -24,13 +23,11 @@ const cart_reducer = (state, action) => {
 						return cartItem;
 					}
 				});
-
 				return { ...state, cart: tempCart };
 			} else {
 				const newItem = {
 					id: meal._id,
 					name: meal.name,
-					size,
 					amount,
 					image: meal.image,
 					price: meal.price,
