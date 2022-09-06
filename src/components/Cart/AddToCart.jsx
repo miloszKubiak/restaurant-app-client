@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { MEALS_SIZES } from "../../utils/constants";
 import AmountButtons from "./AmountButtons";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/cart-context";
@@ -9,7 +8,7 @@ const AddToCart = ({ meal }) => {
 	const { addToCart } = useCartContext();
 	const { id, stock } = meal;
 
-	const [mealSize, setMealSize] = useState(MEALS_SIZES[0]);
+	// const [mealSize, setMealSize] = useState(MEALS_SIZES[0]);
 	const [amount, setAmount] = useState(1);
 
 	const increase = () => {
@@ -34,7 +33,7 @@ const AddToCart = ({ meal }) => {
 
 	return (
 		<Wrapper>
-			<Container>
+			{/* <Container>
 				<span> size : </span>
 				<Sizes>
 					{MEALS_SIZES.map((size, index) => {
@@ -53,7 +52,7 @@ const AddToCart = ({ meal }) => {
 						);
 					})}
 				</Sizes>
-			</Container>
+			</Container> */}
 			<BtnContainer>
 				<AmountButtons
 					increase={increase}
@@ -62,7 +61,7 @@ const AddToCart = ({ meal }) => {
 				/>
 				<BtnAddToCart
 					to="/cart"
-					onClick={() => addToCart(id, mealSize, amount, meal)}
+					onClick={() => addToCart(id, amount, meal)}
 				>
 					add to cart
 				</BtnAddToCart>
@@ -75,47 +74,47 @@ export default AddToCart;
 
 const Wrapper = styled.section``;
 
-const Container = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
+// const Container = styled.div`
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
 
-	span {
-		font-weight: bold;
-		text-transform: capitalize;
-		letter-spacing: var(--spacing);
-	}
-`;
+// 	span {
+// 		font-weight: bold;
+// 		text-transform: capitalize;
+// 		letter-spacing: var(--spacing);
+// 	}
+// `;
 
-const Sizes = styled.div`
-	display: flex;
-	gap: 1rem;
-	padding: 1rem;
+// const Sizes = styled.div`
+// 	display: flex;
+// 	gap: 1rem;
+// 	padding: 1rem;
 
-	.size-btn {
-		flex: 1;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 2rem;
-		width: 4rem;
-		opacity: 0.5;
-		border-radius: 0.4rem;
-		background: var(--primary-1);
-		cursor: pointer;
-		color: var(--grey-1);
-		font-weight: bold;
-		border: none;
-		font-size: 1rem;
-		outline: var(--primary-1);
-	}
+// 	.size-btn {
+// 		flex: 1;
+// 		display: flex;
+// 		justify-content: center;
+// 		align-items: center;
+// 		height: 2rem;
+// 		width: 4rem;
+// 		opacity: 0.5;
+// 		border-radius: 0.4rem;
+// 		background: var(--primary-1);
+// 		cursor: pointer;
+// 		color: var(--grey-1);
+// 		font-weight: bold;
+// 		border: none;
+// 		font-size: 1rem;
+// 		outline: var(--primary-1);
+// 	}
 
-	.active {
-		opacity: 1;
-		background: var(--primary-3);
-		color: var(--primary-2);
-	}
-`;
+// 	.active {
+// 		opacity: 1;
+// 		background: var(--primary-3);
+// 		color: var(--primary-2);
+// 	}
+// `;
 
 const BtnAddToCart = styled(Link)`
 	display: inline-block;
@@ -140,6 +139,6 @@ const BtnAddToCart = styled(Link)`
 
 const BtnContainer = styled.div`
 	display: flex;
-	flex-direction: column;
+	justify-content: center;
 	align-items: center;
 `;

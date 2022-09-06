@@ -27,11 +27,15 @@ const Container = styled.div`
 	display: grid;
 	gap: 2rem 1.5rem;
 
-	@media screen and (min-width: 992px) {
+	@media screen and (min-width: 576px) {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	@media screen and (min-width: 1170px) {
+	@media screen and (min-width: 992px) {
 		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media screen and (min-width: 1170px) {
+		grid-template-columns: repeat(4, 1fr);
 	}
 `;

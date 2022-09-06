@@ -39,6 +39,6 @@ export const services = [
 	},
 ];
 
-export const MEALS_SIZES = ["Small", "Normal", "Large"];
+// export const MEALS_SIZES = ["Small", "Normal", "Large"];
 
 
