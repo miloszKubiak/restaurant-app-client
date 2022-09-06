@@ -39,6 +39,7 @@ const Content = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	padding: 1rem;
 `;
 
 const Image = styled.img`

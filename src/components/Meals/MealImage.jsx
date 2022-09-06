@@ -16,8 +16,6 @@ const MealImage = () => {
 export default MealImage;
 
 const Image = styled.img`
-  flex: 1;
-	display: block;
 	width: 100%;
   max-height: 20rem;
 	object-fit: cover;
@@ -25,15 +23,10 @@ const Image = styled.img`
 `;
 
 const Wrapper = styled.section`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	gap: 1rem;
-
-
+	flex: 2;
 	@media screen and (max-width: 576px) {
-    ${Image} {
-      max-height: 12rem;
-    }
+		${Image} {
+			max-height: 12rem;
+		}
 	}
 `;

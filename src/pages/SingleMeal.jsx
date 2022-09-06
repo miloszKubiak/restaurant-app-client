@@ -107,6 +107,7 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	padding: .6rem;
 
 	@media screen and (min-width: 992px) {
 		flex-direction: row;
@@ -115,10 +116,14 @@ const Container = styled.div`
 
 const ImagesContainer = styled.div`
 	flex: 1;
+	display: flex;
+	flex-direction: column;
 `;
 
 const ButtonBack = styled(Link)`
-	display: inline-block;
+	display: block;
+	text-align: center;
+	width: 10rem;
 	padding: 0.8rem 1rem;
 	margin: 1.5rem 0;
 	background: var(--primary-3);
