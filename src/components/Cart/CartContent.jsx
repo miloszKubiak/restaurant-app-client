@@ -8,12 +8,12 @@ import { Link } from "react-router-dom";
 
 const CartContent = () => {
 	const { cart, clearCart } = useCartContext();
-
+	
 	return (
 		<Wrapper>
 			<CartColumns />
 			{cart.map((item) => {
-				return <CartItem key={item.name} {...item} />;
+				return <CartItem key={item.id} {...item} />;
 			})}
 			<hr />
 			<Container>

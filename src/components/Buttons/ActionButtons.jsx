@@ -123,13 +123,13 @@ const ButtonContainer = styled.div`
 		display: flex;
 		flex-direction: column;
 		position: absolute;
-		width: 45%;
-		top: 1.8rem;
+		width: 80%;
+		top: 2.8rem;
 		padding: 0.5rem;
 		background: var(--primary-7);
 		text-align: center;
 		visibility: hidden;
-		border-radius: 0.2rem;
+		border-radius: 0.3rem;
 	}
 
 	.show-dropdown {
@@ -142,11 +142,13 @@ const ButtonUser = styled.button`
 	align-items: center;
 	gap: 0.5rem;
 	background: transparent;
-	border: transparent;
 	color: var(--primary-2);
 	font-weight: bold;
 	cursor: pointer;
 	font-size: 1.2rem;
+	padding: .3rem 0.5rem;
+	border: 0.2rem solid var(--primary-7);
+	border-radius: .3rem;
 
 	svg {
 		font-size: 1.2rem;
@@ -160,6 +162,8 @@ const ButtonLogout = styled.button`
 	color: var(--primary-2);
 	letter-spacing: var(--spacing);
 	text-transform: capitalize;
+	font-size: 1rem;
+	font-family: inherit;
 	cursor: pointer;
 `;
 

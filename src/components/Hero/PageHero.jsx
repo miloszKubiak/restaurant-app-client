@@ -27,7 +27,6 @@ const Wrapper = styled.div`
 	font-size: 2rem;
 	letter-spacing: var(--spacing);
 
-
 	a {
 		padding: .5rem;
 		color: var(--primary-3);

@@ -50,9 +50,7 @@ const CheckoutForm = () => {
 	const createPaymentIntent = async () => {
 		try {
 			const { data } = await axios.post("/api/v1/create-payment-intent", {
-				cart: {
-					
-				},
+				cart,
 				delivery_fee,
 				total_amount,
 			});
@@ -90,7 +88,7 @@ const CheckoutForm = () => {
 		try {
 			await authFetch.post("/orders", {
 				deliveryAddress: user.location,
-				tax: 100,
+				tax: 20,
 				deliveryFee: delivery_fee,
 				items: cart,
 			});
@@ -136,17 +134,24 @@ const CheckoutForm = () => {
 	return (
 		<div>
 			{succeeded ? (
-				<article>
+				<article style={{ marginTop: "10px" }}>
 					<h4>Your payment was successful!</h4>
 					<h4>Redirecting to home page shortly</h4>
 				</article>
 			) : (
 				<article>
-					<h4>Hello, {user.name}</h4>
-					<p>
-						Your total is {formatPrice(delivery_fee + total_amount)}
+					<h4 style={{ marginBottom: "10px", fontSize: "20px" }}>
+						Hello, {user.name}
+					</h4>
+					<p style={{ marginBottom: "10px" }}>
+						Your total is{" "}
+						<span style={{ fontWeight: "bold", fontSize: "20px" }}>
+							{formatPrice(delivery_fee + total_amount)}
+						</span>
 					</p>
-					<p>Test Card Number : 4242 4242 4242 4242</p>
+					<p style={{ marginBottom: "10px", color: "#00bfa6" }}>
+						Test Card Number : 4242 4242 4242 4242
+					</p>
 				</article>
 			)}
 			<form id="payment-form" onSubmit={handleSubmit}>

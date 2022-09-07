@@ -19,7 +19,7 @@ export default FormRow;
 
 const Label = styled.label`
 	display: block;
-	font-size: .9rem;
+	font-size: 1rem;
 	margin-bottom: 0.5rem;
 	text-transform: capitalize;
 	letter-spacing: var(--spacing);
@@ -28,11 +28,12 @@ const Label = styled.label`
 
 const Input = styled.input`
 	width: 100%;
-  height: 2rem;
+	height: 2rem;
 	padding: 0.4rem 0.8rem;
-	border-radius: .3rem;
+	border-radius: 0.3rem;
 	background: var(--primary-2);
-	border: .1rem solid var(--primary-3);
+	border: 0.2rem solid var(--primary-3);
+	outline : none;
 `;
 
 const Container = styled.div`
