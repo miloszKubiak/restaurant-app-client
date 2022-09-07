@@ -19,8 +19,8 @@ const MealList = () => {
 		return (
 			<Wrapper>
 				<Container>
-					<h3>Sorry, no meals matched your search...</h3>
 					<img src={notFoundImg} alt="meal not found"/>
+					<h3>Sorry, no meals matched your search...</h3>
 				</Container>
 			</Wrapper>
 		);
@@ -52,7 +52,7 @@ const Container = styled.div`
 	align-items: center;
 
 	h3 {
-		margin: 0.5rem;
+		margin: 1rem;
 		font-size: 1.5rem;
 		font-weight: bold;
 		line-height: 1.3;

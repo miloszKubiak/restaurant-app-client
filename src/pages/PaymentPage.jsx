@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { PageHero, Navbar, Sidebar, StripeCheckout } from "../components";
 import { useCartContext } from "../context/cart-context";
 import { Link } from "react-router-dom";
+import addToCartImg from "../assets/add-to-cart.svg";
+
 
 const PaymentPage = () => {
 	const { cart } = useCartContext();
@@ -15,8 +17,11 @@ const PaymentPage = () => {
 			<Wrapper>
 				{cart.length < 1 ? (
 					<Empty>
-						<Info>Your cart is empty</Info>
-						<Button to="/meals">buy something tasty</Button>
+						<img src={addToCartImg} alt="add to cart" />
+						<Info>
+							Your cart is empty, add something to your cart.
+						</Info>
+						<Button to="/meals">go to meals</Button>
 					</Empty>
 				) : (
 					<StripeCheckout />
@@ -38,10 +43,20 @@ const Wrapper = styled.div`
 
 const Empty = styled.div`
 	text-align: center;
+	flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		display: block;
+		width: 90vw;
+		max-width: 300px;
+	}
 `;
 
 const Info = styled.h2`
-	margin-bottom: 2rem;
+	margin: 2rem auto;
 `;
 
 const Button = styled(Link)`

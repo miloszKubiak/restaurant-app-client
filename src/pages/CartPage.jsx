@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { PageHero, CartContent, Navbar, Sidebar } from "../components";
 import { useCartContext } from "../context/cart-context";
+import emptyCartImg from "../assets/empty-cart.svg"
 
 const CartPage = () => {
   const { cart } = useCartContext();
@@ -14,7 +15,8 @@ const CartPage = () => {
 				<Sidebar />
 				<WrapperEmpty>
 					<Empty>
-						<Info>Your cart is empty</Info>
+						<img src={emptyCartImg} alt="empty cart" />
+						<Info>Your cart is empty :(</Info>
 						<Button to="/meals">back to meals</Button>
 					</Empty>
 				</WrapperEmpty>
@@ -49,13 +51,20 @@ const WrapperEmpty = styled.main`
 `;
 
 const Empty = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	img {
+		display: block;
+		width: 90vw;
+		max-width: 300px;
+	}
 `;
 
 const Info = styled.h2`
+	margin: 2rem auto;
 `;
 
 const Button = styled(Link)`
