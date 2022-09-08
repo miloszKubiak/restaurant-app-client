@@ -10,6 +10,7 @@ import SingleMeal from "./SingleMeal";
 import ProfilePage from "./ProfilePage";
 import AdminPanel from "./AdminPanel";
 import AdminRoute from "./AdminRoute";
+import LandingPage from "./LandingPage";
 
 export {
 	About,
@@ -24,4 +25,5 @@ export {
 	ProfilePage,
 	AdminPanel,
 	AdminRoute,
+	LandingPage,
 };

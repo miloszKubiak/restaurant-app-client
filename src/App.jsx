@@ -13,6 +13,7 @@ import {
 	ProfilePage,
 	AdminRoute,
 	AdminPanel,
+	LandingPage,
 } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
@@ -50,9 +51,10 @@ const App = () => {
 					}
 				/>
 				<Route path="/register" element={<Register />} />
+				<Route path="/landing" element={<LandingPage />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
-			<Footer />
+			{/* <Footer /> */}
 		</>
 	);
 };
