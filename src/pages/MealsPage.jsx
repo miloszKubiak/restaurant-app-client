@@ -9,20 +9,22 @@ import {
 	SearchContainer,
 	Footer,
 } from "../components";
+import { useMealsContext } from "../context/meals-context";
 
 const MealsPage = () => {
+	const { meals } = useMealsContext()
 	return (
 		<>
 			<Navbar />
 			<Sidebar />
 			<PageHero title="All Meals" />
 			<Wrapper>
-					{/* <Filters /> */}
-					<Container>
-						<SearchContainer />
-						<ChangeViewBar />
-						<MealList />
-					</Container>
+				{/* <Filters /> */}
+				<Container>
+					<SearchContainer />
+					{meals.length > 1 && <ChangeViewBar />}
+					<MealList />
+				</Container>
 			</Wrapper>
 			<Footer />
 		</>

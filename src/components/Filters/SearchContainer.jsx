@@ -72,10 +72,6 @@ const Form = styled.form`
 `;
 
 const FormCenter = styled.div`
-	/* display: grid;
-	grid-template-columns: 1fr;
-	column-gap: 2rem;
-	row-gap: 0.5rem; */
 	display: flex;
 	justify-content: space-around;
 	gap: 1rem;

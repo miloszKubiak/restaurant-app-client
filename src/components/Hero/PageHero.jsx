@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 	width: 100%;
 	min-height: 10vh;
 	background: var(--primary-1);
-	color: var(--primary-4);
+	color: var(--primary-3);
 	font-size: 2rem;
 	letter-spacing: var(--spacing);
 
