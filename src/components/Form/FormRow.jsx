@@ -31,7 +31,6 @@ const Input = styled.input`
 	height: 2rem;
 	padding: 0.4rem 0.8rem;
 	border-radius: 0.3rem;
-	background: var(--primary-2);
 	border: 0.2rem solid var(--primary-3);
 	outline : none;
 `;

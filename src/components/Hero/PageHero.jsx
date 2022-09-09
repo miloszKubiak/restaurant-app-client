@@ -21,8 +21,8 @@ const Wrapper = styled.div`
 	display: flex;
 	align-items: center;
 	width: 100%;
-	min-height: 20vh;
-	background: var(--primary-2);
+	min-height: 10vh;
+	background: var(--primary-1);
 	color: var(--primary-4);
 	font-size: 2rem;
 	letter-spacing: var(--spacing);
@@ -46,6 +46,6 @@ const Container = styled.div`
 	max-width: var(--max-width);
 
 	@media screen and (max-width: 576px) {
-		font-size: 1.2rem;
+		font-size: 1.4rem;
 	}
 `;

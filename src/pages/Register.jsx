@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FormRow, Alert } from "../components";
 import logo from "../assets/logo2.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/auth-context";
 
 const initialState = {
@@ -92,6 +92,7 @@ const Register = () => {
 						{values.isMember ? "Register" : "Login"}
 					</ButtonMember>
 				</Info>
+				<Link to="/">Back to home page</Link>
 			</Form>
 		</Wrapper>
 	);
@@ -121,6 +122,13 @@ const Form = styled.form`
 	margin: 3rem auto;
 	transition: var(--transition);
 	background: var(--primary-1);
+
+	a {
+		margin-top: .5rem;
+		font-weight: bold;
+		color: var(--primary-3);
+		text-decoration: none;
+	}
 
 	&:hover {
 		box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),

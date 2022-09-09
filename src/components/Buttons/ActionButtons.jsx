@@ -16,7 +16,7 @@ const ActionButtons = () => {
 	const handleLogout = () => {
 		logoutUser();
 		clearCart();
-		navigate("/");
+		navigate("/landing");
 	};
 
 	return (

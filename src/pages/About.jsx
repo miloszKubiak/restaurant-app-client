@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import aboutImg from "../assets/hero-bg2.jpg";
-import { Sidebar, Navbar, PageHero } from "../components";
+import aboutImg from "../assets/about.jpg";
+import { Sidebar, Navbar, PageHero, Footer } from "../components";
 
 const AboutPage = () => {
 	return (
@@ -32,6 +32,7 @@ const AboutPage = () => {
 					</Description>
 				</Article>
 			</Wrapper>
+			<Footer />
 		</>
 	);
 };
@@ -44,7 +45,7 @@ const Wrapper = styled.div`
 	width: 90vw;
 	margin: 0 auto;
 	max-width: var(--max-width);
-	min-height: calc(100vh - (20vh + 10rem));
+	min-height: calc(100vh - (10vh + 10rem));
 	padding: 2rem;
 
 	@media screen and (max-width: 992px) {

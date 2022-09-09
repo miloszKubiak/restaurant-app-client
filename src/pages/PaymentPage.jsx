@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PageHero, Navbar, Sidebar, StripeCheckout } from "../components";
+import { PageHero, Navbar, Sidebar, StripeCheckout, Footer } from "../components";
 import { useCartContext } from "../context/cart-context";
 import { Link } from "react-router-dom";
 import addToCartImg from "../assets/add-to-cart.svg";
@@ -27,6 +27,7 @@ const PaymentPage = () => {
 					<StripeCheckout />
 				)}
 			</Wrapper>
+			<Footer />
 		</>
 	);
 };
@@ -34,7 +35,7 @@ const PaymentPage = () => {
 export default PaymentPage;
 
 const Wrapper = styled.div`
-	min-height: calc(100vh - (20vh + 10rem));
+	min-height: calc(100vh - (10vh + 10rem));
 	display: flex;
 	align-items: center;
 	justify-content: center;

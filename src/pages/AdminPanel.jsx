@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PageHero, Navbar, Sidebar } from "../components";
+import { PageHero, Navbar, Sidebar, Footer } from "../components";
 
 const AdminPanel = () => {
 	return (
@@ -11,6 +11,7 @@ const AdminPanel = () => {
 			<Wrapper>
 				<h1>Admin Panel</h1>
 			</Wrapper>
+			<Footer />
 		</>
 	);
 };
@@ -18,5 +19,5 @@ const AdminPanel = () => {
 export default AdminPanel;
 
 const Wrapper = styled.div`
-	min-height: calc(100vh - (20vh + 10rem));
+	min-height: calc(100vh - (10vh + 10rem));
 `;

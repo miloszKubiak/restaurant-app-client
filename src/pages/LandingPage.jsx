@@ -21,7 +21,7 @@ const LandingPage = () => {
 						Amet magnam voluptates ea incidunt id sint accusamus cum
 						placeat rerum consequatur.
 					</Description>
-					<Link to="/register">Login/Register</Link>
+					<Link to="/">look inside!</Link>
 				</Info>
 				<ImgContainer>
 					<img src={landingImg} alt="people eating pizza" />

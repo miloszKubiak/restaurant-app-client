@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { PageHero, CartContent, Navbar, Sidebar } from "../components";
+import { PageHero, CartContent, Navbar, Sidebar, Footer } from "../components";
 import { useCartContext } from "../context/cart-context";
 import emptyCartImg from "../assets/empty-cart.svg"
 
@@ -20,6 +20,7 @@ const CartPage = () => {
 						<Button to="/meals">back to meals</Button>
 					</Empty>
 				</WrapperEmpty>
+				<Footer />
 			</>
     )
   }
@@ -32,6 +33,7 @@ const CartPage = () => {
 			<Wrapper>
 				<CartContent />
 			</Wrapper>
+			<Footer />
 		</>
   );
 };
@@ -39,7 +41,7 @@ const CartPage = () => {
 export default CartPage;
 
 const Wrapper = styled.main`
-	min-height: calc(100vh - (20vh - 10rem));
+	min-height: calc(100vh - (10vh - 10rem));
 `;
 
 const WrapperEmpty = styled.main`

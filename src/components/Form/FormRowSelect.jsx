@@ -38,7 +38,6 @@ const Select = styled.select`
 	height: 2rem;
 	padding: 0.2rem 0.8rem;
 	border-radius: 0.3rem;
-	background: var(--primary-2);
 	border: 0.2rem solid var(--primary-3);
 	text-transform: capitalize;
 	font-family: inherit;

@@ -7,6 +7,7 @@ import {
 	Navbar,
 	Sidebar,
 	SearchContainer,
+	Footer,
 } from "../components";
 
 const MealsPage = () => {
@@ -23,6 +24,7 @@ const MealsPage = () => {
 						<MealList />
 					</Container>
 			</Wrapper>
+			<Footer />
 		</>
 	);
 };

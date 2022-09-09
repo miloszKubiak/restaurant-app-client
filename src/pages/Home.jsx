@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import {
 	FeaturedMeals,
@@ -7,6 +7,7 @@ import {
 	Services,
 	Navbar,
 	Sidebar,
+	Footer,
 } from "../components";
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
 				<Services />
 				<Contact />
 			</Wrapper>
+			<Footer />
 		</>
 	);
 };

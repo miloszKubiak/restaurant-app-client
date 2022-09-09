@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Sidebar, PageHero, Alert, FormRow } from "../components";
+import { Navbar, Sidebar, PageHero, Alert, FormRow, Footer } from "../components";
 import styled from "styled-components";
 import { useAuthContext } from "../context/auth-context";
 
@@ -61,6 +61,7 @@ const ProfilePage = () => {
 					</ButtonSubmit>
 				</Form>
 			</Wrapper>
+			<Footer />
 		</>
 	);
 };
@@ -68,7 +69,7 @@ const ProfilePage = () => {
 export default ProfilePage;
 
 const Wrapper = styled.section`
-	min-height: calc(100vh - (20vh + 10rem));
+	min-height: calc(100vh - (10vh + 10rem));
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

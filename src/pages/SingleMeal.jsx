@@ -12,6 +12,7 @@ import {
 	MealImage,
 	Navbar,
 	Sidebar,
+	Footer,
 } from "../components";
 
 const SingleMeal = () => {
@@ -88,6 +89,7 @@ const SingleMeal = () => {
 					</Content>
 				</Container>
 			</Wrapper>
+			<Footer />
 		</>
 	);
 };
@@ -95,8 +97,7 @@ const SingleMeal = () => {
 export default SingleMeal;
 
 const Wrapper = styled.main`
-	/* min-height: calc(100vh - (20vh + 10rem)) */
-	min-height: calc(100vh - 10rem);
+	min-height: calc(100vh - (10vh + 10rem));
 	padding: 2rem 0;
 	width: 90vw;
 	max-width: var(--max-width);
