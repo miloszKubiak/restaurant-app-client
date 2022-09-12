@@ -128,6 +128,7 @@ const Form = styled.form`
 		font-weight: bold;
 		color: var(--primary-3);
 		text-decoration: none;
+		letter-spacing: var(--spacing);
 	}
 
 	&:hover {
@@ -142,7 +143,8 @@ const Title = styled.section`
 	text-align: center;
 	font-weight: bold;
 	font-size: 1.5rem;
-	margin-top: 0.5rem;
+	margin: 1rem auto;
+	letter-spacing: var(--spacing);
 `;
 
 const ButtonSubmit = styled.button`

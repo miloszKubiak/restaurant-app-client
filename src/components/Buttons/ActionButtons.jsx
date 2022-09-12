@@ -146,12 +146,17 @@ const ButtonUser = styled.button`
 	font-weight: bold;
 	cursor: pointer;
 	font-size: 1.2rem;
-	padding: .3rem 0.5rem;
+	padding: 0.3rem 0.5rem;
 	border: 0.2rem solid var(--primary-7);
-	border-radius: .3rem;
+	border-radius: 0.3rem;
+	transition: var(--transition);
 
 	svg {
 		font-size: 1.2rem;
+	}
+
+	&:hover {
+		background: var(--primary-7);
 	}
 `;
 

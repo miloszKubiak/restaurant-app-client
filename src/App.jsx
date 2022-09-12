@@ -50,11 +50,10 @@ const App = () => {
 						</AdminRoute>
 					}
 				/>
-				<Route path="/register" element={<Register />} />
-				<Route path="/landing" element={<LandingPage />} />
+				<Route path="register" element={<Register />} />
+				<Route path="landing" element={<LandingPage />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
-			{/* <Footer /> */}
 		</>
 	);
 };

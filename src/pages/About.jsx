@@ -41,6 +41,7 @@ export default AboutPage;
 
 const Wrapper = styled.div`
 	display: flex;
+	align-items: center;
 	gap: 4rem;
 	width: 90vw;
 	margin: 0 auto;

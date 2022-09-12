@@ -16,7 +16,7 @@ const Navbar = () => {
 		<Wrapper>
 			<Container>
 				<Header>
-					<Link to="/" className="logo">
+					<Link to="/landing" className="logo">
 						<img src={logo} alt="italian food" />
 					</Link>
 					<Button onClick={openSidebar}>

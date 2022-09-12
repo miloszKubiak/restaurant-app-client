@@ -22,6 +22,7 @@ const LandingPage = () => {
 						placeat rerum consequatur.
 					</Description>
 					<Link to="/">look inside!</Link>
+					<Link to="/register">Register/Login</Link>
 				</Info>
 				<ImgContainer>
 					<img src={landingImg} alt="people eating pizza" />
@@ -67,9 +68,11 @@ const Container = styled.div`
 
 const Info = styled.div`
 	flex: 1;
+	gap: .5rem;
 
 	a {
 		margin-top: 1rem;
+		margin-right: 1rem;
 		display: inline-block;
 		padding: 0.8rem 1rem;
 		background: var(--primary-3);
@@ -104,7 +107,7 @@ const Description = styled.p`
 `;
 
 const ImgContainer = styled.div`
-  flex: 2;
+	flex: 2;
 `;
 
 const Wrapper = styled.main`
