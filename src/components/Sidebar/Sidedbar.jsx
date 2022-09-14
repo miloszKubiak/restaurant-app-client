@@ -45,7 +45,7 @@ const Sidedbar = () => {
 					)}
 					{user?.role === "admin" && (
 						<li>
-							<Link to="/adminPanel" onClick={closeSidebar}>
+							<Link to="/admin-panel" onClick={closeSidebar}>
 								Admin Panel
 							</Link>
 						</li>
