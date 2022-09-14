@@ -1,22 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { PageHero, Navbar, Sidebar, Footer } from "../components";
+import {  } from "../../components";
 
-const AdminPanel = () => {
+const AdminLayout = () => {
 	return (
 		<>
-			<Navbar />
-			<Sidebar />
-			<PageHero title="Admin Panel" />
 			<Wrapper>
 				<h1>Admin Panel</h1>
 			</Wrapper>
-			<Footer />
 		</>
 	);
 };
 
-export default AdminPanel;
+export default AdminLayout;
 
 const Wrapper = styled.div`
 	min-height: calc(100vh - (10vh + 10rem));
