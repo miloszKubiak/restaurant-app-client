@@ -1,15 +1,23 @@
 import React from "react";
 import styled from "styled-components";
-import { } from "../../components";
+import {
+	AdminNavbar,
+	AdminBigSidebar,
+	AdminSmallSidebar,
+} from "../../components/AdminPanel";
 import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
 	return (
 		<>
 			<Wrapper>
-				<h1>Admin Panel</h1>
+				<AdminSmallSidebar />
+				<AdminBigSidebar />
 				<div>
-					<Outlet />
+					<AdminNavbar />
+					<Container>
+						<Outlet />
+					</Container>
 				</div>
 			</Wrapper>
 		</>
@@ -18,6 +26,21 @@ const AdminLayout = () => {
 
 export default AdminLayout;
 
-const Wrapper = styled.div`
-	min-height: calc(100vh - (10vh + 10rem));
+const Container = styled.div`
+	width: 90vw;
+	padding: 2rem 0;
+	margin: 0 auto;
+`;
+
+const Wrapper = styled.section`
+	display: grid;
+	grid-template-columns: 1fr;
+
+	@media screen and (min-width: 992px) {
+		grid-template-columns: auto 1fr;
+
+		${Container} {
+			width: 90%;
+		}
+	}
 `;

@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { PageHero, CartContent, Navbar, Sidebar, Footer } from "../components";
 import { useCartContext } from "../context/cart-context";
-import emptyCartImg from "../assets/empty-cart.svg"
+import emptyCartImg from "../assets/empty-cart.svg";
 
 const CartPage = () => {
-  const { cart } = useCartContext();
+	const { cart } = useCartContext();
 
-  if (cart.length < 1) {
+	if (cart.length < 1) {
 		return (
 			<>
 				<Navbar />
@@ -22,10 +22,10 @@ const CartPage = () => {
 				</WrapperEmpty>
 				<Footer />
 			</>
-    )
-  }
+		);
+	}
 
-  return (
+	return (
 		<>
 			<Navbar />
 			<Sidebar />
@@ -35,7 +35,7 @@ const CartPage = () => {
 			</Wrapper>
 			<Footer />
 		</>
-  );
+	);
 };
 
 export default CartPage;
@@ -76,7 +76,7 @@ const Button = styled(Link)`
 	color: var(--primary-2);
 	text-decoration: none;
 	border-radius: 0.4rem;
-  text-transform: capitalize;
+	text-transform: capitalize;
 	letter-spacing: var(--spacing);
 	transition: var(--transition);
 	font-weight: bold;
