@@ -2,12 +2,32 @@ import React from "react";
 import styled from "styled-components";
 import { FaAlignLeft, FaUserCircle, FaCaretDown } from "react-icons/fa";
 import logo from "../../assets/logo2.png";
+import { useState } from "react";
+import { useAuthContext } from "../../context/auth-context";
+import { useCartContext } from "../../context/cart-context";
+import { useNavigate } from "react-router-dom";
 
 const AdminNavbar = () => {
+	const [showSidebar, setShowSidebar] = useState(false);
+	const [showLogout, setShowLogout] = useState(false);
+	const { clearCart } = useCartContext();
+	const { user, logoutUser } = useAuthContext();
+	const navigate = useNavigate();
+
+	const toggleSidebar = () => {
+		setShowSidebar(!showSidebar);
+	};
+
+	const handleLogout = () => {
+		logoutUser();
+		clearCart();
+		navigate("/landing");
+	};
+
 	return (
 		<Wrapper>
 			<Center>
-				<ButtonToggle>
+				<ButtonToggle type="button" onClick={toggleSidebar}>
 					<FaAlignLeft />
 				</ButtonToggle>
 				<Container>
@@ -15,13 +35,22 @@ const AdminNavbar = () => {
 					<Title>italian food - admin panel</Title>
 				</Container>
 				<ButtonContainer>
-					<ButtonDropDown type="button">
+					<ButtonDropDown
+						type="button"
+						onClick={() => setShowLogout(!showLogout)}
+					>
 						<FaUserCircle />
-						admin
+						{user?.name}
 						<FaCaretDown />
 					</ButtonDropDown>
-					<div className="dropdown show-dropdown">
-						<ButtonLogout type="button">logout</ButtonLogout>
+					<div
+						className={
+							showLogout ? "dropdown show-dropdown" : "dropdown"
+						}
+					>
+						<ButtonLogout type="button" onClick={handleLogout}>
+							logout
+						</ButtonLogout>
 					</div>
 				</ButtonContainer>
 			</Center>
@@ -43,7 +72,7 @@ const ButtonToggle = styled.button`
 	align-items: center;
 	background: transparent;
 	border-color: transparent;
-	font-size: 1.75rem;
+	font-size: 2rem;
 	color: gray;
 	cursor: pointer;
 `;
@@ -126,17 +155,17 @@ const Wrapper = styled.nav`
 	background: whitesmoke;
 
 	@media screen and (min-width: 992px) {
-    position: sticky;
-    top: 0;
+		position: sticky;
+		top: 0;
 
-    ${Center} {
-      width: 90%;
-    }
-    ${Logo} {
-      display: none;
-    }
-    ${Title} {
-      display: block;
-    }
+		${Center} {
+			width: 90%;
+		}
+		${Logo} {
+			display: none;
+		}
+		${Title} {
+			display: block;
+		}
 	}
 `;
