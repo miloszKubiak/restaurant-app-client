@@ -1,4 +1,11 @@
-import { FaHandHoldingHeart, FaPizzaSlice, FaCarSide } from "react-icons/fa";
+import {
+	FaHandHoldingHeart,
+	FaPizzaSlice,
+	FaCarSide,
+	FaChartBar,
+	FaShippingFast,
+} from "react-icons/fa";
+import { MdFastfood } from "react-icons/md";
 
 export const links = [
 	{
@@ -39,6 +46,23 @@ export const services = [
 	},
 ];
 
-// export const MEALS_SIZES = ["Small", "Normal", "Large"];
-
-
+export const adminLinks = [
+	{
+		id: 1,
+		text: "stats",
+		url: "/stats",
+		icon: <FaChartBar />,
+	},
+	{
+		id: 2,
+		text: "add meal",
+		url: "/add-meal",
+		icon: <MdFastfood />,
+	},
+	{
+		id: 3,
+		text: "all orders",
+		url: "/all-orders",
+		icon: <FaShippingFast />,
+	},
+];

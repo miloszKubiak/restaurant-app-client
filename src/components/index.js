@@ -28,6 +28,7 @@ import SearchContainer from "./Filters/SearchContainer";
 import FormRowSelect from "./Form/FormRowSelect";
 import Pagination from "./Pagination/Pagination";
 import StripeCheckout from "./Stripe/StripeCheckout";
+import NavLinks from "./NavLinks/NavLinks";
 
 export {
 	Navbar,
@@ -60,4 +61,5 @@ export {
 	FormRowSelect,
 	Pagination,
 	StripeCheckout,
+	NavLinks,
 };
