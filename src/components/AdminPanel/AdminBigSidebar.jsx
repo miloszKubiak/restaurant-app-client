@@ -12,8 +12,8 @@ const AdminBigSidebar = () => {
 			<div
 				className={
 					isSidebarOpen
-						? "sidebar-container"
-						: "sidebar-container show-sidebar"
+						? "sidebar-container show-sidebar"
+						: "sidebar-container"
 				}
 			>
 				<Content>
