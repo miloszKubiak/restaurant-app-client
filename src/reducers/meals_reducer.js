@@ -1,6 +1,7 @@
 import {
 	SIDEBAR_OPEN,
 	SIDEBAR_CLOSE,
+	TOGGLE_SIDEBAR,
 	SET_LISTVIEW,
 	SET_GRIDVIEW,
 	GET_SINGLE_MEAL_BEGIN,
@@ -20,6 +21,8 @@ const meals_reducer = (state, action) => {
 			return { ...state, isSidebarOpen: true };
 		case SIDEBAR_CLOSE:
 			return { ...state, isSidebarOpen: false };
+		case TOGGLE_SIDEBAR:
+			return { ...state, isSidebarOpen: !state.isSidebarOpen }
 		case SET_LISTVIEW:
 			return { ...state, grid_view: false };
 		case SET_GRIDVIEW:

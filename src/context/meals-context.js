@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useReducer } from "react";
 import {
 	SIDEBAR_OPEN,
 	SIDEBAR_CLOSE,
+	TOGGLE_SIDEBAR,
 	SET_LISTVIEW,
 	SET_GRIDVIEW,
 	GET_SINGLE_MEAL_BEGIN,
@@ -41,6 +42,10 @@ const MealsContext = React.createContext();
 
 export const MealsProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
+
+	const toggleSidebar = () => {
+		dispatch({ type: TOGGLE_SIDEBAR })
+	}
 
 	const openSidebar = () => {
 		dispatch({ type: SIDEBAR_OPEN });
@@ -118,6 +123,7 @@ export const MealsProvider = ({ children }) => {
 				...state,
 				openSidebar,
 				closeSidebar,
+				toggleSidebar,
 				setListView,
 				setGridView,
 				getSingleMeal,

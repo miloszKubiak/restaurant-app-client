@@ -5,18 +5,15 @@ import logo from "../../assets/logo2.png";
 import { useState } from "react";
 import { useAuthContext } from "../../context/auth-context";
 import { useCartContext } from "../../context/cart-context";
+import { useMealsContext } from "../../context/meals-context";
 import { useNavigate } from "react-router-dom";
 
 const AdminNavbar = () => {
-	const [showSidebar, setShowSidebar] = useState(false);
 	const [showLogout, setShowLogout] = useState(false);
 	const { clearCart } = useCartContext();
 	const { user, logoutUser } = useAuthContext();
+	const { toggleSidebar } = useMealsContext();
 	const navigate = useNavigate();
-
-	const toggleSidebar = () => {
-		setShowSidebar(!showSidebar);
-	};
 
 	const handleLogout = () => {
 		logoutUser();
