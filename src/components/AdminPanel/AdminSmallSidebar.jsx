@@ -24,7 +24,7 @@ const AdminSmallSidebar = () => {
 					<Header>
 						<Logo src={logo} alt="company logo" />
 					</Header>
-					<NavLinks />
+					<NavLinks toggleSidebar={toggleSidebar} />
 				</Content>
 			</div>
 		</Wrapper>
@@ -40,14 +40,12 @@ const Wrapper = styled.aside`
 
 	.sidebar-container {
 		position: fixed;
-		inset: 0;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		z-index: -1;
 		opacity: 0;
 		transition: var(--transition);
-		background: rgba(0, 0, 0, 0.9);
 	}
 
 	.show-sidebar {
@@ -56,7 +54,29 @@ const Wrapper = styled.aside`
 	}
 `;
 
-const Content = styled.div``;
-const ButtonClose = styled.button``;
+const Content = styled.div`
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	width: 100vw;
+	padding: 1rem;
+	background: whitesmoke;
+`;
+
+const ButtonClose = styled.button`
+	position: absolute;
+	top: 2rem;
+	left: 2rem;
+	background: transparent;
+	border: none;
+	font-size: 2rem;
+	color: var(--primary-4);
+	cursor: pointer;
+`;
+
 const Header = styled.header``;
+
 const Logo = styled.img``;
