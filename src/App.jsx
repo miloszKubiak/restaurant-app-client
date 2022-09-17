@@ -51,7 +51,7 @@ const App = () => {
 						</AdminRoute>
 					}
 				>
-					<Route index element={<Stats />} />
+					<Route path="stats" element={<Stats />} />
 					<Route path="all-orders" element={<AllOrders />} />
 					<Route path="add-meal" element={<AddMeal />} />
 				</Route>

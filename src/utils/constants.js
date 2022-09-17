@@ -50,19 +50,19 @@ export const adminLinks = [
 	{
 		id: 1,
 		text: "stats",
-		url: "/stats",
+		url: "/admin-panel/stats",
 		icon: <FaChartBar />,
 	},
 	{
 		id: 2,
 		text: "add meal",
-		url: "/add-meal",
+		url: "/admin-panel/add-meal",
 		icon: <MdFastfood />,
 	},
 	{
 		id: 3,
 		text: "all orders",
-		url: "/all-orders",
+		url: "/admin-panel/all-orders",
 		icon: <FaShippingFast />,
 	},
 ];

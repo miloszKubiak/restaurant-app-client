@@ -29,10 +29,7 @@ const AdminBigSidebar = () => {
 
 export default AdminBigSidebar;
 
-const Content = styled.div`
-	position: sticky;
-	top: 0;
-`;
+const Content = styled.div``;
 const Header = styled.header``;
 const Logo = styled.img``;
 
@@ -52,6 +49,17 @@ const Wrapper = styled.aside`
 		}
 		.show-sidebar {
 			margin-left: 0;
+		}
+
+		${Content} {
+			top: 0;
+			position: sticky;
+		}
+		${Header} {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 5rem;
 		}
 	}
 `;

@@ -33,4 +33,48 @@ const Links = styled.div`
 	display: flex;
 	flex-direction: column;
 	padding-top: 2rem;
+
+	.nav-link {
+		display: flex;
+		align-items: center;
+		padding: 1rem 0;
+		text-transform: capitalize;
+		text-decoration: none;
+		letter-spacing: var(--spacing);
+		transition: var(--transition);
+	}
+
+	.icon {
+		font-size: 2rem;
+		margin-right: 0.7rem;
+		display: flex;
+		align-items: center;
+	}
+
+	.nav-link:hover {
+		color: white;
+	}
+
+	.nav-link:hover .icon {
+		color: red;
+	}
+
+	.active {
+		color: gray;
+	}
+
+	.active .icon {
+		color: red;
+	}
+
+	@media screen and (min-width: 992px) {
+		.nav-link {
+			padding-left: 3rem;
+		}
+
+		.nav-link:hover {
+			padding-left: 3.5rem;
+			background: gray;
+		}
+	}
 `;

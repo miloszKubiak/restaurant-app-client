@@ -39,7 +39,7 @@ const Navbar = () => {
 					)}
 					{user?.role === "admin" && (
 						<li>
-							<Link to="/admin-panel">Admin Panel</Link>
+							<Link to="/admin-panel/stats">Admin Panel</Link>
 						</li>
 					)}
 				</Links>
