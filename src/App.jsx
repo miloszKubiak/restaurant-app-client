@@ -12,7 +12,7 @@ import {
 	ProfilePage,
 	LandingPage,
 } from "./pages";
-import { AdminRoute, AdminLayout, AddMeal, AllOrders, Stats } from "./pages/admin";
+import { AdminRoute, AdminLayout, AddMeal, AllOrders, Stats, AllMeals, AddUser, AllUsers } from "./pages/admin";
 import { Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -54,6 +54,9 @@ const App = () => {
 					<Route path="stats" element={<Stats />} />
 					<Route path="all-orders" element={<AllOrders />} />
 					<Route path="add-meal" element={<AddMeal />} />
+					<Route path="all-meals" element={<AllMeals />} />
+					<Route path="add-user" element={<AddUser />} />
+					<Route path="all-users" element={<AllUsers />} />
 				</Route>
 			</Routes>
 		</>

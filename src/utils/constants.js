@@ -3,9 +3,12 @@ import {
 	FaPizzaSlice,
 	FaCarSide,
 	FaChartBar,
-	FaShippingFast,
+	FaUsers,
+	FaUserPlus,
 } from "react-icons/fa";
 import { MdFastfood } from "react-icons/md";
+import { TbTruckDelivery } from "react-icons/tb"
+import { GiMeal } from "react-icons/gi"
 
 export const links = [
 	{
@@ -55,14 +58,32 @@ export const adminLinks = [
 	},
 	{
 		id: 2,
+		text: "all orders",
+		url: "/admin-panel/all-orders",
+		icon: <TbTruckDelivery />,
+	},
+	{
+		id: 3,
 		text: "add meal",
 		url: "/admin-panel/add-meal",
 		icon: <MdFastfood />,
 	},
 	{
-		id: 3,
-		text: "all orders",
-		url: "/admin-panel/all-orders",
-		icon: <FaShippingFast />,
+		id: 4,
+		text: "all meals",
+		url: "/admin-panel/all-meals",
+		icon: <GiMeal />,
+	},
+	{
+		id: 5,
+		text: "add user",
+		url: "/admin-panel/add-user",
+		icon: <FaUserPlus />,
+	},
+	{
+		id: 6,
+		text: "all users",
+		url: "/admin-panel/all-users",
+		icon: <FaUsers />,
 	},
 ];

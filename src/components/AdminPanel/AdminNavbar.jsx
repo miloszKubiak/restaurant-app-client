@@ -131,7 +131,6 @@ const ButtonDropDown = styled.button`
 `;
 
 const ButtonLogout = styled.button`
-	margin-top: 0.5rem;
 	background: transparent;
 	border-color: transparent;
 	color: var(--primary-2);
