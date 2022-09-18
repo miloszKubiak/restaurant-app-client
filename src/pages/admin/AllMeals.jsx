@@ -4,13 +4,12 @@ import { useMealsContext } from "../../context/meals-context";
 import { SearchContainer, Pagination } from "../../components";
 
 const AllMeals = () => {
-	const { getMeals, meals, numOfPages, page, searchType, sort } =
+	const { getMeals, meals, numOfPages, page, searchType, search, sort } =
 		useMealsContext();
-	console.log(meals);
 
 	useEffect(() => {
 		getMeals();
-	}, [page, searchType, sort]);
+	}, [page, searchType, sort, search]);
 
 	return (
 		<>
@@ -18,10 +17,10 @@ const AllMeals = () => {
 			{meals.map((meal) => {
 				return (
 					<li key={meal._id}>
-						<p>{meal._id}</p>
-						<p>{meal.name}</p>
-						<p>{meal.category}</p>
-						<p>{meal.price} $</p>
+						<p>meal id: {meal._id}</p>
+						<p>meal name: {meal.name}</p>
+						<p>meal category: {meal.category}</p>
+						<p>meal price: {meal.price} $</p>
 					</li>
 				);
 			})}
