@@ -42,6 +42,8 @@ const Links = styled.div`
 		text-decoration: none;
 		letter-spacing: var(--spacing);
 		transition: var(--transition);
+		font-weight: bold;
+		color: var(--primary-2);
 	}
 
 	.icon {
@@ -52,19 +54,19 @@ const Links = styled.div`
 	}
 
 	.nav-link:hover {
-		color: white;
+		color: var(--primary-7);
 	}
 
 	.nav-link:hover .icon {
-		color: red;
+		color: var(--primary-7);
 	}
 
 	.active {
-		color: gray;
+		color: var(--primary-7);
 	}
 
 	.active .icon {
-		color: red;
+		color: var(--primary-7);
 	}
 
 	@media screen and (min-width: 992px) {
@@ -74,7 +76,7 @@ const Links = styled.div`
 
 		.nav-link:hover {
 			padding-left: 3.5rem;
-			background: gray;
+			background: var(--primary-1);
 		}
 	}
 `;

@@ -70,7 +70,7 @@ const ButtonToggle = styled.button`
 	background: transparent;
 	border-color: transparent;
 	font-size: 2rem;
-	color: gray;
+	color: var(--primary-2);
 	cursor: pointer;
 `;
 
@@ -93,7 +93,7 @@ const ButtonContainer = styled.div`
 		position: absolute;
 		width: 100%;
 		top: 2.6rem;
-		background: red;
+		background: var(--primary-4);
 		padding: 0.5rem;
 		text-align: center;
 		visibility: hidden;
@@ -111,12 +111,12 @@ const ButtonDropDown = styled.button`
 	align-items: center;
 	justify-content: center;
 	gap: 0.5rem;
-	background: transparent;
-	color: black;
+	background: var(--primary-4);
+	color: var(--primary-6);
 	font-weight: bold;
 	font-size: 1.2rem;
 	padding: 0.3rem 0.5rem;
-	border: 0.2rem solid black;
+	border: 0.2rem solid var(--primary-6);
 	border-radius: 0.3rem;
 	transition: var(--transition);
 	cursor: pointer;
@@ -126,7 +126,8 @@ const ButtonDropDown = styled.button`
 	}
 
 	&:hover {
-		background: var(--primary-7);
+		background: var(--primary-6);
+		color: var(--primary-2);
 	}
 `;
 
@@ -137,8 +138,14 @@ const ButtonLogout = styled.button`
 	letter-spacing: var(--spacing);
 	text-transform: capitalize;
 	font-size: 1rem;
+	font-weight: bold;
 	font-family: inherit;
+	transition: color .4s;
 	cursor: pointer;
+
+	&:hover {
+		color: var(--primary-6);
+	}
 `;
 
 const Wrapper = styled.nav`
@@ -148,7 +155,7 @@ const Wrapper = styled.nav`
 	justify-content: center;
 	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
 		0 2px 4px -1px rgba(0, 0, 0, 0.06);
-	background: whitesmoke;
+	background: var(--primary-3);
 
 	@media screen and (min-width: 992px) {
 		position: sticky;
@@ -162,6 +169,10 @@ const Wrapper = styled.nav`
 		}
 		${Title} {
 			display: block;
+			text-transform: capitalize;
+			color: var(--primary-2);
+			font-size: 1.5rem;
+			letter-spacing: var(--spacing);
 		}
 	}
 `;

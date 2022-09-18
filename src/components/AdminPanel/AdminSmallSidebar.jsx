@@ -63,7 +63,7 @@ const Content = styled.div`
 	height: 100vh;
 	width: 100vw;
 	padding: 1rem;
-	background: whitesmoke;
+	background: var(--primary-3);
 `;
 
 const ButtonClose = styled.button`
@@ -73,8 +73,13 @@ const ButtonClose = styled.button`
 	background: transparent;
 	border: none;
 	font-size: 2rem;
-	color: var(--primary-4);
+	color: var(--primary-2);
+	transition: var(--transition);
 	cursor: pointer;
+
+	&:hover {
+		color: var(--primary-6)
+	}
 `;
 
 const Header = styled.header``;

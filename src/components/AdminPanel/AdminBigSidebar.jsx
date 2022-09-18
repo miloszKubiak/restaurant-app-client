@@ -12,8 +12,8 @@ const AdminBigSidebar = () => {
 			<div
 				className={
 					isSidebarOpen
-						? "sidebar-container show-sidebar"
-						: "sidebar-container"
+						? "sidebar-container"
+						: "sidebar-container show-sidebar"
 				}
 			>
 				<Content>
@@ -40,7 +40,7 @@ const Wrapper = styled.aside`
 		display: block;
 
 		.sidebar-container {
-			background: whitesmoke;
+			background: var(--primary-3);
 			min-height: 100vh;
 			height: 100%;
 			width: 15rem;
