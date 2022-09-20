@@ -74,12 +74,12 @@ export const adminLinks = [
 		url: "/admin-panel/all-meals",
 		icon: <GiMeal />,
 	},
-	{
-		id: 5,
-		text: "add user",
-		url: "/admin-panel/add-user",
-		icon: <FaUserPlus />,
-	},
+	// {
+	// 	id: 5,
+	// 	text: "add user",
+	// 	url: "/admin-panel/add-user",
+	// 	icon: <FaUserPlus />,
+	// },
 	{
 		id: 6,
 		text: "all users",

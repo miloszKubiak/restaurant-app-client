@@ -4,6 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import logo from "../../assets/logo2.png";
 import NavLinks from "../NavLinks/NavLinks";
 import { useMealsContext } from "../../context/meals-context";
+import { Link } from "react-router-dom";
 
 const AdminSmallSidebar = () => {
 	const { isSidebarOpen, toggleSidebar } = useMealsContext();
@@ -22,7 +23,9 @@ const AdminSmallSidebar = () => {
 						<FaTimes />
 					</ButtonClose>
 					<Header>
-						<Logo src={logo} alt="company logo" />
+						<Link to="/landing">
+							<Logo src={logo} alt="company logo" />
+						</Link>
 					</Header>
 					<NavLinks toggleSidebar={toggleSidebar} />
 				</Content>
@@ -78,7 +81,7 @@ const ButtonClose = styled.button`
 	cursor: pointer;
 
 	&:hover {
-		color: var(--primary-6)
+		color: var(--primary-6);
 	}
 `;
 

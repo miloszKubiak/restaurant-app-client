@@ -21,6 +21,7 @@ const AllMeals = () => {
 						<p>meal name: {meal.name}</p>
 						<p>meal category: {meal.category}</p>
 						<p>meal price: {meal.price} $</p>
+						<p>meal image: {meal.image}</p>
 					</li>
 				);
 			})}

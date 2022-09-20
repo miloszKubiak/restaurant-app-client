@@ -3,6 +3,7 @@ import styled from "styled-components";
 import logo from "../../assets/logo2.png";
 import { useMealsContext } from "../../context/meals-context";
 import NavLinks from "../NavLinks/NavLinks";
+import { Link } from "react-router-dom";
 
 const AdminBigSidebar = () => {
 	const { isSidebarOpen } = useMealsContext();
@@ -18,7 +19,9 @@ const AdminBigSidebar = () => {
 			>
 				<Content>
 					<Header>
-						<Logo src={logo} alt="company logo" />
+						<Link to="/landing">
+							<Logo src={logo} alt="company logo" />
+						</Link>
 					</Header>
 					<NavLinks />
 				</Content>
@@ -30,7 +33,9 @@ const AdminBigSidebar = () => {
 export default AdminBigSidebar;
 
 const Content = styled.div``;
+
 const Header = styled.header``;
+
 const Logo = styled.img``;
 
 const Wrapper = styled.aside`

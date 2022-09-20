@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useAuthContext } from "../../context/auth-context";
 import { useCartContext } from "../../context/cart-context";
 import { useMealsContext } from "../../context/meals-context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const AdminNavbar = () => {
 	const [showLogout, setShowLogout] = useState(false);
@@ -28,7 +28,9 @@ const AdminNavbar = () => {
 					<FaAlignLeft />
 				</ButtonToggle>
 				<Container>
-					<Logo src={logo} alt="company logo" />
+					<Link to="/landing">
+						<Logo src={logo} alt="company logo" />
+					</Link>
 					<Title>italian food - admin panel</Title>
 				</Container>
 				<ButtonContainer>

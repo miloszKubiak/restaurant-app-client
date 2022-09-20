@@ -15,7 +15,7 @@ const AllUsers = () => {
 		} catch (error) {
 			console.log(error);
 		}
-	};
+	};	
 
 	useEffect(() => {
 		getUsers();
