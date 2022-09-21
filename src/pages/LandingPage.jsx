@@ -3,8 +3,11 @@ import styled from "styled-components";
 import logo from "../assets/logo2.png";
 import landingImg from "../assets/landing.svg";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../context/auth-context";
 
 const LandingPage = () => {
+	const { user } = useAuthContext();
+
 	return (
 		<Wrapper>
 			<Logo>
@@ -22,7 +25,7 @@ const LandingPage = () => {
 						placeat rerum consequatur.
 					</Description>
 					<Link to="/">look inside!</Link>
-					<Link to="/register">Register/Login</Link>
+					{!user && <Link to="/register">Register/Login</Link>}
 				</Info>
 				<ImgContainer>
 					<img src={landingImg} alt="people eating pizza" />
@@ -68,7 +71,7 @@ const Container = styled.div`
 
 const Info = styled.div`
 	flex: 1;
-	gap: .5rem;
+	gap: 0.5rem;
 
 	a {
 		margin-top: 1rem;

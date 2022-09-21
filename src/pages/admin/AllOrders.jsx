@@ -2,13 +2,38 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { authFetch } from "../../utils/axios";
 import { Loader } from "../../components";
-// import { useAuthContext } from "../../context/auth-context";
+import { useAuthContext } from "../../context/auth-context";
 
 const AllOrders = () => {
 	const [orders, setOrders] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	// const { token } = useAuthContext()
+	const { token } = useAuthContext()
 	///////if error, check token value
+
+	//request interceptor
+	authFetch.interceptors.request.use(
+		(config) => {
+			config.headers.common["Authorization"] = `Bearer ${token}`;
+			return config;
+		},
+		(error) => {
+			return Promise.reject(error);
+		}
+	);
+
+	//response interceptor
+	authFetch.interceptors.response.use(
+		(response) => {
+			return response;
+		},
+		(error) => {
+			if (error.response.status === 401) {
+				console.log("AUTH ERROR");
+			}
+			return Promise.reject(error);
+		}
+	);
+
 	const getOrders = async () => {
 		try {
 			const response = await authFetch.get(`/orders`);
