@@ -15,6 +15,11 @@ import {
 	CLEAR_FILTERS,
 	CHANGE_PAGE,
 	CLEAR_VALUES,
+	CREATE_MEAL_BEGIN,
+	CREATE_MEAL_SUCCESS,
+	CREATE_MEAL_ERROR,
+	DISPLAY_ALERT,
+	CLEAR_ALERT,
 } from "../actions";
 import reducer from "../reducers/meals_reducer";
 import { authFetch } from "../utils/axios";
@@ -38,6 +43,10 @@ const initialState = {
 	numOfPages: 1,
 	page: 1,
 	//create and edit meal values
+	isLoading: false,
+	showAlert: false,
+	alertText: "",
+	alertType: "",
 	isEditing: false,
 	editMealId: "",
 	name: "",
@@ -79,6 +88,41 @@ export const MealsProvider = ({ children }) => {
 
 	const setGridView = () => {
 		dispatch({ type: SET_GRIDVIEW });
+	};
+
+	const createMeal = async () => {
+		dispatch({ type: CREATE_MEAL_BEGIN });
+		try {
+			const {
+				name,
+				description,
+				image,
+				price,
+				category,
+				featured,
+				averageRating,
+				numberOfReviews,
+			} = state;
+			await authFetch.post("/meals", {
+				name,
+				description,
+				image,
+				price,
+				category,
+				featured,
+				averageRating,
+				numberOfReviews,
+			});
+			dispatch({ type: CREATE_MEAL_SUCCESS });
+			dispatch({ type: CLEAR_VALUES });
+		} catch (error) {
+			if (error.response.status === 401) return;
+			dispatch({
+				CREATE_MEAL_ERROR,
+				payload: { msg: error.response.data.msg },
+			});
+		}
+		clearAlert();
 	};
 
 	const getMeals = async () => {
@@ -130,6 +174,17 @@ export const MealsProvider = ({ children }) => {
 		dispatch({ type: CHANGE_PAGE, payload: { page } });
 	};
 
+	const displayAlert = () => {
+		dispatch({ type: DISPLAY_ALERT });
+		clearAlert();
+	};
+
+	const clearAlert = () => {
+		setTimeout(() => {
+			dispatch({ type: CLEAR_ALERT });
+		}, 3000);
+	};
+
 	useEffect(() => {
 		getMeals();
 	}, []);
@@ -149,6 +204,9 @@ export const MealsProvider = ({ children }) => {
 				getMeals,
 				changePage,
 				clearValues,
+				createMeal,
+				displayAlert,
+				clearAlert,
 			}}
 		>
 			{children}

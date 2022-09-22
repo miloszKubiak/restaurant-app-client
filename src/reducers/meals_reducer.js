@@ -14,6 +14,11 @@ import {
 	CLEAR_FILTERS,
 	CHANGE_PAGE,
 	CLEAR_VALUES,
+	CREATE_MEAL_BEGIN,
+	CREATE_MEAL_SUCCESS,
+	CREATE_MEAL_ERROR,
+	DISPLAY_ALERT,
+	CLEAR_ALERT,
 } from "../actions";
 
 const meals_reducer = (state, action) => {
@@ -97,6 +102,33 @@ const meals_reducer = (state, action) => {
 				...state,
 				...initialState,
 			};
+		case CREATE_MEAL_BEGIN:
+			return { ...state, isLoading: true };
+		case CREATE_MEAL_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				showAlert: true,
+				alertType: "success",
+				alertText: "New Meal Created!",
+			};
+		case CREATE_MEAL_ERROR:
+			return {
+				...state,
+				isLoading: false,
+				showAlert: true,
+				alertType: "danger",
+				alertText: action.payload.msg,
+			};
+		case DISPLAY_ALERT:
+			return {
+				...state,
+				showAlert: true,
+				alertType: "danger",
+				alertText: "Please provide all values!",
+			};
+		case CLEAR_ALERT:
+			return { ...state, showAlert: false, alertType: "", alertText: "" };
 		default:
 			throw new Error(`No matching "${action.type}" - action type`);
 	}

@@ -1,13 +1,15 @@
 import React from "react";
-import { useState } from "react";
 import styled from "styled-components";
-import { FormRow, FormRowSelect, Alert } from "../../components";
-import { useAuthContext } from "../../context/auth-context";
+import { FormRow, FormRowSelect } from "../../components";
+import { AdminAlert } from "../../components/AdminPanel";
 import { useMealsContext } from "../../context/meals-context";
 
 const AddMeal = () => {
-	const { isLoading, showAlert, clearAlert, displayAlert } = useAuthContext();
 	const {
+		createMeal,
+		displayAlert,
+		showAlert,
+		isLoading,
 		clearValues,
 		isEditing,
 		handleChange,
@@ -31,21 +33,24 @@ const AddMeal = () => {
 			displayAlert();
 			return;
 		}
-		console.log("create meal");
+		if (isEditing) {
+			//in the future edit meal
+			return;
+		}
+		createMeal();
 	};
 
 	const handleMealInput = (e) => {
 		const name = e.target.name;
 		const value = e.target.value;
 		handleChange({ name, value });
-		console.log(`${name}: ${value}`);
 	};
 
 	return (
 		<Wrapper>
 			<Form onSubmit={handleSubmit}>
-				{showAlert && <Alert />}
 				<Title>{isEditing ? "edit meal" : "add meal"}</Title>
+				{showAlert && <AdminAlert />}
 				<FormRow
 					type="text"
 					name="name"
@@ -98,7 +103,11 @@ const AddMeal = () => {
 					handleChange={handleMealInput}
 				/>
 				<ButtonContainer>
-					<ButtonSubmit type="submit" disabled={isLoading}>
+					<ButtonSubmit
+						type="submit"
+						disabled={isLoading}
+						onClick={handleSubmit}
+					>
 						{isLoading ? "please wait..." : "submit"}
 					</ButtonSubmit>
 					<ButtonClear
