@@ -13,6 +13,7 @@ import {
 	HANDLE_CHANGE,
 	CLEAR_FILTERS,
 	CHANGE_PAGE,
+	CLEAR_VALUES,
 } from "../actions";
 
 const meals_reducer = (state, action) => {
@@ -22,7 +23,7 @@ const meals_reducer = (state, action) => {
 		case SIDEBAR_CLOSE:
 			return { ...state, isSidebarOpen: false };
 		case TOGGLE_SIDEBAR:
-			return { ...state, isSidebarOpen: !state.isSidebarOpen }
+			return { ...state, isSidebarOpen: !state.isSidebarOpen };
 		case SET_LISTVIEW:
 			return { ...state, grid_view: false };
 		case SET_GRIDVIEW:
@@ -76,8 +77,26 @@ const meals_reducer = (state, action) => {
 			};
 		case CHANGE_PAGE:
 			return {
-				...state, page: action.payload.page
-			}
+				...state,
+				page: action.payload.page,
+			};
+		case CLEAR_VALUES:
+			const initialState = {
+				isEditing: false,
+				editMealId: "",
+				name: "",
+				description: "",
+				image: "",
+				price: "",
+				category: "pizza",
+				featured: "true",
+				averageRating: "",
+				numberOfReviews: "",
+			};
+			return {
+				...state,
+				...initialState,
+			};
 		default:
 			throw new Error(`No matching "${action.type}" - action type`);
 	}

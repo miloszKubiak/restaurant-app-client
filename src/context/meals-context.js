@@ -14,6 +14,7 @@ import {
 	HANDLE_CHANGE,
 	CLEAR_FILTERS,
 	CHANGE_PAGE,
+	CLEAR_VALUES,
 } from "../actions";
 import reducer from "../reducers/meals_reducer";
 import { authFetch } from "../utils/axios";
@@ -45,8 +46,8 @@ const initialState = {
 	price: "",
 	category: "pizza",
 	featuredOptions: ["true", "false"],
-	featured: true,
-	averageRating: "",
+	featured: "true",
+	averageRating: 3,
 	averageRatingOptions: [1, 2, 3, 4, 5],
 	numberOfReviews: "",
 };
@@ -56,9 +57,13 @@ const MealsContext = React.createContext();
 export const MealsProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
 
+	const clearValues = () => {
+		dispatch({ type: CLEAR_VALUES });
+	};
+
 	const toggleSidebar = () => {
-		dispatch({ type: TOGGLE_SIDEBAR })
-	}
+		dispatch({ type: TOGGLE_SIDEBAR });
+	};
 
 	const openSidebar = () => {
 		dispatch({ type: SIDEBAR_OPEN });
@@ -68,12 +73,12 @@ export const MealsProvider = ({ children }) => {
 		dispatch({ type: SIDEBAR_CLOSE });
 	};
 
-		const setListView = () => {
-			dispatch({ type: SET_LISTVIEW });
-		};
+	const setListView = () => {
+		dispatch({ type: SET_LISTVIEW });
+	};
 
-		const setGridView = () => {
-			dispatch({ type: SET_GRIDVIEW });
+	const setGridView = () => {
+		dispatch({ type: SET_GRIDVIEW });
 	};
 
 	const getMeals = async () => {
@@ -112,7 +117,7 @@ export const MealsProvider = ({ children }) => {
 			dispatch({ type: GET_SINGLE_MEAL_ERROR });
 		}
 	};
-	
+
 	const handleChange = ({ name, value }) => {
 		dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
 	};
@@ -122,8 +127,8 @@ export const MealsProvider = ({ children }) => {
 	};
 
 	const changePage = (page) => {
-		dispatch({ type: CHANGE_PAGE, payload: { page } })
-	}
+		dispatch({ type: CHANGE_PAGE, payload: { page } });
+	};
 
 	useEffect(() => {
 		getMeals();
@@ -143,6 +148,7 @@ export const MealsProvider = ({ children }) => {
 				handleChange,
 				getMeals,
 				changePage,
+				clearValues,
 			}}
 		>
 			{children}

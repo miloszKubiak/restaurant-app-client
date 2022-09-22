@@ -8,6 +8,7 @@ import { useMealsContext } from "../../context/meals-context";
 const AddMeal = () => {
 	const { isLoading, showAlert, clearAlert, displayAlert } = useAuthContext();
 	const {
+		clearValues,
 		isEditing,
 		handleChange,
 		name,
@@ -100,7 +101,14 @@ const AddMeal = () => {
 					<ButtonSubmit type="submit" disabled={isLoading}>
 						{isLoading ? "please wait..." : "submit"}
 					</ButtonSubmit>
-					<ButtonClear>clear</ButtonClear>
+					<ButtonClear
+						onClick={(e) => {
+							e.preventDefault();
+							clearValues();
+						}}
+					>
+						clear
+					</ButtonClear>
 				</ButtonContainer>
 			</Form>
 		</Wrapper>
@@ -124,7 +132,7 @@ const Form = styled.form`
 	max-width: 30rem;
 	width: 90vw;
 	padding: 1rem;
-	margin: .5rem auto;
+	margin: 0.5rem auto;
 	transition: var(--transition);
 `;
 
