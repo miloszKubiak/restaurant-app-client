@@ -6,12 +6,32 @@ import { useAuthContext } from "../../context/auth-context";
 import { useMealsContext } from "../../context/meals-context";
 
 const AddMeal = () => {
-	const { isLoading, showAlert, clearAlert } = useAuthContext();
-	const { handleChange } = useMealsContext();
+	const { isLoading, showAlert, clearAlert, displayAlert } = useAuthContext();
+	const {
+		isEditing,
+		handleChange,
+		name,
+		description,
+		image,
+		price,
+		category,
+		categoryOptions,
+		featuredOptions,
+		featured,
+		averageRatingOptions,
+		averageRating,
+		numberOfReviews,
+	} = useMealsContext();
 
-	const createMeal = async () => {};
+	const handleSubmit = (e) => {
+		e.preventDefault();
 
-	const handleSubmit = () => {};
+		if (!name || !description || !image || !price || !numberOfReviews) {
+			displayAlert();
+			return;
+		}
+		console.log("create meal");
+	};
 
 	const handleMealInput = (e) => {
 		const name = e.target.name;
@@ -23,49 +43,57 @@ const AddMeal = () => {
 	return (
 		<Wrapper>
 			<Form onSubmit={handleSubmit}>
-				<Title>create meal form</Title>
 				{showAlert && <Alert />}
+				<Title>{isEditing ? "edit meal" : "add meal"}</Title>
 				<FormRow
 					type="text"
 					name="name"
+					value={name}
 					handleChange={handleMealInput}
 				/>
 				<FormRow
 					type="text"
 					name="description"
+					value={description}
 					handleChange={handleMealInput}
 				/>
 				<FormRow
 					type="text"
 					name="image"
+					value={image}
 					handleChange={handleMealInput}
 				/>
 				<FormRow
 					type="text"
 					name="price"
+					value={price}
 					handleChange={handleMealInput}
 				/>
 				<FormRowSelect
 					labelText="category"
 					name="category"
+					value={category}
 					handleChange={handleMealInput}
-					list={["all"]}
+					list={categoryOptions}
 				/>
 				<FormRowSelect
 					labelText="featured"
 					name="featured"
+					value={featured}
 					handleChange={handleMealInput}
-					list={["true", "false"]}
+					list={featuredOptions}
 				/>
 				<FormRowSelect
 					labelText="averageRating"
 					name="averageRating"
+					value={averageRating}
 					handleChange={handleMealInput}
-					list={[1, 2, 3, 4, 5]}
+					list={averageRatingOptions}
 				/>
 				<FormRow
 					type="text"
 					name="numberOfReviews"
+					value={numberOfReviews}
 					handleChange={handleMealInput}
 				/>
 				<ButtonContainer>
@@ -95,8 +123,8 @@ const Form = styled.form`
 	justify-content: center;
 	max-width: 30rem;
 	width: 90vw;
-	padding: 2.5rem;
-	margin: 1rem auto;
+	padding: 1rem;
+	margin: .5rem auto;
 	transition: var(--transition);
 `;
 
