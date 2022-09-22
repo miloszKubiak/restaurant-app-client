@@ -1,16 +1,22 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { FormRow, FormRowSelect, Alert } from "../../components";
 import { useAuthContext } from "../../context/auth-context";
+import { useMealsContext } from "../../context/meals-context";
 
 const AddMeal = () => {
-	const { isLoading, showAlert } = useAuthContext();
+	const { isLoading, showAlert, clearAlert } = useAuthContext();
+	const { handleChange } = useMealsContext();
+
+	const createMeal = async () => {};
 
 	const handleSubmit = () => {};
 
 	const handleMealInput = (e) => {
 		const name = e.target.name;
 		const value = e.target.value;
+		handleChange({ name, value });
 		console.log(`${name}: ${value}`);
 	};
 
@@ -19,25 +25,48 @@ const AddMeal = () => {
 			<Form onSubmit={handleSubmit}>
 				<Title>create meal form</Title>
 				{showAlert && <Alert />}
-				<FormRow type="text" name="name" onChange={handleMealInput} />
+				<FormRow
+					type="text"
+					name="name"
+					handleChange={handleMealInput}
+				/>
 				<FormRow
 					type="text"
 					name="description"
-					onChange={handleMealInput}
+					handleChange={handleMealInput}
 				/>
-				<FormRow type="text" name="image" onChange={handleMealInput} />
-				<FormRow type="text" name="price" onChange={handleMealInput} />
+				<FormRow
+					type="text"
+					name="image"
+					handleChange={handleMealInput}
+				/>
+				<FormRow
+					type="text"
+					name="price"
+					handleChange={handleMealInput}
+				/>
 				<FormRowSelect
 					labelText="category"
 					name="category"
-					onChange={handleMealInput}
+					handleChange={handleMealInput}
 					list={["all"]}
 				/>
 				<FormRowSelect
 					labelText="featured"
 					name="featured"
-					onChange={handleMealInput}
-					list={["yes", "no"]}
+					handleChange={handleMealInput}
+					list={["true", "false"]}
+				/>
+				<FormRowSelect
+					labelText="averageRating"
+					name="averageRating"
+					handleChange={handleMealInput}
+					list={[1, 2, 3, 4, 5]}
+				/>
+				<FormRow
+					type="text"
+					name="numberOfReviews"
+					handleChange={handleMealInput}
 				/>
 				<ButtonContainer>
 					<ButtonSubmit type="submit" disabled={isLoading}>

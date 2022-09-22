@@ -36,6 +36,18 @@ const initialState = {
 	sortOptions: ["a-z", "z-a", "price-lowest", "price-highest"],
 	numOfPages: 1,
 	page: 1,
+	//create and edit meal values
+	isEditing: false,
+	editMealId: "",
+	name: "",
+	description: "",
+	image: "",
+	price: "",
+	category: "pizza",
+	featuredOptions: [true, false],
+	featured: true,
+	averageRatingOptions: [1, 2, 3, 4, 5],
+	numberOfReviews: "",
 };
 
 const MealsContext = React.createContext();
@@ -99,8 +111,7 @@ export const MealsProvider = ({ children }) => {
 			dispatch({ type: GET_SINGLE_MEAL_ERROR });
 		}
 	};
-	///////
-	//////
+	
 	const handleChange = ({ name, value }) => {
 		dispatch({ type: HANDLE_CHANGE, payload: { name, value } });
 	};
