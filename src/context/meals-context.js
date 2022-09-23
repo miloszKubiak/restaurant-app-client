@@ -47,6 +47,7 @@ const initialState = {
 	showAlert: false,
 	alertText: "",
 	alertType: "",
+	/////
 	isEditing: false,
 	editMealId: "",
 	name: "",

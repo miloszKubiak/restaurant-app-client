@@ -216,7 +216,7 @@ const ButtonSubmit = styled.button`
 
 const Title = styled.h3`
 	padding: 0.5rem;
-	margin-top: 1rem;
+	font-size: 2.5rem;
 	text-transform: capitalize;
 	letter-spacing: var(--spacing);
 `;
