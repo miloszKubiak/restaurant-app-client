@@ -1,6 +1,6 @@
 import Order from "./Order";
-import OrderItem from "./OrderItem";
 import OrderInfo from "./OrderInfo";
-import OrdersContainer from "./OrdersContainer"
+import OrderItem from "./OrderItem";
+import OrdersContainer from "./OrdersContainer";
 
-export { Order, OrderItem, OrderInfo, OrdersContainer };
+export { Order, OrderInfo, OrderItem, OrdersContainer };

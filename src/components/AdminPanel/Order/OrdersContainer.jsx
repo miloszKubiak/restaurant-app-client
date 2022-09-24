@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { authFetch } from "../../../utils/axios";
-import { Loader } from "../../components";
+import { Loader } from "../../";
 import Order from "./Order";
-import { useAuthContext } from "../../../context/auth-context";
+// import { useAuthContext } from "../../../context/auth-context";
 
 const OrdersContainer = () => {
 	const [orders, setOrders] = useState([]);
