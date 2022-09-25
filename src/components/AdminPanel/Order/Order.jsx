@@ -3,7 +3,9 @@ import moment from "moment";
 import styled from "styled-components";
 import OrderItem from "./OrderItem";
 import OrderInfo from "./OrderInfo";
-import { FaUserCircle, FaPizzaSlice } from "react-icons/fa";
+import { FaUserCircle, FaShippingFast } from "react-icons/fa";
+import { authFetch } from "../../../utils/axios";
+import { Link } from "react-router-dom";
 
 const Order = ({
 	_id,
@@ -14,15 +16,23 @@ const Order = ({
 	total,
 	orderItems,
 }) => {
-	let date = moment(createdAt)
+	let date = moment(createdAt);
 	date = date.format("MMMM Do YYYY, h:mm:ss a");
+
+	const changeOrderStatus = async () => {
+		console.log("paid")
+	};
+
+	const deleteOrder = async () => {
+		console.log("deleted");
+	}
 
 	return (
 		<Wrapper>
 			<Header>
 				{/* <h5>order id: {_id}</h5>
 				<p>user id: {user._id}</p> */}
-				<OrderInfo icon={<FaPizzaSlice />} text={_id} />
+				<OrderInfo icon={<FaShippingFast />} text={_id} />
 				<OrderInfo icon={<FaUserCircle />} text={user} />
 			</Header>
 			<Content>
@@ -37,6 +47,10 @@ const Order = ({
 						})}
 					</OrderItems>
 				</Center>
+				<Footer>
+					<Button onClick={changeOrderStatus}>Paid</Button>
+					<Button onClick={deleteOrder}>Delete</Button>
+				</Footer>
 			</Content>
 		</Wrapper>
 	);
@@ -51,7 +65,8 @@ const Wrapper = styled.div`
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	border-radius: .3rem;
+	justify-content: space-between;
+	border-radius: 0.3rem;
 	background: var(--primary-3);
 `;
 
@@ -59,19 +74,19 @@ const OrderItems = styled.div`
 	display: flex;
 	flex-direction: column;
 	height: 8rem;
-	margin-top: .3rem;
+	margin-top: 0.3rem;
 	padding: 0.3rem 0;
 	overflow: scroll;
 	overflow-x: hidden;
 	background: var(--primary-1);
-	border-radius: .3rem;
+	border-radius: 0.3rem;
 `;
 
 const Header = styled.header``;
 const Content = styled.div``;
 
 const Text = styled.p`
-	margin-top: .2rem;
+	margin-top: 0.2rem;
 	color: var(--primary-2);
 
 	&:nth-child(odd) {
@@ -85,16 +100,37 @@ const Center = styled.div`
 	justify-content: space-between;
 
 	.status {
-		margin: .2rem 0;
+		margin: 0.2rem 0;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		border-radius: .2rem;;
+		border-radius: 0.2rem;
 		text-transform: capitalize;
 		text-align: center;
 		letter-spacing: var(--spacing);
-		width: 100px;
-		height: 30px;
-		background: #f5f56f;
+		width: 6rem;
+		height: 2rem;
+		font-size: 1rem;
+		font-weight: bold;
+		font-family: inherit;
+		background: #f7ddb4;
+		transition: var(--transition);
 	}
+`;
+
+const Footer = styled.footer`
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: .5rem;
+	width: 100%;
+	padding: .2rem;
+	margin-top: .5rem;
+`;
+
+const Button = styled.button`
+	width: 4rem;
+	height: 1.5rem;
+	font-weight: bold;
+	transition: var(--transition);
 `;

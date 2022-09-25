@@ -5,7 +5,7 @@ const OrderItem = ({ name, amount, price }) => {
 	return (
 		<Wrapper>
 			<p>{name}</p>
-			<p>qty: {amount}</p>
+			<p>amount: {amount}</p>
 			<p>price: {price} €</p>
 		</Wrapper>
 	);
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
 	margin: .2rem .5rem;;
 	padding: .2rem;
 	border-radius: .3rem;
-	background: var(--primary-3);
+	background: var(--primary-7);
 
 	p {
 		margin: 0 .3rem;
