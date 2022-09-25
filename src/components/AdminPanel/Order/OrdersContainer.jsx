@@ -71,9 +71,9 @@ const OrdersContainer = () => {
 export default OrdersContainer;
 
 const Wrapper = styled.div`
-	background: gray;
 	display: flex;
 	justify-content: center;
+	margin: .5rem auto;
 `;
 
 const Title = styled.h3`

@@ -13,10 +13,13 @@ const OrderInfo = ({ text, icon }) => {
 export default OrderInfo;
 
 const Wrapper = styled.div`
-	background: blue;
-	padding: .3rem;
+	display: flex;
+	padding: .2rem 0;
+	color: var(--primary-2)
 `;
 
 const Icon = styled.span``;
 
-const Text = styled.span``;
+const Text = styled.span`
+	margin-left: .2rem;
+`;

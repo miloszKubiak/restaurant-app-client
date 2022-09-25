@@ -27,9 +27,9 @@ const Order = ({
 			</Header>
 			<Content>
 				<Center>
-					<p>delivery address: {deliveryAddress}</p>
-					<p>created at : {date}</p>
-					<p>total: {total}</p>
+					<Text>Delivery address: {deliveryAddress}</Text>
+					<Text>Created at : {date}</Text>
+					<Text>Total: {total} €</Text>
 					<div className={`status ${status}`}>{status}</div>
 					<OrderItems>
 						{orderItems.map((item) => {
@@ -48,25 +48,36 @@ const Wrapper = styled.div`
 	background: red;
 	margin: 0.5rem;
 	padding: 0.5rem;
-	/* width: 16rem;
-	height: 100%; */
 	flex: 1;
 	display: flex;
 	flex-direction: column;
+	border-radius: .3rem;
+	background: var(--primary-3);
 `;
 
 const OrderItems = styled.div`
-	background: #000;
-	padding: 0.3rem;
 	display: flex;
 	flex-direction: column;
 	height: 8rem;
+	margin-top: .3rem;
+	padding: 0.3rem 0;
 	overflow: scroll;
 	overflow-x: hidden;
+	background: var(--primary-1);
+	border-radius: .3rem;
 `;
 
 const Header = styled.header``;
 const Content = styled.div``;
+
+const Text = styled.p`
+	margin-top: .2rem;
+	color: var(--primary-2);
+
+	&:nth-child(odd) {
+		font-weight: bold;
+	}
+`;
 
 const Center = styled.div`
 	display: flex;
@@ -84,6 +95,6 @@ const Center = styled.div`
 		letter-spacing: var(--spacing);
 		width: 100px;
 		height: 30px;
-		background: yellow;
+		background: #f5f56f;
 	}
 `;
