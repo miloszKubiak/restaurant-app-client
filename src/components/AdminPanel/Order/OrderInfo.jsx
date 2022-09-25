@@ -12,7 +12,10 @@ const OrderInfo = ({ text, icon }) => {
 
 export default OrderInfo;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+	background: blue;
+	padding: .3rem;
+`;
 
 const Icon = styled.span``;
 

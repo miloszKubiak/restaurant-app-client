@@ -67,13 +67,15 @@ const Pagination = () => {
 export default Pagination;
 
 const Wrapper = styled.section`
-	height: 4rem;
+	height: 100%;
+	padding: .4rem;
 	margin-top: 2rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
 	flex-wrap: wrap;
+	background: #000;
 `;
 
 const ButtonsContainer = styled.div`
