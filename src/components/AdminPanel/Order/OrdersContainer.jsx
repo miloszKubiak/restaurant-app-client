@@ -59,7 +59,13 @@ const OrdersContainer = () => {
 				{isLoading && <Loader />}
 				<Container>
 					{orders.map((order) => {
-						return <Order key={order._id} {...order} />;
+						return (
+							<Order
+								key={order._id}
+								{...order}
+								onOrderUpdate={getOrders}
+							/>
+						);
 					})}
 				</Container>
 			</Content>
@@ -72,7 +78,7 @@ export default OrdersContainer;
 const Wrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	margin: .5rem auto;
+	margin: 0.5rem auto;
 `;
 
 const Title = styled.h3`
@@ -84,9 +90,9 @@ const Title = styled.h3`
 `;
 
 const Container = styled.div`
-	padding: .5rem;
+	padding: 0.5rem;
 	display: grid;
-	gap: .5rem;
+	gap: 0.5rem;
 
 	@media screen and (min-width: 576px) {
 		grid-template-columns: repeat(2, 1fr);

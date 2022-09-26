@@ -15,21 +15,24 @@ const Order = ({
 	total,
 	clientSecret,
 	orderItems,
+	onOrderUpdate,
 }) => {
 	let date = moment(createdAt);
 	date = date.format("MMMM Do YYYY, h:mm:ss a");
 
-	const changeOrderStatus = async () => {
+	const changeOrderStatus = async (_id) => {
 		try {
 			await authFetch.patch(`/orders/${_id}`, clientSecret);
+			onOrderUpdate();
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	const deleteOrder = async () => {
+	const deleteOrder = async (_id) => {
 		try {
 			await authFetch.delete(`/orders/${_id}`);
+			onOrderUpdate();
 		} catch (error) {
 			console.log(error);
 		}
@@ -55,11 +58,14 @@ const Order = ({
 				</Center>
 				<Footer>
 					{status === "pending" && (
-						<Button color="blue" onClick={changeOrderStatus}>
+						<Button
+							color="blue"
+							onClick={() => changeOrderStatus(_id)}
+						>
 							Paid
 						</Button>
 					)}
-					<Button color="red" onClick={deleteOrder}>
+					<Button color="red" onClick={() => deleteOrder(_id)}>
 						Delete
 					</Button>
 				</Footer>
