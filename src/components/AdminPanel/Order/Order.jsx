@@ -28,14 +28,16 @@ const Order = ({
 	};
 
 	const deleteOrder = async () => {
-		console.log("deleted");
+		try {
+			await authFetch.delete(`/orders/${_id}`);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
 		<Wrapper>
 			<Header>
-				{/* <h5>order id: {_id}</h5>
-				<p>user id: {user._id}</p> */}
 				<OrderInfo icon={<FaShippingFast />} text={_id} />
 				<OrderInfo icon={<FaUserCircle />} text={user} />
 			</Header>
@@ -118,7 +120,7 @@ const Status = styled.div`
 	font-weight: bold;
 	font-family: inherit;
 	background: ${(props) =>
-		props.status === "pending" ? "#f7ddb4" : "#00634a"};
+		props.status === "pending" ? "#f7ddb4" : "#00e787"};
 	color: ${(props) => (props.status === "pending" ? "#333" : "#feffea")};
 	transition: var(--transition);
 `;
@@ -140,9 +142,21 @@ const Footer = styled.footer`
 `;
 
 const Button = styled.button`
-	width: 4rem;
-	height: 1.5rem;
+	margin: 0.2rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.2rem;
+	text-transform: capitalize;
+	text-align: center;
+	letter-spacing: var(--spacing);
+	width: 6rem;
+	height: 2rem;
+	font-size: 1rem;
 	font-weight: bold;
-	transition: var(--transition);
+	font-family: inherit;
+	border: none;
+	color: var(--primary-2);
 	background: ${(props) => (props.color === "blue" ? "#536DFE" : "#F50057")};
+	cursor: pointer;
 `;
