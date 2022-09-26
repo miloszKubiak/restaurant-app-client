@@ -5,7 +5,6 @@ import OrderItem from "./OrderItem";
 import OrderInfo from "./OrderInfo";
 import { FaUserCircle, FaShippingFast } from "react-icons/fa";
 import { authFetch } from "../../../utils/axios";
-import { Link } from "react-router-dom";
 
 const Order = ({
 	_id,
@@ -14,18 +13,23 @@ const Order = ({
 	createdAt,
 	user,
 	total,
+	clientSecret,
 	orderItems,
 }) => {
 	let date = moment(createdAt);
 	date = date.format("MMMM Do YYYY, h:mm:ss a");
 
 	const changeOrderStatus = async () => {
-		console.log("paid")
+		try {
+			await authFetch.patch(`/orders/${_id}`, clientSecret);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const deleteOrder = async () => {
 		console.log("deleted");
-	}
+	};
 
 	return (
 		<Wrapper>
@@ -38,9 +42,9 @@ const Order = ({
 			<Content>
 				<Center>
 					<Text>Delivery address: {deliveryAddress}</Text>
-					<Text>Created at : {date}</Text>
+					<Text>Created at: {date}</Text>
 					<Text>Total: {total} €</Text>
-					<div className={`status ${status}`}>{status}</div>
+					<Status status={`${status}`}>{status}</Status>
 					<OrderItems>
 						{orderItems.map((item) => {
 							return <OrderItem key={item._id} {...item} />;
@@ -48,8 +52,14 @@ const Order = ({
 					</OrderItems>
 				</Center>
 				<Footer>
-					<Button onClick={changeOrderStatus}>Paid</Button>
-					<Button onClick={deleteOrder}>Delete</Button>
+					{status === "pending" && (
+						<Button color="blue" onClick={changeOrderStatus}>
+							Paid
+						</Button>
+					)}
+					<Button color="red" onClick={deleteOrder}>
+						Delete
+					</Button>
 				</Footer>
 			</Content>
 		</Wrapper>
@@ -59,7 +69,6 @@ const Order = ({
 export default Order;
 
 const Wrapper = styled.div`
-	background: red;
 	margin: 0.5rem;
 	padding: 0.5rem;
 	flex: 1;
@@ -94,38 +103,40 @@ const Text = styled.p`
 	}
 `;
 
+const Status = styled.div`
+	margin: 0.2rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.2rem;
+	text-transform: capitalize;
+	text-align: center;
+	letter-spacing: var(--spacing);
+	width: 6rem;
+	height: 2rem;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: inherit;
+	background: ${(props) =>
+		props.status === "pending" ? "#f7ddb4" : "#00634a"};
+	color: ${(props) => (props.status === "pending" ? "#333" : "#feffea")};
+	transition: var(--transition);
+`;
+
 const Center = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-
-	.status {
-		margin: 0.2rem 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border-radius: 0.2rem;
-		text-transform: capitalize;
-		text-align: center;
-		letter-spacing: var(--spacing);
-		width: 6rem;
-		height: 2rem;
-		font-size: 1rem;
-		font-weight: bold;
-		font-family: inherit;
-		background: #f7ddb4;
-		transition: var(--transition);
-	}
 `;
 
 const Footer = styled.footer`
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	gap: .5rem;
+	gap: 0.5rem;
 	width: 100%;
-	padding: .2rem;
-	margin-top: .5rem;
+	padding: 0.2rem;
+	margin-top: 0.5rem;
 `;
 
 const Button = styled.button`
@@ -133,4 +144,5 @@ const Button = styled.button`
 	height: 1.5rem;
 	font-weight: bold;
 	transition: var(--transition);
+	background: ${(props) => (props.color === "blue" ? "#536DFE" : "#F50057")};
 `;

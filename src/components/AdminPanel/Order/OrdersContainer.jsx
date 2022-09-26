@@ -11,7 +11,6 @@ const OrdersContainer = () => {
 	const [isLoading, setIsLoading] = useState(true);
 	// const { token } = useAuthContext()
 	const token = localStorage.getItem("token");
-	console.log(token);
 	///////if error, check token value
 
 	//request interceptor
