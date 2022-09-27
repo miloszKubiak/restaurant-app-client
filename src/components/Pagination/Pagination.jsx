@@ -75,7 +75,6 @@ const Wrapper = styled.section`
 	align-items: center;
 	gap: 1rem;
 	flex-wrap: wrap;
-	background: #000;
 `;
 
 const ButtonsContainer = styled.div`

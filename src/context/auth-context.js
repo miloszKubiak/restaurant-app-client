@@ -19,9 +19,8 @@ import {
 	addUserToLocalStorage,
 	removeUserFromLocalStorage,
 } from "../utils/helpers";
-import { authFetch } from "../utils/axios";
+import authFetch from "../utils/axios";
 
-const token = localStorage.getItem("token");
 const user = localStorage.getItem("user");
 const userLocation = localStorage.getItem("location");
 
@@ -31,7 +30,6 @@ const initialState = {
 	alertText: "",
 	alertType: "",
 	user: user ? JSON.parse(user) : null,
-	token: token,
 	userLocation: userLocation || "",
 };
 
@@ -39,30 +37,6 @@ const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, initialState);
-
-	//request interceptor
-	authFetch.interceptors.request.use(
-		(config) => {
-			config.headers.common["Authorization"] = `Bearer ${state.token}`;
-			return config;
-		},
-		(error) => {
-			return Promise.reject(error);
-		}
-	);
-
-	//response interceptor
-	authFetch.interceptors.response.use(
-		(response) => {
-			return response;
-		},
-		(error) => {
-			if (error.response.status === 401) {
-				console.log("AUTH ERROR");
-			}
-			return Promise.reject(error);
-		}
-	);
 
 	const displayAlert = () => {
 		dispatch({ type: DISPLAY_ALERT });

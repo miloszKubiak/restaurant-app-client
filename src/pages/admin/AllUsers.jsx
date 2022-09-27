@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { authFetch } from "../../utils/axios";
+import authFetch from "../../utils/axios";
 import { Loader } from "../../components";
 
 const AllUsers = () => {

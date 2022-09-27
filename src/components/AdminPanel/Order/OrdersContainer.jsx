@@ -1,48 +1,39 @@
 import React from "react";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import { authFetch } from "../../../utils/axios";
+import authFetch from "../../../utils/axios";
 import { Loader } from "../../";
 import Order from "./Order";
-// import { useAuthContext } from "../../../context/auth-context";
 
 const OrdersContainer = () => {
 	const [orders, setOrders] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
-	// const { token } = useAuthContext()
-	const token = localStorage.getItem("token");
-	///////if error, check token value
-
-	//request interceptor
-	authFetch.interceptors.request.use(
-		(config) => {
-			config.headers.common["Authorization"] = `Bearer ${token}`;
-			return config;
-		},
-		(error) => {
-			return Promise.reject(error);
-		}
-	);
-
-	//response interceptor
-	authFetch.interceptors.response.use(
-		(response) => {
-			return response;
-		},
-		(error) => {
-			if (error.response.status === 401) {
-				console.log("AUTH ERROR");
-			}
-			return Promise.reject(error);
-		}
-	);
-
+	
 	const getOrders = async () => {
 		try {
 			const response = await authFetch.get(`/orders`);
 			setOrders(response.data.orders);
 			console.log(response.data.orders);
 			setIsLoading(false);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const changeOrderStatus = async (_id, clientSecret) => {
+		try {
+			await authFetch.patch(`/orders/${_id}`, clientSecret);
+			console.log(clientSecret);
+			getOrders();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const deleteOrder = async (_id) => {
+		try {
+			await authFetch.delete(`/orders/${_id}`);
+			getOrders();
 		} catch (error) {
 			console.log(error);
 		}
@@ -63,7 +54,8 @@ const OrdersContainer = () => {
 							<Order
 								key={order._id}
 								{...order}
-								onOrderUpdate={getOrders}
+								onOrderStatusChange={changeOrderStatus}
+								onOrderDelete={deleteOrder}
 							/>
 						);
 					})}

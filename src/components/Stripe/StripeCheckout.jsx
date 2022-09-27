@@ -12,7 +12,7 @@ import { useAuthContext } from "../../context/auth-context";
 import { formatPrice } from "../../utils/helpers";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { authFetch } from "../../utils/axios";
+import authFetch from "../../utils/axios";
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -51,39 +51,15 @@ const CheckoutForm = () => {
 		try {
 			const { data } = await axios.post("/api/v1/create-payment-intent", {
 				cart,
-				delivery_fee,
-				total_amount,
+				delivery_fee: delivery_fee * 100,
+				total_amount: total_amount * 100,
 			});
 			setClientSecret(data.clientSecret);
 		} catch (error) {
 			console.log(error);
 		}
 	};
-	////////////////////////////////////////////// to refactor !!!
-	//request interceptor
-	authFetch.interceptors.request.use(
-		(config) => {
-			config.headers.common["Authorization"] = `Bearer ${user.token}`;
-			return config;
-		},
-		(error) => {
-			return Promise.reject(error);
-		}
-	);
-
-	//response interceptor
-	authFetch.interceptors.response.use(
-		(response) => {
-			return response;
-		},
-		(error) => {
-			if (error.response.status === 401) {
-				console.log("AUTH ERROR");
-			}
-			return Promise.reject(error);
-		}
-	);
-	/////////////////////////////////////////////////
+	
 	const createOrder = async () => {
 		try {
 			await authFetch.post("/orders", {
@@ -96,7 +72,7 @@ const CheckoutForm = () => {
 			console.log(error);
 		}
 	};
-	///////////////////////////////////////////////////
+
 	useEffect(() => {
 		createPaymentIntent();
 		// eslint-disable-next-line
@@ -115,6 +91,7 @@ const CheckoutForm = () => {
 				card: elements.getElement(CardElement),
 			},
 		});
+		console.log(payload);
 		if (payload.error) {
 			setError(`Payment failed ${payload.error.message}`);
 			setProcessing(false);

@@ -22,7 +22,7 @@ import {
 	CLEAR_ALERT,
 } from "../actions";
 import reducer from "../reducers/meals_reducer";
-import { authFetch } from "../utils/axios";
+import authFetch from "../utils/axios";
 
 const initialState = {
 	isSidebarOpen: false,
