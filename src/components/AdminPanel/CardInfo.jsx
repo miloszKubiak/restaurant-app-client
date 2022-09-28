@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const CardInfo = ({ title, text }) => {
   return (
     <Wrapper>
-      <Title>{title}:</Title>
+      <Title>{title}</Title>
       <Text>{text}</Text>
     </Wrapper>
   )
@@ -18,7 +18,9 @@ const Wrapper = styled.div`
 	color: var(--primary-2);
 `;
 
-const Title = styled.span``;
+const Title = styled.span`
+  font-weight: bold;
+`;
 
 const Text = styled.span`
 	margin-left: 0.2rem;

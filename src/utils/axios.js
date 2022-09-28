@@ -1,6 +1,5 @@
 import axios from "axios";
 
-///axios custom instance
 const token = localStorage.getItem("token");
 
 const authFetch = axios.create({

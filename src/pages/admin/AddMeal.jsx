@@ -70,7 +70,7 @@ const AddMeal = () => {
 					handleChange={handleMealInput}
 				/>
 				<FormRow
-					type="text"
+					type="number"
 					name="price"
 					value={price}
 					handleChange={handleMealInput}
