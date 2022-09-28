@@ -147,6 +147,16 @@ const Button = styled.button`
 	font-family: inherit;
 	border: none;
 	color: var(--primary-2);
+	transition: var(--transition);
 	background: ${(props) => (props.color === "blue" ? "#536DFE" : "#F50057")};
 	cursor: pointer;
+
+	&:hover {
+		background: ${(props) =>
+			props.color === "blue" ? "#0520bb" : "#b1003e"};
+	}
+
+	/* &:disabled {
+		background: var(--grey-1);
+	} */
 `;

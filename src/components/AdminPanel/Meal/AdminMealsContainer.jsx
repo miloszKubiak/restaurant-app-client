@@ -8,15 +8,32 @@ const AdminMealsContainer = () => {
 	const { getMeals, meals, page, searchType, search, sort } =
 		useMealsContext();
 
+	const editMeal = (_id) => {
+		console.log("edit");
+	};
+
+	const deleteMeal = (_id) => {
+		console.log("delete");
+	};
+
 	useEffect(() => {
 		getMeals();
 	}, [page, searchType, sort, search]);
 
 	return (
 		<Wrapper>
-			{meals.map((meal) => {
-				return <AdminMeal key={meal._id} {...meal} />;
-			})}
+			<Center>
+				{meals.map((meal) => {
+					return (
+						<AdminMeal
+							key={meal._id}
+							{...meal}
+							onMealEdit={editMeal}
+							onMealDelete={deleteMeal}
+						/>
+					);
+				})}
+			</Center>
 		</Wrapper>
 	);
 };
@@ -24,7 +41,14 @@ const AdminMealsContainer = () => {
 export default AdminMealsContainer;
 
 const Wrapper = styled.div`
+	display: flex;
+	justify-content: center;
+`;
+
+const Center = styled.div`
 	display: grid;
+	width: 100%;
+	max-width: 70vw;
 	gap: 0.5rem;
 
 	@media screen and (min-width: 576px) {

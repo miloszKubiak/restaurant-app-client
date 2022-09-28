@@ -1,14 +1,32 @@
 import React from "react";
 import styled from "styled-components";
 
-const AdminMeal = ({ _id, name, category, price, image }) => {
+const AdminMeal = ({
+	_id,
+	name,
+	category,
+	price,
+	image,
+	onMealEdit,
+	onMealDelete,
+}) => {
 	return (
 		<Wrapper>
-			<h5>ID: {_id}</h5>
-			<p>name: {name}</p>
-			<p>category: {category}</p>
-			<p>price: {price} $</p>
-			<Image src={image} alt={name} />
+			<Info>
+				<h5>ID: {_id}</h5>
+				<p>name: {name}</p>
+				<p>category: {category}</p>
+				<p>price: {price} $</p>
+				<Image src={image} alt={name} />
+			</Info>
+			<ButtonsContainer>
+				<Button color="yellow" onClick={() => onMealEdit(_id)}>
+					edit
+				</Button>
+				<Button color="red" onClick={() => onMealDelete(_id)}>
+					delete
+				</Button>
+			</ButtonsContainer>
 		</Wrapper>
 	);
 };
@@ -25,4 +43,51 @@ const Wrapper = styled.div`
 const Image = styled.img`
 	width: 5rem;
 	height: 5rem;
+	margin: 0.5rem auto;
+`;
+
+const Info = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+`;
+
+const ButtonsContainer = styled.div`
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 0.5rem;
+	width: 100%;
+	margin-top: 0.5rem auto;
+`;
+
+const Button = styled.button`
+	margin: 0.2rem 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.2rem;
+	text-transform: capitalize;
+	text-align: center;
+	letter-spacing: var(--spacing);
+	width: 6rem;
+	height: 2rem;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: inherit;
+	border: none;
+	color: var(--primary-2);
+	transition: var(--transition);
+	background: ${(props) =>
+		props.color === "yellow" ? "#F9A826" : "#F50057"};
+	cursor: pointer;
+
+	&:hover {
+		background: ${(props) =>
+			props.color === "yellow" ? "#b16e03" : "#b1003e"};
+	}
+
+	/* &:disabled {
+		background: var(--grey-1);
+	} */
 `;

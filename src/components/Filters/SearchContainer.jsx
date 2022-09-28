@@ -68,7 +68,7 @@ export default SearchContainer;
 
 const Form = styled.form`
 	width: 100%;
-	max-width: 100%;
+	max-width: 70vw;
 `;
 
 const FormCenter = styled.div`
@@ -105,6 +105,9 @@ const ClearButton = styled.button`
 `;
 
 const Wrapper = styled.section`
+	display: flex;
+	justify-content: center;
+	
 	@media (max-width: 768px) {
 		${FormCenter} {
 			flex-direction: column;
@@ -112,7 +115,6 @@ const Wrapper = styled.section`
 	}
 	@media (min-width: 992px) {
 		${FormCenter} {
-			
 		}
 	}
 `;

@@ -16,3 +16,4 @@ const AllMeals = () => {
 };
 
 export default AllMeals;
+
