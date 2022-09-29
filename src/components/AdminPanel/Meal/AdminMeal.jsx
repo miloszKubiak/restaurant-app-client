@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useMealsContext } from "../../../context/meals-context";
 
 const AdminMeal = ({
 	_id,
@@ -11,6 +12,8 @@ const AdminMeal = ({
 	onMealDelete,
 	onSetEditMeal,
 }) => {
+	const { isLoading } = useMealsContext();
+
 	return (
 		<Wrapper>
 			<Info>
@@ -25,11 +28,19 @@ const AdminMeal = ({
 					style={{ textDecoration: "none" }}
 					to="/admin-panel/add-meal"
 				>
-					<Button color="yellow" onClick={() => onSetEditMeal(_id)}>
+					<Button
+						color="yellow"
+						onClick={() => onSetEditMeal(_id)}
+						disabled={isLoading}
+					>
 						edit
 					</Button>
 				</Link>
-				<Button color="red" onClick={() => onMealDelete(_id)}>
+				<Button
+					color="red"
+					onClick={() => onMealDelete(_id)}
+					disabled={isLoading}
+				>
 					delete
 				</Button>
 			</ButtonsContainer>
@@ -93,7 +104,7 @@ const Button = styled.button`
 			props.color === "yellow" ? "#b16e03" : "#b1003e"};
 	}
 
-	/* &:disabled {
+	&:disabled {
 		background: var(--grey-1);
-	} */
+	}
 `;

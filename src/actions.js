@@ -22,6 +22,8 @@ export const EDIT_MEAL_BEGIN = "EDIT_MEAL_BEGIN";
 export const EDIT_MEAL_SUCCESS = "EDIT_MEAL_SUCCESS";
 export const EDIT_MEAL_ERROR = "EDIT_MEAL_ERROR";
 export const DELETE_MEAL_BEGIN = "DELETE_MEAL_BEGIN";
+export const DELETE_MEAL_SUCCESS = "DELETE_MEAL_SUCCESS";
+export const DELETE_MEAL_ERROR = "DELETE_MEAL_ERROR";
 //cart context actions
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";

@@ -23,6 +23,8 @@ import {
 	EDIT_MEAL_SUCCESS,
 	EDIT_MEAL_ERROR,
 	DELETE_MEAL_BEGIN,
+	DELETE_MEAL_SUCCESS,
+	DELETE_MEAL_ERROR,
 	DISPLAY_ALERT,
 	CLEAR_ALERT,
 } from "../actions";
@@ -171,7 +173,20 @@ export const MealsProvider = ({ children }) => {
 		clearAlert();
 	};
 
-	const deleteMeal = (id) => {};
+	const deleteMeal = async (mealId) => {
+		dispatch({ type: DELETE_MEAL_BEGIN });
+		try {
+			await authFetch.delete(`/meals/${mealId}`);
+			dispatch({ type: DELETE_MEAL_SUCCESS });
+			getMeals();
+		} catch (error) {
+			dispatch({
+				type: DELETE_MEAL_ERROR,
+				payload: { msg: error.response.data.msg },
+			});
+		}
+		clearAlert();
+	};
 	////end of functionalities available only for the admin////
 
 	const getMeals = async () => {

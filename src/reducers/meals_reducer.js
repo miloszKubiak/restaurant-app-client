@@ -22,6 +22,8 @@ import {
 	EDIT_MEAL_SUCCESS,
 	EDIT_MEAL_ERROR,
 	DELETE_MEAL_BEGIN,
+	DELETE_MEAL_SUCCESS,
+	DELETE_MEAL_ERROR,
 	DISPLAY_ALERT,
 	CLEAR_ALERT,
 } from "../actions";
@@ -167,6 +169,27 @@ const meals_reducer = (state, action) => {
 				alertText: "Meal Updated!",
 			};
 		case EDIT_MEAL_ERROR:
+			return {
+				...state,
+				isLoading: false,
+				showAlert: true,
+				alertType: "danger",
+				alertText: action.payload.msg,
+			};
+		case DELETE_MEAL_BEGIN:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case DELETE_MEAL_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				showAlert: true,
+				alertType: "success",
+				alertText: "Meal Deleted!",
+			};
+		case DELETE_MEAL_ERROR:
 			return {
 				...state,
 				isLoading: false,
