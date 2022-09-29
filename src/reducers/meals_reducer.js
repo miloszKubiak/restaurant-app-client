@@ -17,6 +17,11 @@ import {
 	CREATE_MEAL_BEGIN,
 	CREATE_MEAL_SUCCESS,
 	CREATE_MEAL_ERROR,
+	SET_EDIT_MEAL,
+	EDIT_MEAL_BEGIN,
+	EDIT_MEAL_SUCCESS,
+	EDIT_MEAL_ERROR,
+	DELETE_MEAL_BEGIN,
 	DISPLAY_ALERT,
 	CLEAR_ALERT,
 } from "../actions";
@@ -113,6 +118,55 @@ const meals_reducer = (state, action) => {
 				alertText: "New Meal Created!",
 			};
 		case CREATE_MEAL_ERROR:
+			return {
+				...state,
+				isLoading: false,
+				showAlert: true,
+				alertType: "danger",
+				alertText: action.payload.msg,
+			};
+		case SET_EDIT_MEAL:
+			const meal = state.meals.find(
+				(meal) => meal._id === action.payload.id
+			);
+			const {
+				_id,
+				name,
+				description,
+				image,
+				price,
+				category,
+				featured,
+				averageRating,
+				numberOfReviews,
+			} = meal;
+			return {
+				...state,
+				isEditing: true,
+				editMealId: _id,
+				name,
+				description,
+				image,
+				price,
+				category,
+				featured,
+				averageRating,
+				numberOfReviews,
+			};
+		case EDIT_MEAL_BEGIN:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case EDIT_MEAL_SUCCESS:
+			return {
+				...state,
+				isLoading: false,
+				showAlert: true,
+				alertType: "success",
+				alertText: "Meal Updated!",
+			};
+		case EDIT_MEAL_ERROR:
 			return {
 				...state,
 				isLoading: false,

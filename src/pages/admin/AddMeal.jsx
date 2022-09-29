@@ -7,6 +7,7 @@ import { useMealsContext } from "../../context/meals-context";
 const AddMeal = () => {
 	const {
 		createMeal,
+		editMeal,
 		displayAlert,
 		showAlert,
 		isLoading,
@@ -34,7 +35,7 @@ const AddMeal = () => {
 			return;
 		}
 		if (isEditing) {
-			//in the future edit meal
+			editMeal()
 			return;
 		}
 		createMeal();

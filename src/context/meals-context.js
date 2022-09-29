@@ -18,6 +18,11 @@ import {
 	CREATE_MEAL_BEGIN,
 	CREATE_MEAL_SUCCESS,
 	CREATE_MEAL_ERROR,
+	SET_EDIT_MEAL,
+	EDIT_MEAL_BEGIN,
+	EDIT_MEAL_SUCCESS,
+	EDIT_MEAL_ERROR,
+	DELETE_MEAL_BEGIN,
 	DISPLAY_ALERT,
 	CLEAR_ALERT,
 } from "../actions";
@@ -91,6 +96,7 @@ export const MealsProvider = ({ children }) => {
 		dispatch({ type: SET_GRIDVIEW });
 	};
 
+	////functionalities available only for the admin////
 	const createMeal = async () => {
 		dispatch({ type: CREATE_MEAL_BEGIN });
 		try {
@@ -125,6 +131,48 @@ export const MealsProvider = ({ children }) => {
 		}
 		clearAlert();
 	};
+
+	const setEditMeal = (id) => {
+		dispatch({ type: SET_EDIT_MEAL, payload: { id } });
+	};
+
+	const editMeal = async () => {
+		dispatch({ type: EDIT_MEAL_BEGIN });
+		try {
+			const {
+				name,
+				description,
+				image,
+				price,
+				category,
+				featured,
+				averageRating,
+				numberOfReviews,
+			} = state;
+			await authFetch.patch(`/meals/${state.editMealId}`, {
+				name,
+				description,
+				image,
+				price,
+				category,
+				featured,
+				averageRating,
+				numberOfReviews,
+			});
+			dispatch({ type: EDIT_MEAL_SUCCESS });
+			dispatch({ type: CLEAR_VALUES });
+		} catch (error) {
+			if (error.response.status === 401) return;
+			dispatch({
+				type: EDIT_MEAL_ERROR,
+				payload: { msg: error.response.data.msg },
+			});
+		}
+		clearAlert();
+	};
+
+	const deleteMeal = (id) => {};
+	////end of functionalities available only for the admin////
 
 	const getMeals = async () => {
 		const { search, searchType, sort, page } = state;
@@ -206,6 +254,9 @@ export const MealsProvider = ({ children }) => {
 				changePage,
 				clearValues,
 				createMeal,
+				setEditMeal,
+				editMeal,
+				deleteMeal,
 				displayAlert,
 				clearAlert,
 			}}

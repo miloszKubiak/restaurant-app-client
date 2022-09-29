@@ -5,16 +5,8 @@ import { AdminMeal } from "../Meal";
 import styled from "styled-components";
 
 const AdminMealsContainer = () => {
-	const { getMeals, meals, page, searchType, search, sort } =
+	const { getMeals, meals, page, searchType, search, sort, setEditMeal, deleteMeal } =
 		useMealsContext();
-
-	const editMeal = (_id) => {
-		console.log("edit");
-	};
-
-	const deleteMeal = (_id) => {
-		console.log("delete");
-	};
 
 	useEffect(() => {
 		getMeals();
@@ -28,8 +20,8 @@ const AdminMealsContainer = () => {
 						<AdminMeal
 							key={meal._id}
 							{...meal}
-							onMealEdit={editMeal}
 							onMealDelete={deleteMeal}
+							onSetEditMeal={setEditMeal}
 						/>
 					);
 				})}

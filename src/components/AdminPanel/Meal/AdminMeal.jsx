@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const AdminMeal = ({
 	_id,
@@ -7,8 +8,8 @@ const AdminMeal = ({
 	category,
 	price,
 	image,
-	onMealEdit,
 	onMealDelete,
+	onSetEditMeal,
 }) => {
 	return (
 		<Wrapper>
@@ -20,9 +21,14 @@ const AdminMeal = ({
 				<Image src={image} alt={name} />
 			</Info>
 			<ButtonsContainer>
-				<Button color="yellow" onClick={() => onMealEdit(_id)}>
-					edit
-				</Button>
+				<Link
+					style={{ textDecoration: "none" }}
+					to="/admin-panel/add-meal"
+				>
+					<Button color="yellow" onClick={() => onSetEditMeal(_id)}>
+						edit
+					</Button>
+				</Link>
 				<Button color="red" onClick={() => onMealDelete(_id)}>
 					delete
 				</Button>

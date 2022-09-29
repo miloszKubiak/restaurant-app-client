@@ -17,6 +17,11 @@ export const CLEAR_VALUES = "CLEAR_VALUES";
 export const CREATE_MEAL_BEGIN = "CREATE_MEAL_BEGIN";
 export const CREATE_MEAL_SUCCESS = "CREATE_MEAL_SUCCESS";
 export const CREATE_MEAL_ERROR = "CREATE_MEAL_ERROR";
+export const SET_EDIT_MEAL = "SET_EDIT_MEAL";
+export const EDIT_MEAL_BEGIN = "EDIT_MEAL_BEGIN";
+export const EDIT_MEAL_SUCCESS = "EDIT_MEAL_SUCCESS";
+export const EDIT_MEAL_ERROR = "EDIT_MEAL_ERROR";
+export const DELETE_MEAL_BEGIN = "DELETE_MEAL_BEGIN";
 //cart context actions
 export const ADD_TO_CART = "ADD_TO_CART";
 export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM";
