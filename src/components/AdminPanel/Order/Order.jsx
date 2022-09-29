@@ -16,9 +16,12 @@ const Order = ({
 	orderItems,
 	onOrderStatusChange,
 	onOrderDelete,
+	onIsLoading,
 }) => {
 	let date = moment(createdAt);
 	date = date.format("MMMM Do YYYY, h:mm:ss a");
+
+	console.log(onIsLoading);
 
 	return (
 		<Wrapper>
@@ -45,11 +48,16 @@ const Order = ({
 							onClick={() =>
 								onOrderStatusChange(_id, clientSecret)
 							}
+							disabled={onIsLoading}
 						>
 							Paid
 						</Button>
 					)}
-					<Button color="red" onClick={() => onOrderDelete(_id)}>
+					<Button
+						color="red"
+						onClick={() => onOrderDelete(_id)}
+						disabled={onIsLoading}
+					>
 						Delete
 					</Button>
 				</Footer>
@@ -156,7 +164,7 @@ const Button = styled.button`
 			props.color === "blue" ? "#0520bb" : "#b1003e"};
 	}
 
-	/* &:disabled {
+	&:disabled {
 		background: var(--grey-1);
-	} */
+	}
 `;

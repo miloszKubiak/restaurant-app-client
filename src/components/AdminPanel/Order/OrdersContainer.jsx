@@ -7,10 +7,11 @@ import Order from "./Order";
 
 const OrdersContainer = () => {
 	const [orders, setOrders] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	
 	const getOrders = async () => {
 		try {
+			setIsLoading(true);
 			const response = await authFetch.get(`/orders`);
 			setOrders(response.data.orders);
 			console.log(response.data.orders);
@@ -54,6 +55,7 @@ const OrdersContainer = () => {
 							<Order
 								key={order._id}
 								{...order}
+								onIsLoading={isLoading}
 								onOrderStatusChange={changeOrderStatus}
 								onOrderDelete={deleteOrder}
 							/>

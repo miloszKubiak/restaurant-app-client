@@ -17,7 +17,7 @@ import authFetch from "../../utils/axios";
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const CheckoutForm = () => {
-	const { cart, total_amount, delivery_fee, clearCart } = useCartContext();
+	const { cart, total_amount, delivery_fee, tax, clearCart } = useCartContext();
 	const { user } = useAuthContext();
 	const navigate = useNavigate();
 	//stripe stuff
@@ -64,7 +64,7 @@ const CheckoutForm = () => {
 		try {
 			await authFetch.post("/orders", {
 				deliveryAddress: user.location,
-				tax: 20,
+				tax: tax,
 				deliveryFee: delivery_fee,
 				items: cart,
 			});

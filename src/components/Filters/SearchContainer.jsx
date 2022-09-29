@@ -68,7 +68,7 @@ export default SearchContainer;
 
 const Form = styled.form`
 	width: 100%;
-	max-width: 70vw;
+	max-width: 80vw;
 `;
 
 const FormCenter = styled.div`

@@ -48,7 +48,7 @@ const Wrapper = styled.div`
 const Center = styled.div`
 	display: grid;
 	width: 100%;
-	max-width: 70vw;
+	max-width: 80vw;
 	gap: 0.5rem;
 
 	@media screen and (min-width: 576px) {

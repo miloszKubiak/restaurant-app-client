@@ -6,7 +6,7 @@ import { useAuthContext } from "../../context/auth-context";
 import { formatPrice } from "../../utils/helpers";
 
 const CartTotals = () => {
-	const { total_amount, delivery_fee } = useCartContext();
+	const { total_amount, delivery_fee, tax } = useCartContext();
 	const { user } = useAuthContext();
 
 	return (
@@ -19,10 +19,13 @@ const CartTotals = () => {
 					<Delivery>
 						delivery fee : <span>{formatPrice(delivery_fee)}</span>
 					</Delivery>
+					<Tax>
+						tax : <span>{formatPrice(tax)}</span>
+					</Tax>
 					<hr />
 					<Total>
 						Order total :{" "}
-						<span>{formatPrice(total_amount + delivery_fee)}</span>
+						<span>{formatPrice(total_amount + delivery_fee + tax)}</span>
 					</Total>
 				</Container>
 				{user ? (
@@ -64,6 +67,12 @@ const Subtotal = styled.h5`
 `;
 
 const Delivery = styled.p`
+	text-transform: capitalize;
+	font-size: 1.2rem;
+	margin-top: 0.5rem;
+`;
+
+const Tax = styled.p`
 	text-transform: capitalize;
 	font-size: 1.2rem;
 	margin-top: 0.5rem;
