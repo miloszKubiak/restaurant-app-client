@@ -64,8 +64,8 @@ const initialState = {
 	category: "pizza",
 	featuredOptions: ["true", "false"],
 	featured: "true",
-	averageRating: 3,
 	averageRatingOptions: [1, 2, 3, 4, 5],
+	averageRating: 3,
 	numberOfReviews: "",
 };
 

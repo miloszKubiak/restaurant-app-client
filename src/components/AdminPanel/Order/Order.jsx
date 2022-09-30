@@ -21,8 +21,6 @@ const Order = ({
 	let date = moment(createdAt);
 	date = date.format("MMMM Do YYYY, h:mm:ss a");
 
-	console.log(onIsLoading);
-
 	return (
 		<Wrapper>
 			<Header>

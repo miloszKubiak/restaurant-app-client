@@ -3,8 +3,6 @@ import { useEffect } from "react";
 import { useMealsContext } from "../../../context/meals-context";
 import { AdminMeal } from "../Meal";
 import styled from "styled-components";
-import Alert from "../../Alert/Alert";
-import AdminAlert from "../AdminAlert";
 import Loader from "../../Loader/Loader";
 
 const AdminMealsContainer = () => {
@@ -17,7 +15,6 @@ const AdminMealsContainer = () => {
 		sort,
 		setEditMeal,
 		deleteMeal,
-		showAlert,
 		isLoading,
 	} = useMealsContext();
 
@@ -27,7 +24,6 @@ const AdminMealsContainer = () => {
 
 	return (
 		<Wrapper>
-			<div className="alert-container">{showAlert && <AdminAlert />}</div>
 			{isLoading && <Loader />}
 			<Center>
 				{meals.map((meal) => {
@@ -64,7 +60,6 @@ const Center = styled.div`
 	width: 100%;
 	max-width: 1170px;
 	gap: 0.5rem;
-	background: #000;
 
 	@media screen and (min-width: 576px) {
 		grid-template-columns: repeat(2, 1fr);

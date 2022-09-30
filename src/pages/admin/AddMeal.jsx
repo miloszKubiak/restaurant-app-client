@@ -30,12 +30,20 @@ const AddMeal = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		if (!name || !description || !image || !price || !numberOfReviews) {
+		if (
+			!name ||
+			!description ||
+			!image ||
+			!price ||
+			!numberOfReviews ||
+			!averageRating
+		) {
+			console.log(typeof averageRating);
 			displayAlert();
 			return;
 		}
 		if (isEditing) {
-			editMeal()
+			editMeal();
 			return;
 		}
 		createMeal();
