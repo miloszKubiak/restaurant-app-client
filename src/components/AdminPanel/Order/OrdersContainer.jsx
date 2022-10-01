@@ -46,7 +46,9 @@ const OrdersContainer = () => {
 	return (
 		<Wrapper>
 			<Content>
-				<Title>All Orders</Title>
+				<Title>
+					{orders.length} order{orders.length > 1 && "s"} found
+				</Title>
 				{isLoading && <Loader />}
 				<Container>
 					{orders.map((order) => {
@@ -76,10 +78,14 @@ const Wrapper = styled.div`
 
 const Title = styled.h3`
 	padding: 0.5rem;
-	font-size: 2.5rem;
-	text-transform: capitalize;
+	margin: 0 auto;
+	margin-bottom: 2rem;
 	text-align: center;
-	letter-spacing: var(--spacing); ;
+	letter-spacing: var(--spacing); 
+	background: var(--primary-7);
+	width: 12rem;
+	border-radius: .2rem;
+	color: var(--primary-2)
 `;
 
 const Container = styled.div`

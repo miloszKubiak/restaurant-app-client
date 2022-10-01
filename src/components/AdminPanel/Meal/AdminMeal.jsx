@@ -67,6 +67,7 @@ const Info = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 0.2rem;
+	color: var(--primary-2);
 `;
 
 const ButtonsContainer = styled.div`
