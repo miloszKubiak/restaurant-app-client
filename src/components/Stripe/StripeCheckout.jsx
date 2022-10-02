@@ -17,12 +17,13 @@ import authFetch from "../../utils/axios";
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const CheckoutForm = () => {
-	const { cart, total_amount, delivery_fee, tax, clearCart } = useCartContext();
+	const { cart, total_amount, delivery_fee, tax, clearCart } =
+		useCartContext();
 	const { user } = useAuthContext();
 	const navigate = useNavigate();
 	//stripe stuff
 	const [succeeded, setSucceeded] = useState(false);
-	const [error, setError] = useState(null);
+	const [error, setError] = useState(false);
 	const [processing, setProcessing] = useState("");
 	const [disabled, setDisabled] = useState(true);
 	const [clientSecret, setClientSecret] = useState("");
@@ -59,7 +60,7 @@ const CheckoutForm = () => {
 			console.log(error);
 		}
 	};
-	
+
 	const createOrder = async () => {
 		try {
 			await authFetch.post("/orders", {
@@ -111,12 +112,15 @@ const CheckoutForm = () => {
 	return (
 		<div>
 			{succeeded ? (
-				<article style={{ marginTop: "10px" }}>
+				<article
+					className="stripe-user-info stripe-success"
+					style={{ marginTop: "10px" }}
+				>
 					<h4>Your payment was successful!</h4>
 					<h4>Redirecting to home page shortly</h4>
 				</article>
 			) : (
-				<article>
+				<article className="stripe-user-info">
 					<h4 style={{ marginBottom: "10px", fontSize: "20px" }}>
 						Hello, {user.name}
 					</h4>
@@ -126,7 +130,17 @@ const CheckoutForm = () => {
 							{formatPrice(delivery_fee + total_amount)}
 						</span>
 					</p>
-					<p style={{ marginBottom: "10px", color: "#00bfa6" }}>
+					<p
+						style={{
+							padding: "10px",
+							borderRadius: "7px",
+							background: "whitesmoke",
+							marginBottom: "10px",
+							fontWeight: "bold",
+							color: "#00bfa6",
+							textAlign: "center",
+						}}
+					>
 						Test Card Number : 4242 4242 4242 4242
 					</p>
 				</article>
@@ -166,6 +180,7 @@ const CheckoutForm = () => {
 						href={`https://dashboard.stripe.com/test/payments`}
 						target="_blank"
 						rel="noreferrer"
+						style={{ marginLeft: "5px" }}
 					>
 						Stripe dasboard.
 					</a>
@@ -190,7 +205,8 @@ export default StripeCheckout;
 
 const Wrapper = styled.section`
 	form {
-		width: 30vw;
+		width: 40vw;
+		margin: 0 auto;
 		align-self: center;
 		box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
 			0px 2px 5px 0px rgba(50, 50, 93, 0.1),
@@ -311,6 +327,23 @@ const Wrapper = styled.section`
 		-webkit-animation: loading 2s infinite ease;
 		animation: loading 2s infinite ease;
 	}
+	///custom styles
+	.stripe-success {
+		text-align: center;
+		color: var(--primary-2);
+		font-size: 1.2rem;
+	}
+	.stripe-user-info {
+		width: 40vw;
+		box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+			0px 2px 5px 0px rgba(50, 50, 93, 0.1),
+			0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+		border-radius: 7px;
+		padding: 20px;
+		margin-bottom: 15px;
+		background: #97a5ee;
+	}
+
 	@keyframes loading {
 		0% {
 			-webkit-transform: rotate(0deg);
@@ -323,6 +356,9 @@ const Wrapper = styled.section`
 	}
 	@media only screen and (max-width: 600px) {
 		form {
+			width: 80vw;
+		}
+		.stripe-user-info {
 			width: 80vw;
 		}
 	}
