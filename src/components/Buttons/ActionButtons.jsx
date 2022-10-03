@@ -44,11 +44,11 @@ const ActionButtons = () => {
 							showDropdown ? "dropdown show-dropdown" : "dropdown"
 						}
 					>
-						<ButtonSettings
-							to="/profile"
-							onClick={closeSidebar}
-						>
-							Settings
+						<ButtonOrders to="/profile" onClick={closeSidebar}>
+							my orders
+						</ButtonOrders>
+						<ButtonSettings to="/profile" onClick={closeSidebar}>
+							profile settings
 						</ButtonSettings>
 						<ButtonLogout type="button" onClick={handleLogout}>
 							logout
@@ -125,7 +125,6 @@ const ButtonContainer = styled.div`
 		position: absolute;
 		width: 80%;
 		top: 2.8rem;
-		padding: 0.5rem;
 		background: var(--primary-7);
 		text-align: center;
 		visibility: hidden;
@@ -161,18 +160,27 @@ const ButtonUser = styled.button`
 `;
 
 const ButtonLogout = styled.button`
-	margin-top: 0.5rem;
+	padding: 0.4rem 0;
 	background: transparent;
 	border-color: transparent;
 	color: var(--primary-2);
 	letter-spacing: var(--spacing);
+	transition: var(--transition);
 	text-transform: capitalize;
 	font-size: 1rem;
 	font-family: inherit;
 	cursor: pointer;
+
+	&:hover {
+		background: var(--primary-1);
+		color: var(--primary-7);
+		border-bottom-left-radius: 0.3rem;
+		border-bottom-right-radius: 0.3rem;
+	}
 `;
 
 const ButtonSettings = styled(Link)`
+	padding: 0.4rem 0;
 	background: transparent;
 	border-color: transparent;
 	text-decoration: none;
@@ -180,6 +188,29 @@ const ButtonSettings = styled(Link)`
 	letter-spacing: var(--spacing);
 	text-transform: capitalize;
 	cursor: pointer;
+
+	&:hover {
+		background: var(--primary-1);
+		color: var(--primary-7);
+	}
+`;
+
+const ButtonOrders = styled(Link)`
+	padding: 0.4rem 0;
+	background: transparent;
+	border-color: transparent;
+	text-decoration: none;
+	color: var(--primary-2);
+	letter-spacing: var(--spacing);
+	text-transform: capitalize;
+	cursor: pointer;
+
+	&:hover {
+		background: var(--primary-1);
+		color: var(--primary-7);
+		border-top-left-radius: .3rem;
+		border-top-right-radius: .3rem;
+	}
 `;
 
 const Wrapper = styled.div`

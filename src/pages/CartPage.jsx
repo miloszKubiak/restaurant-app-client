@@ -41,7 +41,6 @@ const CartPage = () => {
 export default CartPage;
 
 const Wrapper = styled.main`
-	min-height: calc(100vh - (10vh - 10rem));
 `;
 
 const WrapperEmpty = styled.main`
