@@ -9,6 +9,7 @@ import Register from "./Register";
 import SingleMeal from "./SingleMeal";
 import ProfilePage from "./ProfilePage";
 import LandingPage from "./LandingPage";
+import MyOrders from "./MyOrders";
 
 export {
 	About,
@@ -22,4 +23,5 @@ export {
 	ProtectedRoute,
 	ProfilePage,
 	LandingPage,
+	MyOrders,
 };

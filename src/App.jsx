@@ -11,8 +11,18 @@ import {
 	Register,
 	ProfilePage,
 	LandingPage,
+	MyOrders,
 } from "./pages";
-import { AdminRoute, AdminLayout, AddMeal, AllOrders, Stats, AllMeals, AddUser, AllUsers } from "./pages/admin";
+import {
+	AdminRoute,
+	AdminLayout,
+	AddMeal,
+	AllOrders,
+	Stats,
+	AllMeals,
+	AddUser,
+	AllUsers,
+} from "./pages/admin";
 import { Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -40,6 +50,14 @@ const App = () => {
 					element={
 						<ProtectedRoute>
 							<ProfilePage />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path="my-orders"
+					element={
+						<ProtectedRoute>
+							<MyOrders />
 						</ProtectedRoute>
 					}
 				/>

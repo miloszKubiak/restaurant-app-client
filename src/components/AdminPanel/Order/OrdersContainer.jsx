@@ -14,6 +14,7 @@ const OrdersContainer = () => {
 			setIsLoading(true);
 			const response = await authFetch.get(`/orders`);
 			setOrders(response.data.orders);
+			console.log(response.data.orders);
 			setIsLoading(false);
 		} catch (error) {
 			console.log(error);

@@ -44,7 +44,7 @@ const ActionButtons = () => {
 							showDropdown ? "dropdown show-dropdown" : "dropdown"
 						}
 					>
-						<ButtonOrders to="/profile" onClick={closeSidebar}>
+						<ButtonOrders to="/my-orders" onClick={closeSidebar}>
 							my orders
 						</ButtonOrders>
 						<ButtonSettings to="/profile" onClick={closeSidebar}>
