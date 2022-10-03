@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const CartContent = () => {
 	const { cart, clearCart } = useCartContext();
-	
+
 	return (
 		<Wrapper>
 			<CartColumns />
@@ -17,10 +17,12 @@ const CartContent = () => {
 			})}
 			<hr />
 			<Container>
-				<LinkButton to="/meals">continue ordering</LinkButton>
-				<ClearButton onClick={clearCart}>clear cart</ClearButton>
+				<ButtonsContainer>
+					<LinkButton to="/meals">continue ordering</LinkButton>
+					<ClearButton onClick={clearCart}>clear cart</ClearButton>
+				</ButtonsContainer>
+				<CartTotals />
 			</Container>
-			<CartTotals />
 		</Wrapper>
 	);
 };
@@ -42,7 +44,9 @@ const Wrapper = styled.section`
 `;
 
 const LinkButton = styled(Link)`
-	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 0.8rem 1rem;
 	margin: 1.5rem 0;
 	background: var(--primary-3);
@@ -54,6 +58,7 @@ const LinkButton = styled(Link)`
 	transition: var(--transition);
 	font-weight: bold;
 	width: 8rem;
+	height: 3rem;
 	text-align: center;
 
 	&:hover {
@@ -63,7 +68,9 @@ const LinkButton = styled(Link)`
 `;
 
 const ClearButton = styled.button`
-	display: inline-block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 0.8rem 1rem;
 	margin: 1.5rem 0;
 	background: var(--primary-4);
@@ -77,6 +84,7 @@ const ClearButton = styled.button`
 	font-size: 1rem;
 	font-family: inherit;
 	width: 8rem;
+	height: 3rem;
 	border: none;
 	text-align: center;
 	cursor: pointer;
@@ -86,8 +94,18 @@ const ClearButton = styled.button`
 	}
 `;
 
-const Container = styled.div`
-	margin-top: 2rem;
+const ButtonsContainer = styled.div`
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
+	gap: 2rem;
+`;
+
+const Container = styled.div`
+	margin-top: 0 auto;
+	display: flex;
+	justify-content: space-around;
+
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+	}
 `;

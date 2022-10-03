@@ -95,6 +95,7 @@ const RemoveBtn = styled.button`
   justify-content: center;
   align-items: center;
   border: none;
+	background: none;
   cursor: pointer;
   font-size: 1.5rem;
 `;

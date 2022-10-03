@@ -43,21 +43,24 @@ const CartTotals = () => {
 export default CartTotals;
 
 const Wrapper = styled.section`
-	margin-top: 2rem;
 	display: flex;
 	justify-content: center;
 `;
 
 const Container = styled.div`
 	border: 0.2rem solid var(--primary-3);
-	padding: 2rem 4rem;
+	padding: 1rem;
 	margin: 1.5rem auto;
 	border-radius: 0.3rem;
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: .5rem;
 	background: var(--primary-1);
 	color: var(--grey-1);
+
+	hr {
+		margin: .3rem 0;
+	}
 `;
 
 const Subtotal = styled.h5`
@@ -86,7 +89,7 @@ const Total = styled.h4`
 const ButtonAction = styled(Link)`
 	display: inline-block;
 	padding: 0.8rem 1rem;
-	margin: 1.5rem 0;
+	margin: 1rem 0;
 	background: var(--primary-3);
 	color: var(--primary-2);
 	text-decoration: none;
