@@ -1,13 +1,12 @@
 import axios from "axios";
 
-const token = localStorage.getItem("token");
-
 const authFetch = axios.create({
 	baseURL: "/api/v1",
 });
 //request interceptor
 authFetch.interceptors.request.use(
 	(config) => {
+		const token = localStorage.getItem("token");
 		config.headers.common["Authorization"] = `Bearer ${token}`;
 		return config;
 	},

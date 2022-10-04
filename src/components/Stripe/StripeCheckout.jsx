@@ -127,7 +127,7 @@ const CheckoutForm = () => {
 					<p style={{ marginBottom: "10px" }}>
 						Your total is{" "}
 						<span style={{ fontWeight: "bold", fontSize: "20px" }}>
-							{formatPrice(delivery_fee + total_amount)}
+							{formatPrice(delivery_fee + total_amount + tax)}
 						</span>
 					</p>
 					<p

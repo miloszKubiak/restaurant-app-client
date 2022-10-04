@@ -26,7 +26,6 @@ const Order = ({
 			<Header>
 				<OrderInfo icon={<FaShippingFast />} text={_id} />
 				<OrderInfo icon={<FaUserCircle />} text={user} />
-				<Text>Name: {user.name}</Text>
 			</Header>
 			<Content>
 				<Center>

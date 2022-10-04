@@ -110,7 +110,6 @@ const CartValue = styled.span`
 	background: var(--primary-6);
 	color: var(--primary-2);
 	font-size: 0.8rem;
-	/* font-weight: lighter; */
 	border-radius: 50%;
 `;
 
@@ -129,6 +128,7 @@ const ButtonContainer = styled.div`
 		text-align: center;
 		visibility: hidden;
 		border-radius: 0.3rem;
+		border: 0.2rem solid var(--primary-7);
 	}
 
 	.show-dropdown {
@@ -165,15 +165,14 @@ const ButtonLogout = styled.button`
 	border-color: transparent;
 	color: var(--primary-2);
 	letter-spacing: var(--spacing);
-	transition: var(--transition);
 	text-transform: capitalize;
 	font-size: 1rem;
 	font-family: inherit;
 	cursor: pointer;
 
 	&:hover {
-		background: var(--primary-1);
-		color: var(--primary-7);
+		background: var(--primary-4);
+		transition: var(--transition);
 		border-bottom-left-radius: 0.3rem;
 		border-bottom-right-radius: 0.3rem;
 	}
@@ -190,8 +189,8 @@ const ButtonSettings = styled(Link)`
 	cursor: pointer;
 
 	&:hover {
-		background: var(--primary-1);
-		color: var(--primary-7);
+		background: var(--primary-3);
+		transition: var(--transition);
 	}
 `;
 
@@ -206,10 +205,10 @@ const ButtonOrders = styled(Link)`
 	cursor: pointer;
 
 	&:hover {
-		background: var(--primary-1);
-		color: var(--primary-7);
-		border-top-left-radius: .3rem;
-		border-top-right-radius: .3rem;
+		background: var(--primary-3);
+		transition: var(--transition);
+		border-top-left-radius: 0.3rem;
+		border-top-right-radius: 0.3rem;
 	}
 `;
 
