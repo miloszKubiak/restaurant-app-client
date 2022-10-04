@@ -8,7 +8,7 @@ import Order from "./Order";
 const OrdersContainer = () => {
 	const [orders, setOrders] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-	
+
 	const getOrders = async () => {
 		try {
 			setIsLoading(true);
@@ -82,11 +82,11 @@ const Title = styled.h3`
 	margin: 0 auto;
 	margin-bottom: 2rem;
 	text-align: center;
-	letter-spacing: var(--spacing); 
+	letter-spacing: var(--spacing);
 	background: var(--primary-7);
 	width: 12rem;
-	border-radius: .2rem;
-	color: var(--primary-2)
+	border-radius: 0.2rem;
+	color: var(--primary-2);
 `;
 
 const Container = styled.div`

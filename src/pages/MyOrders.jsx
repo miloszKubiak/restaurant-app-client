@@ -4,6 +4,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Navbar, Sidebar, PageHero, Footer, Loader } from "../components";
 import authFetch from "../utils/axios";
+import moment from "moment";
 
 const MyOrders = () => {
 	const [myOrders, setMyOrders] = useState([]);
@@ -23,8 +24,8 @@ const MyOrders = () => {
 
 	const cancelOrder = async (_id) => {
 		console.log("cancel");
-		console.log(`${_id}`)
-	}
+		console.log(`${_id}`);
+	};
 
 	useEffect(() => {
 		getMyOrders();
@@ -35,33 +36,58 @@ const MyOrders = () => {
 			<Navbar />
 			<Sidebar />
 			<PageHero title="My orders" />
-			<Container>
+			<Wrapper>
 				{isLoading && <Loader />}
-				{myOrders.map((myOrder) => {
-					return (
-						<ul key={myOrder._id}>
-							<p>{myOrder._id}</p>
-							<p>{myOrder.createdAt}</p>
-							<p>{myOrder.status}</p>
-							<p>{myOrder.total} €</p>
-							<div>
-								{myOrder.orderItems.map((item) => {
-									return (
-										<li key={item._id}>
-											<p>{item.name}</p>
-											<p>{item.amount}</p>
-											<p>{item.price} €</p>
-										</li>
-									);
-								})}
-							</div>
-							<button onClick={() => cancelOrder(myOrder._id)}>
-								cancel order
-							</button>
-						</ul>
-					);
-				})}
-			</Container>
+				<Container>
+					{myOrders.map((myOrder) => {
+						return (
+							<li key={myOrder._id}>
+								<p>
+									<span>Order ID:</span> {myOrder._id}
+								</p>
+								<p>
+									<span>Date of order:</span>{" "}
+									{moment(myOrder.createdAt).format(
+										"MMMM Do YYYY, h:mm:ss a"
+									)}{" "}
+								</p>
+								<p>
+									<span>Status:</span> {myOrder.status}
+								</p>
+								<p>
+									<span>To pay:</span> {myOrder.total} €
+								</p>
+								<div className="user-order-items">
+									{myOrder.orderItems.map((item) => {
+										return (
+											<li key={item._id}>
+												<p>
+													<span>{item.name}</span>
+												</p>
+												<p>
+													<span>amount: </span>
+													{item.amount}
+												</p>
+												<p>
+													<span>price: </span>
+													{item.price} €
+												</p>
+											</li>
+										);
+									})}
+								</div>
+								<button
+									type="button"
+									disabled={isLoading}
+									onClick={() => cancelOrder(myOrder._id)}
+								>
+									cancel order
+								</button>
+							</li>
+						);
+					})}
+				</Container>
+			</Wrapper>
 			<Footer />
 		</>
 	);
@@ -69,13 +95,85 @@ const MyOrders = () => {
 
 export default MyOrders;
 
+const Wrapper = styled.div`
+	min-height: calc(100vh - (10vh + 10rem));
+`;
+
 const Container = styled.div`
+	display: grid;
+	margin: 2rem auto;
+	width: 100%;
+	max-width: 1170px;
+	gap: 0.5rem;
+
+	@media screen and (min-width: 576px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media screen and (min-width: 992px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	@media screen and (min-width: 1170px) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.user-order-items {
+		display: flex;
+		flex-direction: column;
+		height: 8rem;
+		margin-top: 0.3rem;
+		padding: 0.3rem 0;
+		overflow: scroll;
+		overflow-x: hidden;
+		border-radius: 0.3rem;
+		background: var(--primary-3);
+
+		li {
+			background: var(--primary-5);
+		}
+	}
+
 	li {
-	}
+		margin: 0.5rem;
+		padding: 0.5rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		border-radius: 0.3rem;
+		background: var(--primary-1);
 
-	p {
-	}
+		span {
+			font-weight: bold;
+		}
 
-	button {
+		button {
+			margin: 0.5rem 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 0.2rem;
+			text-transform: capitalize;
+			text-align: center;
+			letter-spacing: var(--spacing);
+			width: 6rem;
+			height: 2rem;
+			font-weight: bold;
+			font-family: inherit;
+			border: none;
+			color: var(--primary-2);
+			transition: var(--transition);
+			background: #f50057;
+			cursor: pointer;
+
+			&:hover {
+				background: #b1003e;
+			}
+
+			&:disabled {
+				background: var(--grey-1);
+			}
+		}
 	}
 `;
