@@ -16,10 +16,15 @@ const MyOrders = () => {
 			setMyOrders(response.data.orders);
 			console.log(response.data.orders);
 			setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+		} catch (error) {
+			console.log(error);
+		}
 	};
+
+	const cancelOrder = async (_id) => {
+		console.log("cancel");
+		console.log(`${_id}`)
+	}
 
 	useEffect(() => {
 		getMyOrders();
@@ -32,16 +37,30 @@ const MyOrders = () => {
 			<PageHero title="My orders" />
 			<Container>
 				{isLoading && <Loader />}
-        {myOrders.map((myOrder) => {
-          return (
-            <li key={myOrder._id}>
-              <p>{myOrder._id}</p>
-              <p>{myOrder.createdAt}</p>
-              <p>{myOrder.status}</p>
-              <p>{myOrder.total}</p>
-            </li>
-          )
-        })}
+				{myOrders.map((myOrder) => {
+					return (
+						<ul key={myOrder._id}>
+							<p>{myOrder._id}</p>
+							<p>{myOrder.createdAt}</p>
+							<p>{myOrder.status}</p>
+							<p>{myOrder.total} €</p>
+							<div>
+								{myOrder.orderItems.map((item) => {
+									return (
+										<li key={item._id}>
+											<p>{item.name}</p>
+											<p>{item.amount}</p>
+											<p>{item.price} €</p>
+										</li>
+									);
+								})}
+							</div>
+							<button onClick={() => cancelOrder(myOrder._id)}>
+								cancel order
+							</button>
+						</ul>
+					);
+				})}
 			</Container>
 			<Footer />
 		</>
@@ -50,4 +69,13 @@ const MyOrders = () => {
 
 export default MyOrders;
 
-const Container = styled.div``;
+const Container = styled.div`
+	li {
+	}
+
+	p {
+	}
+
+	button {
+	}
+`;
