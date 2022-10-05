@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { Navbar, Sidebar, PageHero, Footer, Loader } from "../components";
 import authFetch from "../utils/axios";
 import moment from "moment";
+import noOrdersImg from "../assets/no-orders.svg";
+import { Link } from "react-router-dom";
 
 const MyOrders = () => {
 	const [myOrders, setMyOrders] = useState([]);
@@ -23,13 +25,37 @@ const MyOrders = () => {
 	};
 
 	const cancelOrder = async (_id) => {
-		console.log("cancel");
-		console.log(`${_id}`);
+		try {
+			await authFetch.delete(`orders/${_id}`);
+			getMyOrders();
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	useEffect(() => {
 		getMyOrders();
 	}, []);
+
+	if (myOrders.length < 1) {
+		return (
+			<>
+				<Navbar />
+				<Sidebar />
+				<PageHero title="My orders" />
+				<Wrapper>
+					<Empty>
+						<img src={noOrdersImg} alt="empty orders" />
+						<p>You don't have any orders</p>
+						<Link to="/meals">
+							<button>back to meals</button>
+						</Link>
+					</Empty>
+				</Wrapper>
+				<Footer />
+			</>
+		);
+	}
 
 	return (
 		<>
@@ -97,6 +123,10 @@ export default MyOrders;
 
 const Wrapper = styled.div`
 	min-height: calc(100vh - (10vh + 10rem));
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 `;
 
 const Container = styled.div`
@@ -174,6 +204,45 @@ const Container = styled.div`
 			&:disabled {
 				background: var(--grey-1);
 			}
+		}
+	}
+`;
+
+const Empty = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	img {
+		display: block;
+		max-width: 300px;
+	}
+
+	p {
+		margin: 2rem auto;
+		font-weight: bold;
+		font-size: 1.4rem;
+	}
+
+	button {
+		margin: 1rem;
+		padding: 0.8rem 1rem;
+		background: var(--primary-3);
+		color: var(--primary-2);
+		text-decoration: none;
+		border-radius: 0.4rem;
+		border: none;
+		text-transform: capitalize;
+		font-family: inherit;
+		letter-spacing: var(--spacing);
+		transition: var(--transition);
+		font-weight: bold;
+		font-size: 1rem;
+		cursor: pointer;
+
+		&:hover {
+			color: var(--primary-3);
+			background: var(--primary-1);
 		}
 	}
 `;
