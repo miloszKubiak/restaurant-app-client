@@ -10,6 +10,7 @@ import SingleMeal from "./SingleMeal";
 import ProfilePage from "./ProfilePage";
 import LandingPage from "./LandingPage";
 import MyOrders from "./MyOrders";
+import MyStats from "./MyStats";
 
 export {
 	About,
@@ -24,4 +25,5 @@ export {
 	ProfilePage,
 	LandingPage,
 	MyOrders,
+	MyStats,
 };

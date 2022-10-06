@@ -12,6 +12,7 @@ import {
 	ProfilePage,
 	LandingPage,
 	MyOrders,
+	MyStats,
 } from "./pages";
 import {
 	AdminRoute,
@@ -58,6 +59,14 @@ const App = () => {
 					element={
 						<ProtectedRoute>
 							<MyOrders />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path="my-stats"
+					element={
+						<ProtectedRoute>
+							<MyStats />
 						</ProtectedRoute>
 					}
 				/>

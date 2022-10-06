@@ -4,11 +4,21 @@ import styled from "styled-components";
 const User = ({ _id, name, lastName, email, location }) => {
 	return (
 		<Wrapper>
-			<h5>ID: {_id}</h5>
-			<p>name: {name}</p>
-			<p>last name: {lastName}</p>
-			<p>email: {email}</p>
-			<p>location: {location}</p>
+			<h5>
+				<span>ID:</span> {_id}
+			</h5>
+			<p>
+				<span>name:</span> {name}
+			</p>
+			<p>
+				<span>last name:</span> {lastName}
+			</p>
+			<p>
+				<span>email:</span> {email}
+			</p>
+			<p>
+				<span>location:</span> {location}
+			</p>
 		</Wrapper>
 	);
 };
@@ -21,4 +31,9 @@ const Wrapper = styled.div`
 	border-radius: 0.3rem;
 	background: var(--primary-3);
 	color: var(--primary-2);
+
+	span {
+		font-weight: bold;
+		text-transform: capitalize;
+	}
 `;

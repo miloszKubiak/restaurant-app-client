@@ -47,6 +47,9 @@ const ActionButtons = () => {
 						<ButtonOrders to="/my-orders" onClick={closeSidebar}>
 							my orders
 						</ButtonOrders>
+						<ButtonOrders to="/my-stats" onClick={closeSidebar}>
+							my stats
+						</ButtonOrders>
 						<ButtonSettings to="/profile" onClick={closeSidebar}>
 							profile settings
 						</ButtonSettings>
