@@ -24,7 +24,6 @@ const OrdersContainer = () => {
 	const changeOrderStatus = async (_id, clientSecret) => {
 		try {
 			await authFetch.patch(`/orders/${_id}`, clientSecret);
-			console.log(clientSecret);
 			getOrders();
 		} catch (error) {
 			console.log(error);

@@ -26,7 +26,7 @@ const MyOrders = () => {
 
 	const cancelOrder = async (_id) => {
 		try {
-			await authFetch.delete(`orders/${_id}`);
+			await authFetch.patch(`orders/${_id}`, { status: "canceled" });
 			getMyOrders();
 		} catch (error) {
 			console.log(error);
@@ -102,13 +102,15 @@ const MyOrders = () => {
 										);
 									})}
 								</div>
-								<button
-									type="button"
-									disabled={isLoading}
-									onClick={() => cancelOrder(myOrder._id)}
-								>
-									cancel order
-								</button>
+								{myOrder.status !== "canceled" && (
+									<button
+										type="button"
+										disabled={isLoading}
+										onClick={() => cancelOrder(myOrder._id)}
+									>
+										cancel order
+									</button>
+								)}
 							</li>
 						);
 					})}
