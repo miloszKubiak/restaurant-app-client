@@ -40,7 +40,7 @@ const Order = ({
 					</OrderItems>
 				</Center>
 				<Footer>
-					{status === "pending" && (
+					{status === "paid" && (
 						<Button
 							color="blue"
 							onClick={() =>
@@ -48,7 +48,7 @@ const Order = ({
 							}
 							disabled={onIsLoading}
 						>
-							Paid
+							Sent
 						</Button>
 					)}
 					<Button
@@ -116,8 +116,12 @@ const Status = styled.div`
 	font-weight: bold;
 	font-family: inherit;
 	background: ${(props) =>
-		props.status === "pending" ? "#f7ddb4" : "#00e787"};
-	color: ${(props) => (props.status === "pending" ? "#333" : "#feffea")};
+		props.status === "sent"
+			? "#eed3a8"
+			: props.status === "paid"
+			? "#75dbb1"
+			: "#f0768a"};
+	color: ${(props) => (props.status === "sent" ? "#333" : "#feffea")};
 	transition: var(--transition);
 `;
 
@@ -159,7 +163,7 @@ const Button = styled.button`
 
 	&:hover {
 		background: ${(props) =>
-			props.color === "blue" ? "#0520bb" : "#b1003e"};
+			props.color === "blue" ? "#203bd3" : "#b1003e"};
 	}
 
 	&:disabled {

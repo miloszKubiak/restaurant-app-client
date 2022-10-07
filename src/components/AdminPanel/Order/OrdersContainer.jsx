@@ -23,7 +23,10 @@ const OrdersContainer = () => {
 
 	const changeOrderStatus = async (_id, clientSecret) => {
 		try {
-			await authFetch.patch(`/orders/${_id}`, clientSecret);
+			await authFetch.patch(`/orders/${_id}`, {
+				status: "sent",
+				clientSecret,
+			});
 			getOrders();
 		} catch (error) {
 			console.log(error);
