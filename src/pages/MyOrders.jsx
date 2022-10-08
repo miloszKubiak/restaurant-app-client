@@ -24,9 +24,19 @@ const MyOrders = () => {
 		}
 	};
 
+	///mozna sprobowac zrobic to jedna funkcja , przekazac jako parametr w funkcji dana akcje
 	const cancelOrder = async (_id) => {
 		try {
 			await authFetch.patch(`orders/${_id}`, { status: "canceled" });
+			getMyOrders();
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const confirmDeliveryOrder = async (_id) => {
+		try {
+			await authFetch.patch(`orders/${_id}`, { status: "delivered" });
 			getMyOrders();
 		} catch (error) {
 			console.log(error);
@@ -102,15 +112,32 @@ const MyOrders = () => {
 										);
 									})}
 								</div>
-								{myOrder.status !== "canceled" && (
-									<button
-										type="button"
-										disabled={isLoading}
-										onClick={() => cancelOrder(myOrder._id)}
-									>
-										cancel order
-									</button>
-								)}
+								<div className="btn-container">
+									{myOrder.status === "paid" && (
+										<button
+											color="red"
+											disabled={isLoading}
+											onClick={() =>
+												cancelOrder(myOrder._id)
+											}
+										>
+											cancel order
+										</button>
+									)}
+									{myOrder.status === "sent" && (
+										<button
+											color="green"
+											disabled={isLoading}
+											onClick={() =>
+												confirmDeliveryOrder(
+													myOrder._id
+												)
+											}
+										>
+											confirm delivery
+										</button>
+									)}
+								</div>
 							</li>
 						);
 					})}
@@ -150,6 +177,13 @@ const Container = styled.div`
 		grid-template-columns: repeat(4, 1fr);
 	}
 
+	.btn-container {
+		padding: 0.5rem 0;
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+	}
+
 	.user-order-items {
 		display: flex;
 		flex-direction: column;
@@ -168,10 +202,10 @@ const Container = styled.div`
 
 	li {
 		margin: 0.5rem;
-		padding: 0.5rem;
-		flex: 1;
+		padding: 0.5rem 1rem;
 		display: flex;
 		flex-direction: column;
+		gap: 0.5rem;
 		justify-content: space-between;
 		border-radius: 0.3rem;
 		background: var(--primary-1);
@@ -189,14 +223,15 @@ const Container = styled.div`
 			text-transform: capitalize;
 			text-align: center;
 			letter-spacing: var(--spacing);
-			width: 6rem;
-			height: 2rem;
+			width: 8rem;
+			height: 3rem;
 			font-weight: bold;
 			font-family: inherit;
 			border: none;
 			color: var(--primary-2);
 			transition: var(--transition);
-			background: #f50057;
+			background: ${(props) =>
+				props.color === "red" ? "#f50057" : "#75dbb1"};
 			cursor: pointer;
 
 			&:hover {
