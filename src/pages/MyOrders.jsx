@@ -17,7 +17,6 @@ const MyOrders = () => {
 			setIsLoading(true);
 			const response = await authFetch.get("orders/showAllMyOrders");
 			setMyOrders(response.data.orders);
-			console.log(response.data.orders);
 			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
@@ -27,8 +26,10 @@ const MyOrders = () => {
 	///mozna sprobowac zrobic to jedna funkcja , przekazac jako parametr w funkcji dana akcje
 	const cancelOrder = async (_id) => {
 		try {
+			setIsLoading(true);
 			await authFetch.patch(`orders/${_id}`, { status: "canceled" });
-			getMyOrders();
+			getMyOrders();		
+			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
 		}
@@ -36,8 +37,10 @@ const MyOrders = () => {
 
 	const confirmDeliveryOrder = async (_id) => {
 		try {
+			setIsLoading(true);
 			await authFetch.patch(`orders/${_id}`, { status: "delivered" });
 			getMyOrders();
+			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
 		}
@@ -115,7 +118,7 @@ const MyOrders = () => {
 								<div className="btn-container">
 									{myOrder.status === "paid" && (
 										<button
-											color="red"
+											className="btn-cancel"
 											disabled={isLoading}
 											onClick={() =>
 												cancelOrder(myOrder._id)
@@ -126,7 +129,7 @@ const MyOrders = () => {
 									)}
 									{myOrder.status === "sent" && (
 										<button
-											color="green"
+											className="btn-confirm"
 											disabled={isLoading}
 											onClick={() =>
 												confirmDeliveryOrder(
@@ -216,6 +219,7 @@ const Container = styled.div`
 
 		button {
 			margin: 0.5rem 0;
+			padding: 0 .5rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -225,17 +229,28 @@ const Container = styled.div`
 			letter-spacing: var(--spacing);
 			width: 8rem;
 			height: 3rem;
+			font-size: 1rem;
 			font-weight: bold;
 			font-family: inherit;
 			border: none;
 			color: var(--primary-2);
 			transition: var(--transition);
-			background: ${(props) =>
-				props.color === "red" ? "#f50057" : "#75dbb1"};
 			cursor: pointer;
 
-			&:hover {
-				background: #b1003e;
+			&.btn-confirm {
+				background: #3fd395;
+
+				&:hover {
+					background: #258d62;
+				}
+			}
+
+			&.btn-cancel {
+				background: #f50057;
+
+				&:hover {
+					background: #b1003e;
+				}
 			}
 
 			&:disabled {

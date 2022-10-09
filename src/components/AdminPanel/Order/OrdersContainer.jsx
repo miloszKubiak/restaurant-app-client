@@ -23,11 +23,13 @@ const OrdersContainer = () => {
 
 	const changeOrderStatus = async (_id, clientSecret) => {
 		try {
+			setIsLoading(true);
 			await authFetch.patch(`/orders/${_id}`, {
 				status: "sent",
 				clientSecret,
 			});
 			getOrders();
+			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
 		}
@@ -35,8 +37,10 @@ const OrdersContainer = () => {
 
 	const deleteOrder = async (_id) => {
 		try {
+			setIsLoading(true);
 			await authFetch.delete(`/orders/${_id}`);
 			getOrders();
+			setIsLoading(false);
 		} catch (error) {
 			console.log(error);
 		}
