@@ -29,6 +29,9 @@ import FormRowSelect from "./Form/FormRowSelect";
 import Pagination from "./Pagination/Pagination";
 import StripeCheckout from "./Stripe/StripeCheckout";
 import NavLinks from "./NavLinks/NavLinks";
+import ChartsContainer from "./Charts/ChartsContainer";
+import AreaChart from "./Charts/AreaChart";
+import BarChart from "./Charts/BarChart";
 
 export {
 	Navbar,
@@ -62,4 +65,7 @@ export {
 	Pagination,
 	StripeCheckout,
 	NavLinks,
+	ChartsContainer,
+	AreaChart,
+	BarChart,
 };

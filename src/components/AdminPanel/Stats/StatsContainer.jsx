@@ -51,7 +51,7 @@ const StatsContainer = () => {
 			console.log(error);
 		}
 	};
-	console.log(stats);
+
 	useEffect(() => {
 		showStats();
 	}, []);

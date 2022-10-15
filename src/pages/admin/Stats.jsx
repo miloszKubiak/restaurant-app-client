@@ -1,6 +1,6 @@
 import React from "react";
+import { ChartsContainer } from "../../components";
 import StatsContainer from "../../components/AdminPanel/Stats/StatsContainer";
-import ChartsContainer from "../../components/AdminPanel/Stats/ChartsContainer";
 
 const Stats = () => {
 
