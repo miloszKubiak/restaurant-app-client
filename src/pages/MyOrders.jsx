@@ -90,7 +90,7 @@ const MyOrders = () => {
 										"MMMM Do YYYY, h:mm:ss a"
 									)}{" "}
 								</p>
-								<p>
+								<p className={`status status-${myOrder.status}`}>
 									<span>Status:</span> {myOrder.status}
 								</p>
 								<p>
@@ -213,13 +213,31 @@ const Container = styled.div`
 		border-radius: 0.3rem;
 		background: var(--primary-1);
 
+		.status {
+			padding: 0.3rem;
+			border-radius: 0.2rem;
+		}
+
+		.status-canceled {
+			background: #f0768a;
+		}
+		.status-sent {
+			background: #eed3a8;
+		}
+		.status-delivered {
+			background: #687efd;
+		}
+		.status-paid {
+			background: #75dbb1;
+		}
+
 		span {
 			font-weight: bold;
 		}
 
 		button {
 			margin: 0.5rem 0;
-			padding: 0 .5rem;
+			padding: 0 0.5rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
