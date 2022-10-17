@@ -60,16 +60,17 @@ const Center = styled.div`
 	width: 100%;
 	max-width: 1170px;
 	gap: 0.5rem;
+	background: #000;
 
 	@media screen and (min-width: 576px) {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	@media screen and (min-width: 992px) {
+	@media screen and (min-width: 1100px) {
 		grid-template-columns: repeat(3, 1fr);
 	}
 
-	@media screen and (min-width: 1170px) {
+	@media screen and (min-width: 1300px) {
 		grid-template-columns: repeat(4, 1fr);
 	}
 `;
