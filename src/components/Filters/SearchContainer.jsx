@@ -24,7 +24,7 @@ const SearchContainer = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     clearFilters()
-  }
+	}
 
 	return (
 		<Wrapper>
@@ -52,10 +52,7 @@ const SearchContainer = () => {
 						handleChange={handleSearch}
 						list={sortOptions}
 					/>
-					<ClearButton
-						disabled={loading}
-						onClick={handleSubmit}
-					>
+					<ClearButton disabled={loading} onClick={handleSubmit}>
 						clear filters
 					</ClearButton>
 				</FormCenter>

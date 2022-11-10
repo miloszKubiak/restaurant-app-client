@@ -250,7 +250,7 @@ export const MealsProvider = ({ children }) => {
 	};
 
 	useEffect(() => {
-		getMeals();
+			getMeals();
 	}, []);
 
 	return (
