@@ -61,6 +61,7 @@ const Image = styled.img`
 	width: 5rem;
 	height: 5rem;
 	margin: 0.5rem auto;
+	object-fit: cover;
 `;
 
 const Info = styled.div`

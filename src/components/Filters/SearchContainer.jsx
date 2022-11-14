@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import styled from "styled-components";
 import { useMealsContext } from "../../context/meals-context";
 import FormRow from "../Form/FormRow";
 import FormRowSelect from "../Form/FormRowSelect";
 
 const SearchContainer = () => {
+	const [localSearch, setLocalSearch] = useState("");
+
 	const {
 		meals_loading: loading,
-		search,
 		searchType,
 		sort,
 		sortOptions,
@@ -17,14 +18,29 @@ const SearchContainer = () => {
 	} = useMealsContext();
 
 	const handleSearch = (e) => {
-		if (loading) return;
 		handleChange({ name: e.target.name, value: e.target.value });
-  };
-  
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    clearFilters()
-	}
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		clearFilters();
+	};
+
+	const debounce = () => {
+		let timeoutID;
+		return (e) => {
+			setLocalSearch(e.target.value);
+			clearTimeout(timeoutID);
+			timeoutID = setTimeout(() => {
+				handleChange({
+					name: e.target.name,
+					value: e.target.value,
+				});
+			}, 1000);
+		};
+	};
+
+	const optimizedDebounce = useMemo(() => debounce(), []);
 
 	return (
 		<Wrapper>
@@ -34,8 +50,8 @@ const SearchContainer = () => {
 					<FormRow
 						type="text"
 						name="search"
-						value={search}
-						handleChange={handleSearch}
+						value={localSearch}
+						handleChange={optimizedDebounce}
 					/>
 					{/* search by type */}
 					<FormRowSelect
@@ -74,7 +90,7 @@ const FormCenter = styled.div`
 	gap: 1rem;
 	align-items: center;
 	margin-bottom: 1rem;
-	padding: .5rem;
+	padding: 0.5rem;
 `;
 
 const ClearButton = styled.button`
@@ -92,7 +108,7 @@ const ClearButton = styled.button`
 	font-size: 1rem;
 	font-family: inherit;
 	border: none;
-	margin-top: .6rem;
+	margin-top: 0.6rem;
 	text-align: center;
 	cursor: pointer;
 
@@ -104,7 +120,7 @@ const ClearButton = styled.button`
 const Wrapper = styled.section`
 	display: flex;
 	justify-content: center;
-	
+
 	@media (max-width: 768px) {
 		${FormCenter} {
 			flex-direction: column;

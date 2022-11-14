@@ -10,6 +10,7 @@ const FeaturedMeals = () => {
 		featured_meals: featured,
 	} = useMealsContext();
 
+	console.log(featured);
 	return (
 		<Wrapper>
 			<Header>
@@ -44,13 +45,13 @@ const Header = styled.div`
 const Title = styled.h2`
 	text-align: center;
 	font-size: 3rem;
-	margin-bottom: .5rem;
+	margin-bottom: 0.5rem;
 	text-transform: capitalize;
 `;
 
 const Underline = styled.div`
 	background: var(--primary-3);
-	padding: .2rem;
+	padding: 0.2rem;
 	width: 15rem;
 `;
 

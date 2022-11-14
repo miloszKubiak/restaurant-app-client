@@ -40,10 +40,12 @@ const Content = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 1rem;
+	flex: 2;
 `;
 
 const Image = styled.img`
   display: block;
+	flex: 1;
   max-width: 100%;
   height: 15rem;
   object-fit: cover;
@@ -88,6 +90,8 @@ const Wrapper = styled.section`
 	display: flex;
 	flex-direction: column;
 	gap: 3rem;
+	width: 90vw;
+	max-width: 1170px;
 `;
 
 const MealContainer = styled.article`

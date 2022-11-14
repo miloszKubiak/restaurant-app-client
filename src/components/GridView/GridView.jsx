@@ -21,7 +21,10 @@ const GridView = ({ meals }) => {
 
 export default GridView;
 
-const Wrapper = styled.section``;
+const Wrapper = styled.section`
+	width: 90vw;
+	max-width: 1170px;
+`;
 
 const Container = styled.div`
 	display: grid;
