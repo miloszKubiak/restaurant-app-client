@@ -76,10 +76,10 @@ const SingleMeal = () => {
 							<span>Available : </span>
 							{stock > 0 ? "Meal Available" : "Meal unavailable"}
 						</Info>
-						<Info>
+						{/* <Info>
 							<span>Preparation time : </span>
 							{preparationTime}
-						</Info>
+						</Info> */}
 						<Info>
 							<span>Category : </span>
 							{category}

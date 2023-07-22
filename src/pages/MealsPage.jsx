@@ -19,7 +19,6 @@ const MealsPage = () => {
 			<Sidebar />
 			<PageHero title="All Meals" />
 			<Wrapper>
-				{/* <Filters /> */}
 				<Container>
 					<SearchContainer />
 					{meals.length > 1 && <ChangeViewBar />}
